@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="https://media.base44.com/images/public/6a24770b8156364d64a8152b/89ac9e742_Testerlogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Batch 3 — resolve Day/Night before first paint (no FOUC), same
+      // approach as the Apex Clarity PLATFORM's own ThemeContext: read the
+      // stored preference, fall back to prefers-color-scheme, set data-theme
+      // on <html> synchronously. Own storage key — not shared with the
+      // platform's apex-theme key, and never tied to cookie consent.
+      (function () {
+        try {
+          var stored = localStorage.getItem('apex-website-theme');
+          var pref = stored === 'day' || stored === 'night' || stored === 'system' ? stored : 'system';
+          var resolved;
+          if (pref === 'day') resolved = 'light';
+          else if (pref === 'night') resolved = 'dark';
+          else resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', resolved);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+    <title>Apex Clarity | Prove Your Compliance. Protect Your Contracts.</title>
+    <meta name="description" content="Apex Clarity is the intelligent operating system for construction, retrofit, facilities management and property services businesses — with Lucy, your embedded AI assistant, watching over compliance every day." />
+    <meta name="keywords" content="compliance software, health and safety management, construction compliance, retrofit compliance, facilities management software, property services, social housing contractors" />
+    <link rel="canonical" href="https://www.apexclarity.co.uk/" />
+    <meta property="og:site_name" content="Apex Clarity" />
+    <meta property="og:title" content="Apex Clarity | Prove Your Compliance. Protect Your Contracts." />
+    <meta property="og:description" content="Operational control. Proven compliance. The intelligent operating system for construction, retrofit, facilities management and property services businesses." />
+    <meta property="og:image" content="https://media.base44.com/images/public/6a24770b8156364d64a8152b/89ac9e742_Testerlogo.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.apexclarity.co.uk/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Apex Clarity | Prove Your Compliance. Protect Your Contracts." />
+    <meta name="twitter:description" content="Operational control. Proven compliance. The intelligent operating system for construction, retrofit, facilities management and property services businesses." />
+    <meta name="twitter:image" content="https://media.base44.com/images/public/6a24770b8156364d64a8152b/89ac9e742_Testerlogo.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Apex Clarity",
+        "url": "https://www.apexclarity.co.uk/",
+        "logo": "https://media.base44.com/images/public/6a24770b8156364d64a8152b/89ac9e742_Testerlogo.png",
+        "description": "Apex Clarity is the intelligent operating system for construction, retrofit, facilities management and property services businesses.",
+        "slogan": "Operational control. Proven compliance.",
+        "email": "info@apexclarity.co.uk",
+        "areaServed": "GB",
+        "knowsAbout": ["Health & Safety Compliance", "Construction Compliance", "Facilities Management Software", "Retrofit Compliance", "Social Housing Compliance"]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
