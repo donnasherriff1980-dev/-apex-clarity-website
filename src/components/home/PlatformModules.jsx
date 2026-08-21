@@ -27,7 +27,7 @@ export default function PlatformModules() {
             The evidence a contract audit<br className="hidden md:block" /> actually asks for.
           </h2>
           <p className="text-lg text-white/50 max-w-2xl mx-auto">
-            Six modules, one controlled lifecycle. Drafted, reviewed, approved, issued — and superseded rather than quietly overwritten.
+            Six modules, one way of working. Drafted, reviewed, approved and issued — then replaced by a new version rather than quietly overwritten.
           </p>
         </div>
 

@@ -7,17 +7,23 @@ import SEO from "@/components/common/SEO";
 import { SOLUTIONS } from "@/lib/solutions";
 import { useDeclareHeaderSurface } from "@/lib/HeaderSurfaceContext";
 
-// The controlled lifecycle every governed record in the platform moves
-// through. This is the actual product behaviour, not an illustration of
-// invented metrics — the previous version of this page rendered fabricated
-// percentage bars under a "Live data · Connected" indicator, which implied
-// a live tenant connection that never existed.
+// The lifecycle governed records move through. Verified against the platform
+// entity schemas: draft -> review -> approved is shared by every governed
+// record; the live state is "issued" (risk assessments, method statements,
+// toolbox talks, emergency arrangements, permits) or "active" (competence
+// requirements, permit templates); the end state is supersession/archival,
+// except permits, which suspend, cancel or close via hand-back rather than
+// superseding. Do not flatten this into "everything supersedes" — it is not
+// what the Permit entity does.
+//
+// This replaced fabricated percentage bars under a "Live data · Connected"
+// indicator, which implied a live tenant connection that never existed.
 const LIFECYCLE = [
-  { stage: "Draft", note: "Authored, not yet submitted" },
-  { stage: "In review", note: "With a reviewer; comments do not change stage" },
-  { stage: "Approved", note: "Rejection or changes require a recorded reason" },
-  { stage: "Issued", note: "The version site teams work to" },
-  { stage: "Superseded", note: "Replaced, not overwritten — links raise a warning" },
+  { stage: "Draft", note: "Authored, not yet submitted for review" },
+  { stage: "In review", note: "With a reviewer; comments do not change the stage" },
+  { stage: "Approved", note: "Rejection or requested changes carry a recorded reason" },
+  { stage: "Issued / active", note: "The live version site teams work to" },
+  { stage: "Ended", note: "Superseded or archived — permits close with a hand-back" },
 ];
 
 const tabs = SOLUTIONS.filter((s) =>
@@ -43,7 +49,7 @@ export default function Platform() {
             <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">The Platform</span>
             <h1 className="text-5xl md:text-6xl font-black text-white mb-6">One Lifecycle.<br />Every Record.</h1>
             <p className="text-xl text-white/50">
-              Risk assessments, RAMS, permits, toolbox talks, competence evidence and emergency arrangements all move through the same controlled lifecycle — so the evidence behind a job is provable, not assembled afterwards.
+              Risk assessments, RAMS, permits, toolbox talks, competence evidence and emergency arrangements are all authored, reviewed and approved the same way — so the evidence behind a job is provable, not assembled afterwards.
             </p>
           </motion.div>
         </div>

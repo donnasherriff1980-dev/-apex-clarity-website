@@ -23,7 +23,7 @@ export default function Solutions() {
             <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Our Solutions</span>
             <h1 className="text-5xl md:text-6xl font-black text-white mb-6">The Evidence Your Contracts Depend On</h1>
             <p className="text-xl text-white/50 leading-relaxed">
-              Every module below runs on the same controlled lifecycle — drafted, reviewed, approved, issued, and superseded rather than overwritten. Built for UK social-housing retrofit and M&amp;E contractors who have to prove it, not just do it.
+              Every module below runs on the same controlled lifecycle — drafted, reviewed, approved, then issued as a live version that is replaced rather than quietly overwritten. Built for UK social-housing retrofit and M&amp;E contractors who have to prove it, not just do it.
             </p>
           </motion.div>
         </div>
