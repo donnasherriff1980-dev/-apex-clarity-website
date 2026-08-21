@@ -3,44 +3,50 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, Sparkles } from "lucide-react";
 import LucyOrb from "@/components/common/LucyOrb";
 
+// Lucy's shipped assistance is drafting help on risk assessments and method
+// statements, plus scope guidance on permit templates. These lines and the
+// scripted replies below stay inside that scope — the earlier version had
+// Lucy claiming continuous certificate monitoring and subcontractor
+// surveillance, which the platform does through its governance overview,
+// not through Lucy.
 const INTRO_LINES = [
   "Good afternoon.",
-  "I've noticed three certificates expire next month.",
-  "Want me to prepare the renewal list?",
+  "You're starting a method statement for the roof access works.",
+  "Want me to draft the first version from your hazard library?",
 ];
 
 const SUGGESTED_QUESTIONS = [
   "How do you help with RAMS?",
-  "Can you monitor expired certificates?",
-  "How do you manage subcontractors?",
-  "How do you help us pass audits?",
-  "How do you help social housing contractors?",
+  "What can't you do?",
+  "How does a permit get handed back?",
+  "How does the platform track what's overdue?",
+  "What about PAS 2035 retrofit evidence?",
 ];
 
 const SCRIPTED_RESPONSES = [
   {
-    match: ["rams", "risk assessment", "method statement"],
-    reply: "I keep RAMS organised and current — flagging outdated documents, matching the right method statement to the right job, and surfacing gaps before a site visit finds them.",
+    match: ["rams", "risk assessment", "method statement", "draft"],
+    reply: "I help you get a first version down \u2014 pulling hazards from your library into a risk assessment or method statement, so you are editing rather than starting from a blank page. Your competent person reviews and approves it. I do not.",
   },
   {
-    match: ["certificate", "expire", "expiry"],
-    reply: "Yes. I track every certificate and qualification against its renewal date, and I flag anything approaching expiry well before it becomes a compliance gap — not after.",
+    match: ["can't", "cannot", "limitation", "not do", "won't"],
+    reply: "I do not approve, certify or sign anything off, and I do not decide whether someone is competent. Today I assist with drafting risk assessments and method statements, and with scope guidance on permit templates. Everything else on the platform is the system and your people, not me.",
   },
   {
-    match: ["subcontractor", "supply chain", "contractor"],
-    reply: "I monitor subcontractor compliance documentation — insurance, accreditations, RAMS — and flag anyone falling out of date, so your supply chain stays audit-ready.",
+    match: ["permit", "hand back", "handback", "control of work"],
+    reply: "A permit is raised from a template, and its extensions, suspensions and cancellations each need a recorded reason. Hand-back captures the completion state of the work and anything still outstanding \u2014 so it closes with a record rather than a signature that goes missing.",
   },
   {
-    match: ["audit", "pass audits", "inspection"],
-    reply: "I keep your evidence organised as it's created, not gathered in a panic beforehand — so when an audit or client inspection lands, you're already ready.",
+    match: ["overdue", "track", "outstanding", "expire", "expiry", "audit"],
+    reply: "That is the governance overview rather than me. It lists drafts, items awaiting review, items approved but not yet issued, overdue reviews, expiring permits, permits awaiting hand-back, missing toolbox talk attendance and competence evidence gaps. It is an administrative view \u2014 not a compliance score.",
   },
   {
-    match: ["social housing", "housing contractor", "registered provider"],
-    reply: "For social housing contractors, I track resident safety evidence and asset compliance continuously, so board and regulator reporting is an export, not a scramble.",
+    match: ["pas 2035", "retrofit", "social housing", "shdf", "eco4", "trustmark"],
+    reply: "Retrofit evidence sits against the property and the job \u2014 RAMS packs, toolbox talk attendance, competence evidence and permit hand-backs all attach to the work they were raised for. When a funder or registered provider asks for a property file, it is already assembled.",
   },
 ];
 
-const FALLBACK_REPLY = "That's exactly the kind of question I handle day to day. Book a demo and I'll show you properly.";
+const FALLBACK_REPLY = "I would rather not guess at that one. Book a demo and we will show you exactly what the platform does and does not do.";
 
 function findResponse(text) {
   const lower = text.toLowerCase();

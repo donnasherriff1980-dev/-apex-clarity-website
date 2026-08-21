@@ -4,19 +4,30 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Search, Clock, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import SEO from "@/components/common/SEO";
 import { useDeclareHeaderSurface } from "@/lib/HeaderSurfaceContext";
 
 const categories = ["All", "Operations", "Compliance", "AI & Automation", "H&S", "Project Management", "Growth"];
 
-const articles = [
-  { title: "The Business Operating System: Why Growing Businesses Need More Than Software", excerpt: "Discover why successful scaling businesses replace ad-hoc tools with integrated operating systems.", category: "Operations", readTime: "6 min", date: "June 2026" },
-  { title: "H&S Compliance in Construction: Moving Beyond Spreadsheets", excerpt: "How digital H&S systems are reducing incidents, improving compliance and saving hours per week.", category: "H&S", readTime: "5 min", date: "June 2026" },
-  { title: "AI Automation: What It Actually Means For Your Business in 2026", excerpt: "Cut through the hype. Practical AI automation that delivers real ROI for operations teams.", category: "AI & Automation", readTime: "7 min", date: "May 2026" },
-  { title: "Compliance Management: From Reactive to Proactive", excerpt: "How to transform compliance from a burden into a competitive advantage.", category: "Compliance", readTime: "6 min", date: "May 2026" },
-  { title: "Project Management Systems: Beyond Gantt Charts", excerpt: "Modern project management platforms that give you real financial and operational control.", category: "Project Management", readTime: "8 min", date: "Apr 2026" },
-  { title: "Building a Growth Strategy That Connects to Operations", excerpt: "Why most growth strategies fail — and how to build one that drives operational results.", category: "Growth", readTime: "5 min", date: "Apr 2026" },
-];
+/**
+ * Parked, not deleted.
+ *
+ * This page previously listed six articles that did not exist — the cards
+ * carried a "Read More" affordance and no article route behind them. The
+ * fabricated entries have been removed; the search, category filtering and
+ * card grid below are untouched and will render as soon as real articles
+ * are added to this array.
+ *
+ * While the array is empty the page is not linked from navigation or the
+ * footer, is absent from the sitemap, and is served noindex.
+ *
+ * To publish: add entries of the shape
+ *   { title, excerpt, category, readTime, date, path }
+ * and restore the /resources links in Navbar.jsx, Footer.jsx and
+ * public/sitemap.xml.
+ */
+const articles = [];
 
 export default function Resources() {
   useDeclareHeaderSurface("dark");
@@ -35,6 +46,7 @@ export default function Resources() {
         title="Resources"
         description="Practical insights on operations, compliance, AI and business transformation for construction, retrofit and facilities management businesses."
         path="/resources"
+        noIndex
       />
       <section className="pt-32 pb-16 bg-brand-dark relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern" />
@@ -42,17 +54,18 @@ export default function Resources() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl">
             <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Resources</span>
             <h1 className="text-5xl font-black text-white mb-6">Insights & Expertise</h1>
-            <p className="text-white/50 text-lg">Practical insights on operations, AI, compliance and business transformation from the Apex Clarity team.</p>
+            <p className="text-white/50 text-lg">Practical guidance on H&amp;S evidence, retrofit compliance and control of work. We are writing the first pieces now.</p>
           </motion.div>
         </div>
       </section>
 
+      {articles.length > 0 && (
       <section className="py-8 bg-surface border-b border-hairline/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-secondary" />
-              <Input placeholder="Search articles..." value={search} onChange={e => setSearch(e.target.value)} className="pl-10 w-72 h-10 rounded-xl bg-surface-raised text-ink border-hairline/15" />
+              <Input placeholder="Search articles..." value={search} onChange={e => setSearch(e.target.value)} className="pl-10 w-full sm:w-72 h-10 rounded-xl bg-surface-raised text-ink border-hairline/15" />
             </div>
             <div className="flex flex-wrap gap-2">
               {categories.map(cat => (
@@ -65,13 +78,31 @@ export default function Resources() {
           </div>
         </div>
       </section>
+      )}
 
       <section className="py-16 bg-surface">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {filtered.length === 0 && (
+            <div className="max-w-xl mx-auto text-center py-12">
+              <div className="w-14 h-14 rounded-2xl bg-teal/10 flex items-center justify-center mx-auto mb-5">
+                <Clock className="w-6 h-6 text-teal" />
+              </div>
+              <h2 className="text-2xl font-black text-ink mb-3">Nothing published yet</h2>
+              <p className="text-ink-secondary leading-relaxed mb-8">
+                We would rather publish a handful of genuinely useful pieces on retrofit evidence, RAMS and control of work than fill this page to look busy. They are being written.
+              </p>
+              <Link to="/contact">
+                <Button className="bg-teal text-canvas hover:bg-teal/90 font-bold h-11 px-6 rounded-xl">
+                  Tell us what would be useful <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            </div>
+          )}
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((a, i) => (
               <motion.article key={a.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                className="bg-surface-raised rounded-2xl overflow-hidden border border-hairline/10 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                className="bg-surface-raised rounded-2xl overflow-hidden border border-hairline/10 hover:shadow-lg transition-all duration-300 group">
                 <div className="h-44 bg-gradient-to-br from-brand-dark to-brand-mid flex items-center justify-center">
                   <div className="text-teal/20 text-7xl font-black">{a.category[0]}</div>
                 </div>

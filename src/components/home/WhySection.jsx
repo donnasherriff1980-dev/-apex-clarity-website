@@ -1,45 +1,57 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FileEdit, Search, Eye, MessageSquareText, AlertTriangle, UserCheck, ArrowRight } from "lucide-react";
+import { FileEdit, ClipboardList, FileCheck2, Eye, AlertTriangle, UserCheck, ArrowRight } from "lucide-react";
 
-const pillars = [
+/**
+ * Lucy's claims on this site are deliberately narrow.
+ *
+ * Lucy ships field assistance on Risk Assessments and Method Statements,
+ * and scope guidance on Permit Templates. That is the whole of it today.
+ *
+ * Surfacing overdue reviews, expiring permits, missing attendance and
+ * competence evidence gaps is the platform's governance overview doing the
+ * work — not Lucy — so it is attributed to the platform below. The previous
+ * version of this section credited Lucy with continuous monitoring,
+ * document retrieval and plain-language explanation of a compliance
+ * position; none of those are shipped, and they have been removed.
+ */
+const lucyToday = [
   {
     icon: FileEdit,
-    title: "Drafts",
-    description: "Lucy prepares the first version of RAMS, reports and documentation — ready for your team to check.",
+    title: "Drafting assistance on risk assessments",
+    description: "Lucy helps get a first version down, working from your hazard library. A competent person still writes, reviews and approves it.",
   },
   {
-    icon: Search,
-    title: "Finds",
-    description: "Ask for a certificate, a policy, a past inspection — Lucy surfaces it in seconds, not a folder search.",
+    icon: ClipboardList,
+    title: "Drafting assistance on method statements",
+    description: "The same assistance on method statements and the RAMS packs they combine into.",
   },
   {
-    icon: Eye,
-    title: "Monitors",
-    description: "Certificates, deadlines and site activity are watched continuously, not checked once a quarter.",
-  },
-  {
-    icon: MessageSquareText,
-    title: "Explains",
-    description: "Plain-language answers about your compliance position — no need to interpret a dashboard yourself.",
-  },
-  {
-    icon: AlertTriangle,
-    title: "Flags Risk",
-    description: "Emerging risk is surfaced early, while there's still time to act on it.",
-  },
-  {
-    icon: UserCheck,
-    title: "Humans Approve",
-    description: "Lucy prepares and monitors. Your competent people always make the final call.",
+    icon: FileCheck2,
+    title: "Scope guidance on permit templates",
+    description: "Lucy assists when a permit template's scope is being defined — not when a live permit is issued.",
   },
 ];
 
-// Representative card surface for Batch 3 — this section is fully
-// theme-reactive (canvas/surface/ink tokens) to demonstrate the Day/Night
-// system on a normal content section, distinct from Lucy's own frozen
-// Hero/Meet-Lucy atmospheric backdrop.
+const platformDoes = [
+  {
+    icon: Eye,
+    title: "The platform surfaces what is outstanding",
+    description: "Drafts, items awaiting review, items approved but not issued, overdue reviews, expiring permits, pending hand-backs, missing attendance and competence evidence gaps.",
+  },
+  {
+    icon: AlertTriangle,
+    title: "The platform warns on superseded links",
+    description: "When a linked record moves to superseded or archived, the records pointing at it raise a warning rather than carrying on quietly.",
+  },
+  {
+    icon: UserCheck,
+    title: "People approve. Always.",
+    description: "Lucy does not approve, certify or sign anything off. The governance overview states plainly that it is not a compliance score and that every item needs human review.",
+  },
+];
+
 export default function WhySection() {
   return (
     <section className="py-24 bg-canvas relative overflow-hidden">
@@ -53,28 +65,54 @@ export default function WhySection() {
             Lucy Never Replaces<br className="hidden md:block" /> Competent People.
           </h2>
           <p className="text-lg text-ink-secondary max-w-2xl mx-auto">
-            She helps them work faster — handling the watching and the searching, so your team can focus on judgement calls only people should make.
+            We would rather tell you exactly what she does today than imply she does more. Here is the honest split.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {pillars.map((p, i) => (
-            <motion.div
-              key={p.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -4 }}
-              className="bg-surface rounded-2xl p-7 border border-hairline/10 hover:border-teal/30 hover:shadow-2xl transition-all duration-300 group"
-            >
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 bg-teal/12">
-                <p.icon className="w-6 h-6 text-teal" />
-              </div>
-              <h3 className="text-ink font-bold text-lg mb-3">{p.title}</h3>
-              <p className="text-ink-secondary text-sm leading-relaxed">{p.description}</p>
-            </motion.div>
-          ))}
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+          <div>
+            <h3 className="text-xs font-bold text-teal uppercase tracking-widest mb-5">What Lucy Does Today</h3>
+            <div className="space-y-4">
+              {lucyToday.map((p, i) => (
+                <motion.div
+                  key={p.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="bg-surface rounded-2xl p-6 border border-teal/20 hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="w-11 h-11 rounded-2xl flex items-center justify-center mb-4 bg-teal/12">
+                    <p.icon className="w-5 h-5 text-teal" />
+                  </div>
+                  <h4 className="text-ink font-bold mb-2 leading-snug">{p.title}</h4>
+                  <p className="text-ink-secondary text-sm leading-relaxed">{p.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-xs font-bold text-ink-secondary uppercase tracking-widest mb-5">What The Platform Does</h3>
+            <div className="space-y-4">
+              {platformDoes.map((p, i) => (
+                <motion.div
+                  key={p.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="bg-surface rounded-2xl p-6 border border-hairline/10 hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="w-11 h-11 rounded-2xl flex items-center justify-center mb-4 bg-hairline/10">
+                    <p.icon className="w-5 h-5 text-ink-secondary" />
+                  </div>
+                  <h4 className="text-ink font-bold mb-2 leading-snug">{p.title}</h4>
+                  <p className="text-ink-secondary text-sm leading-relaxed">{p.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="text-center mt-12">

@@ -92,7 +92,7 @@ export default function HealthCheck() {
       <>
         <SEO
           title="Free Business Health Check"
-          description="Answer 8 questions to get a personalised operational health score and improvement roadmap for your business — completely free."
+          description="Answer 8 questions for a free score showing how your H&S evidence and compliance processes currently stand up, broken down by area."
           path="/health-check"
         />
         <section className="pt-32 pb-24 bg-brand-dark relative overflow-hidden">
@@ -101,7 +101,7 @@ export default function HealthCheck() {
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
               <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Free Assessment</span>
               <h1 className="text-5xl md:text-6xl font-black text-white mb-6">How Healthy Is<br /><span className="gradient-text-brand">Your Business?</span></h1>
-              <p className="text-xl text-white/50 mb-10 max-w-2xl mx-auto">Answer 8 questions to get a personalised business health score and improvement roadmap — completely free.</p>
+              <p className="text-xl text-white/50 mb-10 max-w-2xl mx-auto">Eight questions on how you evidence work today. You get a score broken down by area — free, no obligation.</p>
               <Button onClick={() => setStage("quiz")} size="lg" className="bg-teal text-canvas hover:bg-teal/90 font-bold h-14 px-10 rounded-2xl">
                 Start Free Assessment <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -136,7 +136,7 @@ export default function HealthCheck() {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center px-6">
           <Loader2 className="w-14 h-14 text-teal animate-spin mx-auto mb-6" />
           <h2 className="text-3xl font-black text-white mb-3">Analysing Your Results</h2>
-          <p className="text-white/50">Generating your personalised health score...</p>
+          <p className="text-white/50">Scoring your answers by area...</p>
         </motion.div>
       </section>
     );
@@ -165,7 +165,7 @@ export default function HealthCheck() {
               className="glass rounded-3xl p-8 md:p-10 border border-white/10 text-center">
               <BarChart3 className="w-10 h-10 text-teal mx-auto mb-4" />
               <h3 className="text-2xl font-black text-white mb-3">Unlock Your Full Report</h3>
-              <p className="text-white/50 mb-8">Get a detailed breakdown with a personalised improvement roadmap and recommended solutions.</p>
+              <p className="text-white/50 mb-8">See your score broken down question by question, and we&apos;ll follow up to talk through the weakest areas.</p>
               <div className="max-w-sm mx-auto space-y-4">
                 <Input placeholder="Your name" value={name} onChange={e => setName(e.target.value)} className="bg-white/8 border-white/15 text-white placeholder:text-white/30 h-11 rounded-xl" />
                 <Input placeholder="Company name" value={company} onChange={e => setCompany(e.target.value)} className="bg-white/8 border-white/15 text-white placeholder:text-white/30 h-11 rounded-xl" />

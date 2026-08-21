@@ -12,19 +12,19 @@ export default function Terms() {
           <p className="text-white/40">Last updated: June 2026</p>
         </motion.div></div>
       </section>
-      <section className="py-20 bg-brand-light">
+      <section className="py-20 bg-surface">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-white rounded-3xl p-8 md:p-12 border border-border shadow-sm space-y-10">
+          <div className="bg-surface-raised rounded-3xl p-8 md:p-12 border border-hairline/10 shadow-sm space-y-10">
             {[
-              { title: "1. Services", body: "Apex Clarity provides business operating system design, implementation and support services including but not limited to H&S management, compliance, CRM, project management, document control, risk management, audits and AI automation." },
+              { title: "1. Services", body: "Apex Clarity provides a health, safety and compliance evidence platform, together with its implementation and support. Current functionality includes risk assessments and COSHH, method statements and RAMS, permits and control of work, toolbox talks, workforce competence evidence, emergency arrangements, document control, and the approvals and governance views across them." },
               { title: "2. Use of Website", body: "By accessing this website, you agree to use it lawfully and in a manner consistent with these terms. You must not use the website for any unlawful purpose." },
               { title: "3. Intellectual Property", body: "All content on this website, including text, graphics, logos and software, is the property of Apex Clarity Ltd and protected by applicable intellectual property laws." },
               { title: "4. Limitation of Liability", body: "Apex Clarity shall not be liable for any indirect, incidental or consequential damages arising from the use of this website or our services, except where required by law." },
               { title: "5. Contact", body: "For questions about these terms, contact us at info@apexclarity.co.uk." },
             ].map(s => (
               <div key={s.title}>
-                <h2 className="text-xl font-bold text-brand-dark mb-3">{s.title}</h2>
-                <p className="text-muted-foreground leading-relaxed">{s.body}</p>
+                <h2 className="text-xl font-bold text-ink mb-3">{s.title}</h2>
+                <p className="text-ink-secondary leading-relaxed">{s.body}</p>
               </div>
             ))}
           </div>

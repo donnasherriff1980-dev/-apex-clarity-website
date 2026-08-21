@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <SEO
         title="Prove Your Compliance. Protect Your Contracts."
-        description="Apex Clarity is the intelligent operating system built for construction, retrofit, facilities management and property services businesses, with Lucy — your embedded AI assistant — watching over compliance every day."
+        description="Health, safety and compliance evidence for UK social-housing retrofit and M&E contractors. Risk assessments, RAMS, permits, toolbox talks and competence — drafted, reviewed, approved and issued on one controlled lifecycle."
         path="/"
       />
       <HeroSection />

@@ -11,9 +11,11 @@ import { Mail, MapPin, ArrowRight, CheckCircle, Loader2, Calendar, AlertCircle }
 import { submitLead } from "@/lib/leads";
 import SEO from "@/components/common/SEO";
 import { useDeclareHeaderSurface } from "@/lib/HeaderSurfaceContext";
+import { SOLUTIONS } from "@/lib/solutions";
+import { INDUSTRIES } from "@/lib/industries";
 
-const industriesList = ["Construction", "Retrofit", "Facilities Management", "Property Services", "Renewables", "Social Housing Contractors", "Other"];
-const servicesList = ["Health & Safety", "Compliance", "Client Records", "Project Management", "Document Control", "Risk Management", "Audits & Inspections", "AI & Automation", "Full Platform", "Not Sure"];
+const industriesList = INDUSTRIES.map((i) => i.label).concat("Other");
+const servicesList = SOLUTIONS.map((s) => s.title).concat(["Full Platform", "Not Sure"]);
 const enquiryTypes = ["Book a Demo", "Business Health Check", "General Enquiry", "Partnership"];
 
 export default function Contact() {
@@ -57,7 +59,7 @@ export default function Contact() {
     <>
       <SEO
         title="Book a Demo"
-        description="See the Apex Clarity platform in action. Book a free 30-minute demo for your construction, retrofit or facilities management business."
+        description="Book a free 30-minute Apex Clarity demo for your social-housing retrofit or M&E contracting business, walked through against your own workflow."
         path="/contact"
       />
       <section className="pt-32 pb-16 bg-brand-dark relative overflow-hidden">
@@ -66,7 +68,7 @@ export default function Contact() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl">
             <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Get In Touch</span>
             <h1 className="text-5xl font-black text-white mb-6">Book Your Free Demo</h1>
-            <p className="text-white/50 text-lg">See the Apex Clarity platform in action and discover how we can transform your business operations.</p>
+            <p className="text-white/50 text-lg">A 30-minute walkthrough against a job that looks like yours — RAMS, permits, briefings and the evidence trail behind them.</p>
           </motion.div>
         </div>
       </section>
@@ -82,7 +84,7 @@ export default function Contact() {
                     <CheckCircle className="w-8 h-8 text-teal" />
                   </div>
                   <h2 className="text-2xl font-black text-ink mb-3">Message Received</h2>
-                  <p className="text-ink-secondary">We&apos;ll be in touch within 24 hours to arrange your demo or consultation.</p>
+                  <p className="text-ink-secondary">We&apos;ll be in touch within one working day to arrange your demo.</p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="bg-surface-raised rounded-3xl p-8 md:p-10 border border-hairline/10 shadow-sm space-y-6">
@@ -153,7 +155,7 @@ export default function Contact() {
               <div className="bg-surface-raised rounded-3xl p-8 border border-hairline/10">
                 <div className="flex items-center gap-3 mb-6"><Calendar className="w-5 h-5 text-teal" /><h3 className="font-bold text-ink">What To Expect</h3></div>
                 <div className="space-y-4">
-                  {["Response within 24 hours", "30-minute free platform demo", "No obligation, no hard sell", "Tailored recommendations for your business", "Clear pricing and timeline"].map(item => (
+                  {["A reply within one working day", "A 30-minute walkthrough, no charge", "No obligation and no hard sell", "Walked through against your own workflow", "An honest answer on what is and is not built yet"].map(item => (
                     <div key={item} className="flex items-start gap-3">
                       <CheckCircle className="w-4 h-4 text-teal shrink-0 mt-0.5" />
                       <span className="text-sm text-ink-secondary">{item}</span>

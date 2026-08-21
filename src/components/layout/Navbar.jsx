@@ -5,27 +5,24 @@ import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "@/components/common/ThemeToggle";
 import { useHeaderSurface } from "@/lib/HeaderSurfaceContext";
+import { SOLUTIONS } from "@/lib/solutions";
 
-const LOGO_URL = "https://media.base44.com/images/public/6a24770b8156364d64a8152b/89ac9e742_Testerlogo.png";
+const solutions = SOLUTIONS.map((s) => ({ label: s.title, path: `/solutions/${s.slug}`, desc: s.navDesc }));
 
-const solutions = [
-  { label: "Health & Safety", path: "/solutions/health-safety", desc: "Digital H&S management systems" },
-  { label: "Compliance", path: "/solutions/compliance", desc: "Automated compliance tracking" },
-  { label: "Client Records", path: "/solutions/crm", desc: "Organisations, contacts and site history" },
-  { label: "Project Management", path: "/solutions/projects", desc: "End-to-end project control" },
-  { label: "Document Control", path: "/solutions/documents", desc: "Centralised document management" },
-  { label: "Risk Management", path: "/solutions/risk", desc: "Real-time risk registers" },
-  { label: "Audits & Inspections", path: "/solutions/audits", desc: "Digital audit workflows" },
-  { label: "AI & Automation", path: "/solutions/ai-automation", desc: "Intelligent workflow automation" },
-];
-
+// /resources is intentionally absent: the page and its filtering machinery
+// remain in the codebase for a future set of substantive sector articles,
+// but it is not linked from navigation and not listed in the sitemap while
+// it has no published content.
+//
+// "Case Studies" became "How It Works": a nav item promising case studies
+// that leads to a page explaining we have none yet was advertising the
+// absence. The /case-studies route is retained so existing links resolve.
 const navLinks = [
   { label: "Solutions", hasDropdown: true },
   { label: "Industries", path: "/industries" },
   { label: "Platform", path: "/platform" },
   { label: "Platform Tour", path: "/platform-tour", highlight: true },
-  { label: "Case Studies", path: "/case-studies" },
-  { label: "Resources", path: "/resources" },
+  { label: "How It Works", path: "/case-studies" },
   { label: "About", path: "/about" },
 ];
 
@@ -189,8 +186,9 @@ export default function Navbar() {
             className="lg:hidden bg-canvas/98 border-t border-hairline/10 overflow-hidden"
           >
             <div className="px-4 py-6 space-y-1">
+              <p className="px-4 pt-1 pb-2 text-[10px] font-bold uppercase tracking-widest text-ink-secondary">Solutions</p>
               {solutions.map((sol) => (
-                <Link key={sol.path} to={sol.path} className="block px-4 py-3 text-sm text-ink/70 hover:text-ink rounded-xl hover:bg-hairline/5">
+                <Link key={sol.path} to={sol.path} className="block px-4 py-2.5 text-sm text-ink/70 hover:text-ink rounded-xl hover:bg-hairline/5">
                   {sol.label}
                 </Link>
               ))}

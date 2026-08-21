@@ -3,9 +3,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import LucyOrb from "@/components/common/LucyOrb";
 import {
-  Users, Calendar, FileText, ClipboardCheck, ListChecks, ShieldCheck,
-  LayoutDashboard, Check, ArrowLeft, ArrowRight, RotateCcw, Briefcase,
+  Building2, ClipboardCheck, ClipboardList, CheckCircle2, FileCheck2,
+  Megaphone, LayoutDashboard, Check, ArrowLeft, ArrowRight, RotateCcw, Sparkles,
 } from "lucide-react";
+
+/**
+ * One retrofit job, followed through the platform's real path:
+ * site/job → risk assessment → method statement & RAMS → review and
+ * approval → permit → toolbox talk → hand-back and audit readiness.
+ *
+ * The previous version ended on a "Reporting · Dashboard" stage with a KPI
+ * bar chart and a "+12%" trend. There is no reporting/BI module in the
+ * platform, so that stage was replaced with the governance overview, which
+ * is what actually exists.
+ *
+ * These frames are illustrative interface sketches, labelled as such below.
+ * Real screenshots captured from the platform will replace them.
+ */
 
 function AppFrame({ label, children }) {
   return (
@@ -16,93 +30,144 @@ function AppFrame({ label, children }) {
           <div className="w-2.5 h-2.5 rounded-full bg-amber-300" />
           <div className="w-2.5 h-2.5 rounded-full bg-emerald-300" />
         </div>
-        <span className="ml-2 text-xs font-semibold text-slate-400">{label}</span>
+        <span className="ml-2 text-[11px] sm:text-xs font-semibold text-slate-400 truncate">{label}</span>
       </div>
-      <div className="flex-1 p-5 overflow-hidden">{children}</div>
+      <div className="flex-1 p-4 sm:p-5 overflow-hidden">{children}</div>
     </div>
   );
 }
 
-function EnquiryStage() {
+function Row({ children, tone = "slate" }) {
+  const tones = {
+    slate: "bg-slate-50 border-slate-100",
+    teal: "bg-teal-50 border-teal-100",
+    amber: "bg-amber-50 border-amber-100",
+    emerald: "bg-emerald-50 border-emerald-100",
+  };
+  return <div className={`rounded-lg p-3 border ${tones[tone]}`}>{children}</div>;
+}
+
+function Stage({ label }) {
+  return <span className="text-[10px] sm:text-[11px] font-semibold bg-slate-100 text-slate-500 px-2 py-1 rounded-full shrink-0">{label}</span>;
+}
+
+function SiteStage() {
   return (
-    <AppFrame label="Enquiry & Job Intake">
-      <div className="flex items-center justify-between mb-4">
-        <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">New Enquiry</span>
-        <span className="text-[10px] font-semibold bg-blue-50 text-blue-600 px-2 py-1 rounded-full">Web Form</span>
+    <AppFrame label="Sites &amp; Jobs">
+      <div className="flex items-center justify-between mb-4 gap-2">
+        <span className="text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-wide">New job</span>
+        <Stage label="Retrofit programme" />
       </div>
-      <div className="bg-slate-50 rounded-xl p-4 border border-slate-100 mb-3">
+      <Row>
         <div className="flex items-center gap-3 mb-3">
-          <div className="w-9 h-9 rounded-full bg-violet-100 flex items-center justify-center text-violet-500 font-bold text-sm shrink-0">RC</div>
+          <div className="w-9 h-9 rounded-lg bg-violet-100 flex items-center justify-center shrink-0">
+            <Building2 className="w-4 h-4 text-violet-500" />
+          </div>
           <div className="min-w-0">
-            <p className="text-sm font-semibold text-slate-700 truncate">Retrofit — Cavity Wall</p>
-            <p className="text-xs text-slate-400">Received 2 minutes ago</p>
+            <p className="text-[13px] font-semibold text-slate-700 truncate">External wall insulation</p>
+            <p className="text-[11px] text-slate-400">Linked to site and organisation</p>
           </div>
         </div>
-        <div className="flex gap-2">
-          <span className="text-[10px] font-semibold bg-emerald-50 text-emerald-600 px-2 py-1 rounded-full">Qualified</span>
-          <span className="text-[10px] font-semibold bg-slate-100 text-slate-500 px-2 py-1 rounded-full">Unassigned</span>
+        <div className="flex flex-wrap gap-2">
+          <span className="text-[10px] font-semibold bg-emerald-50 text-emerald-600 px-2 py-1 rounded-full">Site linked</span>
+          <span className="text-[10px] font-semibold bg-slate-100 text-slate-500 px-2 py-1 rounded-full">Evidence: none yet</span>
         </div>
-      </div>
-      <div className="flex items-center justify-center gap-3 pt-2">
-        <span className="text-[10px] font-semibold text-slate-400">Enquiry</span>
-        <ArrowRight className="w-3.5 h-3.5 text-slate-300" />
-        <div className="flex items-center gap-1.5 bg-slate-50 border border-slate-100 rounded-full px-3 py-1.5">
-          <Briefcase className="w-3 h-3 text-violet-500" />
-          <span className="text-[10px] font-semibold text-slate-600">Job #2026-014 created</span>
-        </div>
-      </div>
+      </Row>
     </AppFrame>
   );
 }
 
-function JobStage() {
-  const days = ["M", "T", "W", "T", "F", "S", "S"];
+function RiskStage() {
+  const hazards = ["Work at height — scaffold", "Manual handling — board lifts", "Dust — mechanical fixing"];
   return (
-    <AppFrame label="Projects · Scheduling">
-      <div className="flex items-center justify-between mb-4">
-        <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">Job #2026-014</span>
-        <span className="text-[10px] font-semibold bg-amber-50 text-amber-600 px-2 py-1 rounded-full">Survey Booked</span>
+    <AppFrame label="Risk Assessments">
+      <div className="flex items-center justify-between mb-3 gap-2">
+        <span className="text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-wide">From hazard library</span>
+        <Stage label="Draft" />
       </div>
-      <div className="grid grid-cols-7 gap-1 mb-4">
-        {days.map((d, i) => (
-          <div key={i} className="text-center">
-            <p className="text-[9px] text-slate-300 font-semibold mb-1">{d}</p>
-            <div className={`h-8 rounded-md flex items-center justify-center text-xs font-semibold ${i === 3 ? "bg-teal-500 text-white" : "bg-slate-50 text-slate-400"}`}>
-              {12 + i}
+      <div className="space-y-2">
+        {hazards.map((h) => (
+          <Row key={h}>
+            <div className="flex items-center gap-2.5">
+              <ClipboardCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+              <span className="text-[12px] text-slate-600 truncate">{h}</span>
             </div>
-          </div>
+          </Row>
         ))}
       </div>
-      <div className="bg-slate-50 rounded-xl p-3 border border-slate-100 flex items-center gap-3">
-        <Calendar className="w-4 h-4 text-teal-500 shrink-0" />
-        <div className="min-w-0">
-          <p className="text-xs font-semibold text-slate-700 truncate">Site Survey — Thu, 10:00</p>
-          <p className="text-[10px] text-slate-400">Assigned: J. Ahmed</p>
-        </div>
+    </AppFrame>
+  );
+}
+
+function RamsStage() {
+  const steps = ["1. Scaffold inspected and tagged", "2. Fixings set out and marked", "3. Boards fixed, dust extraction on"];
+  return (
+    <AppFrame label="Method Statement">
+      <div className="flex items-center justify-between mb-3 gap-2">
+        <span className="text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-wide">Sequence of work</span>
+        <Stage label="Draft" />
+      </div>
+      <div className="space-y-2">
+        {steps.map((st) => (
+          <Row key={st}>
+            <div className="flex items-center gap-2.5">
+              <ClipboardList className="w-3.5 h-3.5 text-teal-500 shrink-0" />
+              <span className="text-[12px] text-slate-600 truncate">{st}</span>
+            </div>
+          </Row>
+        ))}
+      </div>
+      <div className="mt-3 inline-flex items-center gap-1.5 bg-teal-50 text-teal-600 text-[11px] font-semibold px-2.5 py-1.5 rounded-full">
+        Combines into a RAMS pack
       </div>
     </AppFrame>
   );
 }
 
-function DocumentsStage() {
-  const files = [
-    { name: "Site_Photos.zip", pct: 100 },
-    { name: "EPC_Certificate.pdf", pct: 100 },
-    { name: "Property_Survey.pdf", pct: 62 },
-  ];
+function ApprovalStage() {
   return (
-    <AppFrame label="Documents · Job #2026-014">
+    <AppFrame label="Approvals">
+      <div className="flex items-center justify-between mb-3 gap-2">
+        <span className="text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-wide">RAMS pack</span>
+        <Stage label="In review" />
+      </div>
       <div className="space-y-2.5">
-        {files.map((f) => (
-          <div key={f.name} className="bg-slate-50 rounded-lg p-3 border border-slate-100">
-            <div className="flex items-center gap-2 mb-2">
-              <FileText className="w-3.5 h-3.5 text-cyan-500 shrink-0" />
-              <span className="text-xs font-medium text-slate-600 truncate">{f.name}</span>
-              {f.pct === 100 && <Check className="w-3.5 h-3.5 text-emerald-500 ml-auto shrink-0" />}
-            </div>
-            <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden">
-              <div className="h-full bg-cyan-400 rounded-full" style={{ width: `${f.pct}%` }} />
-            </div>
+        <Row tone="amber">
+          <p className="text-[12px] font-semibold text-slate-700 mb-1">Reviewer comment</p>
+          <p className="text-[11px] text-slate-500 leading-relaxed">Confirm scaffold inspection interval before issue.</p>
+          <p className="text-[10px] text-amber-600 font-semibold mt-1.5">Comment only — stage unchanged</p>
+        </Row>
+        <Row tone="emerald">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+            <span className="text-[12px] font-semibold text-slate-700">Approved by competent person</span>
+          </div>
+          <p className="text-[10px] text-slate-400 mt-1">Approver and timestamp recorded</p>
+        </Row>
+      </div>
+    </AppFrame>
+  );
+}
+
+function PermitStage() {
+  return (
+    <AppFrame label="Permits">
+      <div className="flex items-center justify-between mb-3 gap-2">
+        <span className="text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-wide">From template</span>
+        <Stage label="Issued" />
+      </div>
+      <Row>
+        <div className="flex items-center gap-2.5 mb-2">
+          <FileCheck2 className="w-4 h-4 text-amber-500 shrink-0" />
+          <span className="text-[13px] font-semibold text-slate-700 truncate">Hot works permit</span>
+        </div>
+        <p className="text-[11px] text-slate-500">Scope guidance applied from the permit template.</p>
+      </Row>
+      <div className="mt-3 space-y-1.5">
+        {["Extension requires a reason", "Suspension requires a reason", "Hand-back records completion state"].map((t) => (
+          <div key={t} className="flex items-center gap-2">
+            <div className="w-1 h-1 rounded-full bg-amber-400 shrink-0" />
+            <span className="text-[11px] text-slate-500">{t}</span>
           </div>
         ))}
       </div>
@@ -110,108 +175,68 @@ function DocumentsStage() {
   );
 }
 
-function ComplianceStage() {
-  const items = [
-    { l: "Gas Safety Certificate", status: "amber", note: "Expires in 12 days" },
-    { l: "Public Liability Insurance", status: "amber", note: "Expires in 19 days" },
-    { l: "Installer Accreditation", status: "green", note: "Valid" },
-  ];
+function ToolboxStage() {
+  const crew = ["Attendance recorded", "Questions raised logged", "Session notes saved"];
   return (
-    <AppFrame label="Compliance · Job #2026-014">
-      <div className="space-y-2.5">
-        {items.map((it) => (
-          <div key={it.l} className="flex items-center justify-between gap-2 bg-slate-50 rounded-lg p-3 border border-slate-100">
-            <div className="flex items-center gap-2.5 min-w-0">
-              <div className={`w-2 h-2 rounded-full shrink-0 ${it.status === "green" ? "bg-emerald-400" : "bg-amber-400"}`} />
-              <span className="text-xs font-medium text-slate-600 truncate">{it.l}</span>
-            </div>
-            <span className={`text-[10px] font-semibold shrink-0 ${it.status === "green" ? "text-emerald-600" : "text-amber-600"}`}>{it.note}</span>
-          </div>
-        ))}
+    <AppFrame label="Toolbox Talks">
+      <div className="flex items-center justify-between mb-3 gap-2">
+        <span className="text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-wide">Delivery session</span>
+        <Stage label="Delivered" />
       </div>
-    </AppFrame>
-  );
-}
-
-function ActionsStage() {
-  const items = [
-    { l: "RAMS — Roof Access", status: "pending", who: "M. Osei" },
-    { l: "Toolbox Talk Scheduled", status: "done", who: "J. Ahmed" },
-    { l: "PPE Check", status: "done", who: "J. Ahmed" },
-  ];
-  return (
-    <AppFrame label="Actions · RAMS">
-      <div className="space-y-2.5">
-        {items.map((it) => (
-          <div key={it.l} className="flex items-center gap-3 bg-slate-50 rounded-lg p-3 border border-slate-100">
-            <div className={`w-4 h-4 rounded flex items-center justify-center shrink-0 ${it.status === "done" ? "bg-emerald-400" : "border-2 border-amber-400"}`}>
-              {it.status === "done" && <Check className="w-2.5 h-2.5 text-white" />}
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-xs font-medium text-slate-600 truncate">{it.l}</p>
-              <p className="text-[10px] text-slate-400">{it.who}</p>
-            </div>
-            {it.status === "pending" && (
-              <span className="text-[9px] font-semibold bg-amber-50 text-amber-600 px-2 py-0.5 rounded-full shrink-0">Awaiting approval</span>
-            )}
-          </div>
-        ))}
-      </div>
-    </AppFrame>
-  );
-}
-
-function EvidenceStage() {
-  const items = ["Site inspection signed off", "RAMS approved", "Installation photos verified"];
-  return (
-    <AppFrame label="Health & Safety · Sign-off">
-      <div className="space-y-2.5 mb-4">
-        {items.map((l) => (
-          <div key={l} className="flex items-center gap-2.5">
+      <Row>
+        <div className="flex items-center gap-2.5">
+          <Megaphone className="w-4 h-4 text-violet-500 shrink-0" />
+          <span className="text-[13px] font-semibold text-slate-700 truncate">Working at height briefing</span>
+        </div>
+      </Row>
+      <div className="mt-3 space-y-2">
+        {crew.map((c) => (
+          <div key={c} className="flex items-center gap-2.5">
             <div className="w-4 h-4 rounded bg-emerald-400 flex items-center justify-center shrink-0">
               <Check className="w-2.5 h-2.5 text-white" />
             </div>
-            <span className="text-xs text-slate-500 line-through decoration-slate-300 truncate">{l}</span>
+            <span className="text-[12px] text-slate-500 truncate">{c}</span>
           </div>
         ))}
-      </div>
-      <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-600 text-xs font-semibold px-3 py-2 rounded-full">
-        <ShieldCheck className="w-3.5 h-3.5" /> Evidence approved
       </div>
     </AppFrame>
   );
 }
 
-function HandoverStage() {
-  const bars = [55, 70, 60, 85, 75, 95];
+function GovernanceStage() {
+  const rows = [
+    { l: "Overdue reviews", tone: "emerald", v: "None" },
+    { l: "Permits awaiting hand-back", tone: "emerald", v: "None" },
+    { l: "Missing attendance", tone: "emerald", v: "None" },
+    { l: "Competence evidence gaps", tone: "amber", v: "1 to confirm" },
+  ];
   return (
-    <AppFrame label="Reporting · Dashboard">
-      <div className="flex items-end gap-2 h-20 mb-4">
-        {bars.map((h, i) => (
-          <div key={i} className="flex-1 rounded-t bg-gradient-to-t from-teal-400 to-teal-200" style={{ height: `${h}%` }} />
+    <AppFrame label="Governance Overview">
+      <div className="flex items-center justify-between mb-3 gap-2">
+        <span className="text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-wide">Outstanding items</span>
+        <Stage label="Read-only" />
+      </div>
+      <div className="space-y-2">
+        {rows.map((r) => (
+          <div key={r.l} className="flex items-center justify-between gap-2 bg-slate-50 rounded-lg px-3 py-2.5 border border-slate-100">
+            <span className="text-[12px] text-slate-600 truncate">{r.l}</span>
+            <span className={`text-[11px] font-semibold shrink-0 ${r.tone === "emerald" ? "text-emerald-600" : "text-amber-600"}`}>{r.v}</span>
+          </div>
         ))}
       </div>
-      <div className="flex items-center justify-between gap-2">
-        <div className="min-w-0">
-          <p className="text-xs font-semibold text-slate-700 truncate">Job #2026-014</p>
-          <p className="text-[10px] text-slate-400">Handed over today</p>
-        </div>
-        <span className="inline-flex items-center gap-1.5 bg-teal-50 text-teal-600 text-[10px] font-bold px-2.5 py-1.5 rounded-full shrink-0">
-          <ShieldCheck className="w-3 h-3" /> Audit ready
-        </span>
-      </div>
+      <p className="text-[10px] text-slate-400 mt-3 leading-relaxed">Not a compliance score. Every item requires human review.</p>
     </AppFrame>
   );
 }
 
 const STAGES = [
-  { id: "enquiry", label: "Enquiry", title: "Customer enquiry received", desc: "A new enquiry lands and becomes a job — no inbox digging.", icon: Users, Visual: EnquiryStage },
-  { id: "job", label: "Job & Survey", title: "Job created, survey booked", desc: "One click turns the enquiry into a scheduled job.", icon: Calendar, Visual: JobStage },
-  { id: "documents", label: "Documents", title: "Documents uploaded", desc: "Photos, certificates and surveys land in one controlled place.", icon: FileText, Visual: DocumentsStage },
-  { id: "compliance", label: "Compliance", title: "Compliance automatically checked", desc: "Every certificate and requirement is checked against the job.", icon: ClipboardCheck, Visual: ComplianceStage, lucyLine: "I've noticed two certificates expire before installation." },
-  { id: "actions", label: "Actions", title: "Manager assigns actions", desc: "Lucy flags what's missing; the manager assigns who fixes it.", icon: ListChecks, Visual: ActionsStage, lucyLine: "Risk Assessment still requires approval." },
-  { id: "evidence", label: "Evidence", title: "Work completed, evidence approved", desc: "The installer completes the job; evidence is reviewed and signed off.", icon: ShieldCheck, Visual: EvidenceStage },
-  { id: "handover", label: "Handover", title: "Project handed over", desc: "The dashboard updates automatically — nothing to chase.", icon: LayoutDashboard, Visual: HandoverStage, lucyLine: "The job is now audit ready." },
+  { id: "site", label: "Job & Site", title: "The job exists before the paperwork does", desc: "A job is raised against a real site and organisation, so every piece of evidence that follows attaches to the work itself.", icon: Building2, Visual: SiteStage },
+  { id: "risk", label: "Risk", title: "Risk assessment drafted from your hazard library", desc: "Hazards are pulled from a library you control, so the same hazard is described the same way on every job.", icon: ClipboardCheck, Visual: RiskStage, lucyLine: "I can put a first draft together from your hazard library — you review it." },
+  { id: "rams", label: "RAMS", title: "Method statement written and combined into a RAMS pack", desc: "The sequence of work is set out step by step, then combined with its risk assessments into the pack the client will ask for.", icon: ClipboardList, Visual: RamsStage, lucyLine: "Same here — I draft, your competent person decides." },
+  { id: "approval", label: "Approval", title: "Reviewed and approved by a competent person", desc: "Reviewers can comment without changing the stage. Rejections and requested changes carry a recorded reason.", icon: CheckCircle2, Visual: ApprovalStage },
+  { id: "permit", label: "Permit", title: "Permit issued against the approved method", desc: "Raised from a permit template, with extensions and suspensions each requiring a reason.", icon: FileCheck2, Visual: PermitStage },
+  { id: "toolbox", label: "Briefing", title: "Crew briefed, attendance recorded", desc: "The talk is delivered as a session with its own attendance record, notes and questions raised.", icon: Megaphone, Visual: ToolboxStage },
+  { id: "governance", label: "Hand-back", title: "Handed back, and the evidence already stands up", desc: "The permit closes with its completion state recorded, and the governance overview shows what is still outstanding across every module.", icon: LayoutDashboard, Visual: GovernanceStage },
 ];
 
 export default function ProductJourney() {
@@ -231,19 +256,18 @@ export default function ProductJourney() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index]);
 
   return (
     <section className="pt-28 lg:pt-40 pb-24 lg:pb-32 bg-brand-dark relative overflow-hidden">
       <div className="absolute inset-0 grid-pattern" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent to-gold/30" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent to-teal/30" />
       <div className="relative max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-14">
-          <span className="text-xs font-bold text-gold uppercase tracking-widest mb-4 block">See Apex In Action</span>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Follow one job from first enquiry to final handover.</h2>
+          <span className="text-xs font-bold text-teal uppercase tracking-widest mb-4 block">See Apex In Action</span>
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">One retrofit job, from site to hand-back.</h2>
           <p className="text-lg text-white/50 max-w-2xl mx-auto">
-            See how Apex Clarity keeps work moving, highlights what needs attention and helps teams maintain a complete evidence trail at every stage.
+            Follow the evidence trail the way a client audit would: the job, the risk assessment, the RAMS pack, the approval, the permit, the briefing, and what is left outstanding at the end.
           </p>
         </div>
 
@@ -259,11 +283,11 @@ export default function ProductJourney() {
               aria-label={`Go to step ${i + 1}: ${s.label}`}
             >
               <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 transition-colors ${
-                i === index ? "bg-gold border-gold text-brand-dark" : i < index ? "bg-teal-400/20 border-teal-300/50 text-teal-300" : "bg-brand-dark border-white/15 text-white/30 group-hover:border-white/30"
+                i === index ? "bg-teal border-teal text-brand-dark" : i < index ? "bg-teal-400/20 border-teal-300/50 text-teal-300" : "bg-brand-dark border-white/15 text-white/30 group-hover:border-white/30"
               }`}>
                 <s.icon className="w-3.5 h-3.5" />
               </div>
-              <span className={`text-[10px] font-semibold uppercase tracking-wide whitespace-nowrap ${i === index ? "text-gold" : "text-white/30"}`}>{s.label}</span>
+              <span className={`text-[10px] font-semibold uppercase tracking-wide whitespace-nowrap ${i === index ? "text-teal" : "text-white/30"}`}>{s.label}</span>
             </button>
           ))}
         </div>
@@ -271,11 +295,11 @@ export default function ProductJourney() {
         {/* Mobile progress */}
         <div className="md:hidden mb-8">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-bold text-gold uppercase tracking-wide">{stage.label}</span>
+            <span className="text-xs font-bold text-teal uppercase tracking-wide">{stage.label}</span>
             <span className="text-xs text-white/30">{index + 1} / {STAGES.length}</span>
           </div>
           <div className="h-1 bg-white/10 rounded-full overflow-hidden">
-            <motion.div className="h-full bg-gold rounded-full" animate={{ width: `${((index + 1) / STAGES.length) * 100}%` }} transition={{ duration: 0.3 }} />
+            <motion.div className="h-full bg-teal rounded-full" animate={{ width: `${((index + 1) / STAGES.length) * 100}%` }} transition={{ duration: 0.3 }} />
           </div>
         </div>
 
@@ -296,7 +320,12 @@ export default function ProductJourney() {
               {stage.lucyLine && (
                 <div className="flex items-start gap-3 bg-white/5 border border-white/10 rounded-2xl p-4 mb-6">
                   <LucyOrb size={32} className="shrink-0" />
-                  <p className="text-sm text-white/80 leading-relaxed pt-1.5">{stage.lucyLine}</p>
+                  <div className="pt-0.5">
+                    <p className="text-sm text-white/80 leading-relaxed">{stage.lucyLine}</p>
+                    <p className="text-[10px] text-white/35 mt-1.5 flex items-center gap-1">
+                      <Sparkles className="w-2.5 h-2.5" /> Lucy assists with drafting only — she does not approve or sign off
+                    </p>
+                  </div>
                 </div>
               )}
 
@@ -310,7 +339,7 @@ export default function ProductJourney() {
                   <ArrowLeft className="w-4 h-4" />
                 </button>
                 {!isLast ? (
-                  <Button onClick={() => goTo(index + 1)} className="bg-gold text-brand-dark hover:bg-gold/90 font-bold rounded-xl h-10 px-6">
+                  <Button onClick={() => goTo(index + 1)} className="bg-teal text-canvas hover:bg-teal/90 font-bold rounded-xl h-10 px-6">
                     Next Step <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 ) : (
@@ -329,7 +358,7 @@ export default function ProductJourney() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.97 }}
               transition={{ duration: 0.35 }}
-              className="h-[340px] sm:h-[380px]"
+              className="h-[360px] sm:h-[380px]"
             >
               <stage.Visual />
             </motion.div>
@@ -337,7 +366,7 @@ export default function ProductJourney() {
         </div>
 
         <p className="text-center text-white/25 text-xs mt-10">
-          An illustrative walkthrough of how Apex Clarity works — not a live connection to a real account.
+          Illustrative interface sketches showing the real workflow — not a live connection to an account, and not screenshots.
         </p>
       </div>
     </section>

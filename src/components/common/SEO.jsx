@@ -29,7 +29,7 @@ function setCanonical(href) {
  * Per-page SEO tags for the SPA. Applied once per route mount — index.html carries
  * sensible sitewide defaults which this overrides per page.
  */
-export default function SEO({ title, description, path = "", image = DEFAULT_IMAGE }) {
+export default function SEO({ title, description, path = "", image = DEFAULT_IMAGE, noIndex = false }) {
   useEffect(() => {
     const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
     document.title = fullTitle;
@@ -44,7 +44,23 @@ export default function SEO({ title, description, path = "", image = DEFAULT_IMA
     setMeta("name", "twitter:image", image);
 
     setCanonical(`${SITE_URL}${path}`);
-  }, [title, description, path, image]);
+
+    // Parked pages (currently /resources) must not be indexed while they
+    // have no published content. The tag is removed again on unmount so it
+    // never leaks onto the next route in this SPA.
+    const existing = document.head.querySelector('meta[name="robots"]');
+    if (noIndex) {
+      let el = existing;
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute("name", "robots");
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", "noindex, nofollow");
+      return () => el.remove();
+    }
+    if (existing) existing.remove();
+  }, [title, description, path, image, noIndex]);
 
   return null;
 }

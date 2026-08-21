@@ -9,22 +9,22 @@ import { useDeclareHeaderSurface } from "@/lib/HeaderSurfaceContext";
 export default function HeroSection() {
   useDeclareHeaderSurface("dark");
   return (
-    <section className="relative min-h-screen bg-brand-dark flex items-center overflow-hidden">
+    <section className="relative lg:min-h-screen bg-brand-dark flex items-center overflow-hidden">
       {/* Lucy's world — the app's own background treatment, not a website invention */}
       <div className="absolute inset-0 lucy-water" />
       <div className="absolute inset-0 lucy-overlay" />
       <div className="absolute inset-0 grid-pattern opacity-40" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-14 lg:py-32 w-full">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-16 lg:py-32 w-full">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Orb — first on mobile, right column on desktop */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="order-1 lg:order-2 flex items-center justify-center"
+            className="order-2 lg:order-2 flex items-center justify-center"
           >
-            <LucyOrb size="clamp(200px, 46vw, 340px)" />
+            <LucyOrb size="clamp(160px, 38vw, 340px)" />
           </motion.div>
 
           {/* Text — second on mobile, left column on desktop */}
@@ -32,7 +32,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-            className="order-2 lg:order-1"
+            className="order-1 lg:order-1"
           >
             <span className="text-xs font-bold text-teal-300 uppercase tracking-widest mb-4 block">Meet Lucy</span>
 
@@ -47,7 +47,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-lg text-white/55 leading-relaxed max-w-xl mb-10">
-              Apex Clarity is the intelligent operating system built for construction, retrofit, facilities management and property services businesses.
+              The health, safety and compliance evidence platform for UK social-housing retrofit and M&amp;E contractors. RAMS, permits, toolbox talks, competence and COSHH — drafted, reviewed, approved and issued on one controlled lifecycle.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">

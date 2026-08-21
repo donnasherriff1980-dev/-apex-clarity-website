@@ -2,20 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, ClipboardCheck, Shield, Cog, Users, Layers, TrendingUp, Sparkles } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
+import { SOLUTIONS } from "@/lib/solutions";
 import SEO from "@/components/common/SEO";
 import LucyOrb from "@/components/common/LucyOrb";
 import { useDeclareHeaderSurface } from "@/lib/HeaderSurfaceContext";
 
-const modules = [
-  { icon: Sparkles, label: "Lucy" },
-  { icon: ClipboardCheck, label: "Compliance" },
-  { icon: Shield, label: "Health & Safety" },
-  { icon: Cog, label: "Projects" },
-  { icon: Users, label: "Client Records" },
-  { icon: Layers, label: "Operations" },
-  { icon: TrendingUp, label: "Reporting" },
-];
+const modules = SOLUTIONS.slice(0, 8).map((s) => ({ icon: s.icon, label: s.title }));
 
 export default function PlatformTour() {
   useDeclareHeaderSurface("dark");
@@ -23,7 +16,7 @@ export default function PlatformTour() {
     <>
       <SEO
         title="Platform Tour"
-        description="A guided look at Apex Clarity — Lucy, compliance, health & safety, projects, client records, operations and reporting, walked through live with our team."
+        description="A guided look at Apex Clarity — risk assessments, RAMS, permits, toolbox talks, competence and emergency arrangements, walked through live against your own workflow."
         path="/platform-tour"
       />
       <section className="pt-32 pb-16 bg-brand-dark relative overflow-hidden">
@@ -59,7 +52,7 @@ export default function PlatformTour() {
               {modules.map((m) => (
                 <div key={m.label} className="flex flex-col items-center gap-2 bg-white/5 border border-white/8 rounded-xl px-3 py-4">
                   <m.icon className="w-4 h-4 text-teal-300" />
-                  <span className="text-white/60 text-xs font-medium">{m.label}</span>
+                  <span className="text-white/60 text-[11px] font-medium text-center leading-tight">{m.label}</span>
                 </div>
               ))}
             </div>

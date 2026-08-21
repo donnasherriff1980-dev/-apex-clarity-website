@@ -5,39 +5,31 @@ import { Button } from "@/components/ui/button";
 import { Mail, MapPin, ArrowRight, Loader2 } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { submitLead } from "@/lib/leads";
+import { SOLUTIONS } from "@/lib/solutions";
 
-const LOGO_URL = "https://media.base44.com/images/public/6a24770b8156364d64a8152b/89ac9e742_Testerlogo.png";
+const solutions = SOLUTIONS.map((s) => ({ label: s.title, path: `/solutions/${s.slug}` }));
 
-const solutions = [
-  { label: "Health & Safety", path: "/solutions/health-safety" },
-  { label: "Compliance", path: "/solutions/compliance" },
-  { label: "Client Records", path: "/solutions/crm" },
-  { label: "Project Management", path: "/solutions/projects" },
-  { label: "Document Control", path: "/solutions/documents" },
-  { label: "Risk Management", path: "/solutions/risk" },
-  { label: "Audits & Inspections", path: "/solutions/audits" },
-  { label: "AI & Automation", path: "/solutions/ai-automation" },
-];
-
+// /resources omitted while it has no published articles (see Navbar).
 const company = [
   { label: "About Us", path: "/about" },
   { label: "Our Vision", path: "/vision" },
   { label: "Platform", path: "/platform" },
-  { label: "Case Studies", path: "/case-studies" },
-  { label: "Resources", path: "/resources" },
+  { label: "How It Works", path: "/case-studies" },
   { label: "Contact", path: "/contact" },
   { label: "Privacy Policy", path: "/privacy" },
   { label: "Cookie Policy", path: "/cookie-policy" },
   { label: "Terms of Service", path: "/terms" },
 ];
 
+// Sector labels are anchors on /industries rather than six links to the
+// same bare URL, which is what these previously were.
 const industries = [
-  { label: "Construction", path: "/industries" },
-  { label: "Facilities Management", path: "/industries" },
-  { label: "Retrofit", path: "/industries" },
-  { label: "Renewables", path: "/industries" },
-  { label: "Property Services", path: "/industries" },
-  { label: "Social Housing Contractors", path: "/industries" },
+  { label: "Social Housing Retrofit", path: "/industries#social-housing-retrofit" },
+  { label: "M&E Contractors", path: "/industries#me-contractors" },
+  { label: "Principal Contractors", path: "/industries#principal-contractors" },
+  { label: "Facilities Management", path: "/industries#facilities-management" },
+  { label: "Renewables & Heat", path: "/industries#renewables-heat" },
+  { label: "Specialist Subcontractors", path: "/industries#specialist-subcontractors" },
 ];
 
 export default function Footer() {
@@ -115,7 +107,7 @@ export default function Footer() {
               <span className="text-ink-secondary text-xs mt-0.5 block">Operational control. Proven compliance.</span>
             </div>
             <p className="text-ink-secondary text-sm leading-relaxed mb-6">
-              We design, implement and support complete business operating systems. Transform operational chaos into complete business control.
+              Health, safety and compliance evidence for UK social-housing retrofit and M&amp;E contractors. Drafted, reviewed, approved and issued — so you can prove it on the day you are asked.
             </p>
             <div className="space-y-3 text-sm">
               <a href="mailto:info@apexclarity.co.uk" className="flex items-center gap-2 text-ink-secondary hover:text-teal transition-colors">
@@ -171,7 +163,6 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left">
             <p className="text-sm text-ink-secondary/70">© 2026 Apex Clarity Ltd. All rights reserved.</p>
-            <p className="text-xs text-ink-secondary/50 mt-1">Registered in England &amp; Wales</p>
           </div>
           <p className="text-sm text-ink-secondary/70">Prove your compliance. Protect your contracts.</p>
         </div>
