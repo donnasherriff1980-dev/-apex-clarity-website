@@ -132,16 +132,43 @@ export const CONSULTANCY_DELIVERED = [
   "Policy and management-system authoring",
   "Contractor onboarding, chasing and verification",
   "Training matrices and programme management",
-  "Monthly management reporting and KPI packs",
+  "Monthly management reporting, compiled by your consultant from your Apex records",
   "Advisory calls and management meetings",
 ];
 
+/**
+ * INTERNAL ONLY — DO NOT RENDER THIS LIST ON A PUBLIC PAGE.
+ *
+ * The three-way truth model is retained deliberately: (1) platform
+ * capability live today, (2) consultant-delivered workflow, (3) future
+ * platform capability. Category 3 exists so that copy anywhere on the site
+ * can be checked against it — it is NOT sales content. A primary sales page
+ * should not carry a list of product deficiencies, which is exactly what
+ * rendering this array produced.
+ *
+ * Where a category-3 item is relevant to a visitor, say what our consultants
+ * do about it today (FUTURE_CAPABILITY_NOTE below), never that the platform
+ * already does it and never as an apology.
+ *
+ * Canonical product roadmap status for these items lives in the platform
+ * repository's operating model, not here. Do not let this array drift into
+ * a second, competing roadmap.
+ */
 export const ROADMAP = [
   "Incident and near-miss recording in the platform",
   "Mobile inspection capture",
   "Built-in KPI dashboards",
   "Contractor self-service portal",
 ];
+
+/**
+ * Public-facing replacement for the old "On the roadmap / Not available
+ * today" box. Truthful — it does not claim any unbuilt capability exists —
+ * but framed around what the client gets rather than what the software
+ * lacks.
+ */
+export const FUTURE_CAPABILITY_NOTE =
+  "Where a workflow is not yet automated within Apex Clarity, our consultants manage the agreed process with you and maintain the compliance evidence that comes out of it. As the platform develops, more of these administrative workflows move into Apex — and your records come with them.";
 
 export const SECTORS = [
   "Construction & trades",

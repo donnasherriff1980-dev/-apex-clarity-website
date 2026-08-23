@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Check, X, CircleDot, Clock, Info, Users2 } from "lucide-react";
+import { ArrowRight, Calendar, Check, X, CircleDot, Info, Users2 } from "lucide-react";
 import SEO from "@/components/common/SEO";
 import LucyOrb from "@/components/common/LucyOrb";
 import { useDeclareHeaderSurface } from "@/lib/HeaderSurfaceContext";
 import {
   POSITIONING, PROBLEMS, SERVICES, DELIVERY_LABELS, PLATFORM_LIVE,
-  CONSULTANCY_DELIVERED, ROADMAP, SECTORS, WHY_APEX, PACKAGES,
+  CONSULTANCY_DELIVERED, FUTURE_CAPABILITY_NOTE, SECTORS, WHY_APEX, PACKAGES,
   SCOPE_NOTES, SPECIALIST_EXCLUSIONS, COMPETENCE_STATEMENT,
 } from "@/lib/consultancy";
 
@@ -180,7 +180,7 @@ export default function Consultancy() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-6 mt-14">
+          <div className="grid lg:grid-cols-2 gap-6 mt-14">
             <div className="bg-surface-raised rounded-2xl p-7 border-2 border-teal/25">
               <div className="flex items-center gap-2 mb-2">
                 <Check className="w-4 h-4 text-teal" />
@@ -199,9 +199,9 @@ export default function Consultancy() {
             <div className="bg-surface-raised rounded-2xl p-7 border border-hairline/10">
               <div className="flex items-center gap-2 mb-2">
                 <Users2 className="w-4 h-4 text-ink-secondary/60" />
-                <h3 className="font-bold text-ink">Delivered by our consultants</h3>
+                <h3 className="font-bold text-ink">Delivered by our team today</h3>
               </div>
-              <p className="text-xs text-ink-secondary/70 mb-5">People, not software. Included per your package.</p>
+              <p className="text-xs text-ink-secondary/70 mb-5">People, working to an agreed process. Included per your package.</p>
               <ul className="space-y-2.5">
                 {CONSULTANCY_DELIVERED.map((c) => (
                   <li key={c} className="flex items-start gap-2 text-sm text-ink-secondary leading-snug">
@@ -211,23 +211,13 @@ export default function Consultancy() {
               </ul>
             </div>
 
-            <div className="bg-surface-raised rounded-2xl p-7 border border-dashed border-hairline/20">
-              <div className="flex items-center gap-2 mb-2">
-                <Clock className="w-4 h-4 text-ink-secondary/60" />
-                <h3 className="font-bold text-ink">On the roadmap</h3>
-              </div>
-              <p className="text-xs text-ink-secondary/70 mb-5">Not available today. We will not pretend otherwise.</p>
-              <ul className="space-y-2.5">
-                {ROADMAP.map((c) => (
-                  <li key={c} className="flex items-start gap-2 text-sm text-ink-secondary/70 leading-snug">
-                    <div className="w-1.5 h-1.5 rounded-full bg-hairline/40 shrink-0 mt-1.5" />{c}
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
 
-          <div className="mt-10 flex items-start gap-4 bg-surface-raised rounded-2xl p-6 border border-hairline/10 max-w-3xl mx-auto">
+          <div className="mt-6 bg-surface-raised rounded-2xl p-7 border border-teal/15 max-w-4xl mx-auto">
+            <p className="text-ink-secondary leading-relaxed">{FUTURE_CAPABILITY_NOTE}</p>
+          </div>
+
+          <div className="mt-6 flex items-start gap-4 bg-surface-raised rounded-2xl p-6 border border-hairline/10 max-w-4xl mx-auto">
             <LucyOrb size={44} className="shrink-0" />
             <p className="text-sm text-ink-secondary leading-relaxed">
               <span className="font-semibold text-ink">A note on Lucy.</span> Lucy is the assistant built into Apex
