@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Calendar, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,6 +7,14 @@ import { motion, AnimatePresence } from "framer-motion";
 const COOKIE_STORAGE_KEY = "apex_cookie_consent";
 
 export default function StickyDemo() {
+  // The floating CTA follows the page it sits on: a platform page offers a
+  // demo, everywhere else offers a consultation. A single sitewide "Book a
+  // Demo" would actively undercut the consultancy funnel on /consultancy.
+  const { pathname } = useLocation();
+  const isPlatformContext = pathname.startsWith("/platform") || pathname.startsWith("/solutions");
+  const ctaLabel = isPlatformContext ? "Book a Demo" : "Book a Consultation";
+  const ctaHref = isPlatformContext ? "/contact?type=demo" : "/contact?type=consultation";
+
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
   const [cookieBannerShowing, setCookieBannerShowing] = useState(false);
@@ -48,7 +56,7 @@ export default function StickyDemo() {
             cookieBannerShowing ? "bottom-40 sm:bottom-28" : "bottom-5"
           }`}
         >
-          <Link to="/contact?type=demo" aria-label="Book a Demo">
+          <Link to={ctaHref} aria-label={ctaLabel}>
             <motion.div
               animate={{ width: minimised ? 44 : "auto", paddingLeft: minimised ? 0 : undefined }}
               transition={{ duration: 0.25, ease: "easeOut" }}
@@ -69,7 +77,7 @@ export default function StickyDemo() {
                         transition={{ duration: 0.2 }}
                         className="ml-2 overflow-hidden"
                       >
-                        Book a Demo
+                        {ctaLabel}
                       </motion.span>
                     )}
                   </AnimatePresence>

@@ -19,7 +19,9 @@
         "Book a Demo",
         "Business Health Check",
         "General Enquiry",
-        "Partnership"
+        "Partnership",
+        "H&S Consultancy",
+        "Managed Compliance"
       ]
     },
     "name": {
@@ -61,6 +63,32 @@
     "page_url": {
       "type": "string",
       "description": "The page the enquiry was submitted from"
+    },
+    "staff_count_band": {
+      "type": "string",
+      "description": "Consultancy qualification: approximate number of staff",
+      "enum": ["1-10", "11-25", "26-50", "51-100", "101-250", "250+"]
+    },
+    "site_count_band": {
+      "type": "string",
+      "description": "Consultancy qualification: number of active sites or projects",
+      "enum": ["1", "2-5", "6-15", "16-50", "50+"]
+    },
+    "current_hs_provision": {
+      "type": "string",
+      "description": "Consultancy qualification: how H&S is currently resourced",
+      "enum": [
+        "No formal H&S resource",
+        "Handled by a manager alongside other duties",
+        "Part-time or shared H&S resource",
+        "Full-time internal H&S manager",
+        "External H&S consultant already appointed"
+      ]
+    },
+    "support_needed": {
+      "type": "array",
+      "description": "Consultancy qualification: the support areas the enquirer selected",
+      "items": { "type": "string" }
     }
   },
   "required": [

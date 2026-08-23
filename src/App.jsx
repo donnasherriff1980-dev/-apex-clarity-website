@@ -32,6 +32,7 @@ import Services from '@/pages/Services';
 import ServiceDetail from '@/pages/ServiceDetail';
 import CookiePolicy from '@/pages/CookiePolicy';
 import Vision from '@/pages/Vision';
+import Consultancy from '@/pages/Consultancy';
 
 const ServiceRedirect = () => {
   const { slug } = useParams();
@@ -65,6 +66,7 @@ const AuthenticatedApp = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/vision" element={<Vision />} />
+        <Route path="/consultancy" element={<Consultancy />} />
         <Route path="/platform" element={<Platform />} />
         <Route path="/platform-tour" element={<PlatformTour />} />
         <Route path="/solutions" element={<Services />} />

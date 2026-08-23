@@ -6,14 +6,24 @@ import { Mail, MapPin, ArrowRight, Loader2 } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { submitLead } from "@/lib/leads";
 import { SOLUTIONS } from "@/lib/solutions";
+import { SERVICES } from "@/lib/consultancy";
 
-const solutions = SOLUTIONS.map((s) => ({ label: s.title, path: `/solutions/${s.slug}` }));
+const platformModules = SOLUTIONS.map((s) => ({ label: s.title, path: `/solutions/${s.slug}` }));
+
+// Consultancy service pages are not built in Phase A, so these point at the
+// consultancy landing page rather than at routes that do not exist yet.
+const consultancy = SERVICES.map((s) => ({
+  label: s.title,
+  path: s.slug === "managed-compliance" ? "/consultancy#managed-compliance" : "/consultancy",
+}));
 
 // /resources omitted while it has no published articles (see Navbar).
 const company = [
   { label: "About Us", path: "/about" },
   { label: "Our Vision", path: "/vision" },
+  { label: "Consultancy", path: "/consultancy" },
   { label: "Platform", path: "/platform" },
+  { label: "Pricing", path: "/consultancy#packages" },
   { label: "How It Works", path: "/case-studies" },
   { label: "Contact", path: "/contact" },
   { label: "Privacy Policy", path: "/privacy" },
@@ -99,7 +109,7 @@ export default function Footer() {
 
       {/* Main */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand */}
           <div>
             <div className="mb-6">
@@ -107,7 +117,7 @@ export default function Footer() {
               <span className="text-ink-secondary text-xs mt-0.5 block">Operational control. Proven compliance.</span>
             </div>
             <p className="text-ink-secondary text-sm leading-relaxed mb-6">
-              Health, safety and compliance evidence for UK social-housing retrofit and M&amp;E contractors. Drafted, reviewed, approved and issued — so you can prove it on the day you are asked.
+              Outsourced health, safety and compliance support for UK contractors — combined with purpose-built compliance technology.
             </p>
             <div className="space-y-3 text-sm">
               <a href="mailto:info@apexclarity.co.uk" className="flex items-center gap-2 text-ink-secondary hover:text-teal transition-colors">
@@ -119,11 +129,23 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Solutions */}
+          {/* Consultancy */}
           <div>
-            <h4 className="text-teal font-semibold text-xs uppercase tracking-widest mb-6">Solutions</h4>
+            <h4 className="text-teal font-semibold text-xs uppercase tracking-widest mb-6">Consultancy</h4>
             <ul className="space-y-3">
-              {solutions.map((s) => (
+              {consultancy.map((s) => (
+                <li key={s.label}>
+                  <Link to={s.path} className="text-sm text-ink-secondary hover:text-ink transition-colors">{s.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Platform */}
+          <div>
+            <h4 className="text-teal font-semibold text-xs uppercase tracking-widest mb-6">Platform</h4>
+            <ul className="space-y-3">
+              {platformModules.map((s) => (
                 <li key={s.label}>
                   <Link to={s.path} className="text-sm text-ink-secondary hover:text-ink transition-colors">{s.label}</Link>
                 </li>

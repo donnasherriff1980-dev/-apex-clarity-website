@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -13,14 +14,46 @@ import SEO from "@/components/common/SEO";
 import { useDeclareHeaderSurface } from "@/lib/HeaderSurfaceContext";
 import { SOLUTIONS } from "@/lib/solutions";
 import { INDUSTRIES } from "@/lib/industries";
+import { SERVICES } from "@/lib/consultancy";
 
 const industriesList = INDUSTRIES.map((i) => i.label).concat("Other");
 const servicesList = SOLUTIONS.map((s) => s.title).concat(["Full Platform", "Not Sure"]);
-const enquiryTypes = ["Book a Demo", "Business Health Check", "General Enquiry", "Partnership"];
+const enquiryTypes = ["H&S Consultancy", "Managed Compliance", "Book a Demo", "General Enquiry"];
+
+// Enquiry types that are consultancy-side and therefore need qualification.
+// These drive package scoping, so getting them wrong at the enquiry stage is
+// how a client ends up on the wrong tier.
+const CONSULTANCY_TYPES = ["H&S Consultancy", "Managed Compliance"];
+
+// ?type= shortcuts used across the site.
+const TYPE_PARAM_MAP = {
+  consultation: "H&S Consultancy",
+  consultancy: "H&S Consultancy",
+  managed: "Managed Compliance",
+  demo: "Book a Demo",
+  "health-check": "H&S Consultancy",
+};
+
+const staffBands = ["1-10", "11-25", "26-50", "51-100", "101-250", "250+"];
+const siteBands = ["1", "2-5", "6-15", "16-50", "50+"];
+const hsProvision = [
+  "No formal H&S resource",
+  "Handled by a manager alongside other duties",
+  "Part-time or shared H&S resource",
+  "Full-time internal H&S manager",
+  "External H&S consultant already appointed",
+];
+const supportOptions = SERVICES.map((s) => s.title);
 
 export default function Contact() {
   useDeclareHeaderSurface("dark");
-  const [form, setForm] = useState({ name: "", company: "", email: "", phone: "", industry: "", service: "", type: "Book a Demo", message: "" });
+  const [searchParams] = useSearchParams();
+  const initialType = TYPE_PARAM_MAP[searchParams.get("type")] || "H&S Consultancy";
+  const [form, setForm] = useState({
+    name: "", company: "", email: "", phone: "", industry: "", service: "",
+    type: initialType, message: "",
+    staff_count_band: "", site_count_band: "", current_hs_provision: "", support_needed: [],
+  });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -42,6 +75,10 @@ export default function Contact() {
         industry: form.industry,
         service_interest: form.service,
         message: form.message,
+        staff_count_band: form.staff_count_band || undefined,
+        site_count_band: form.site_count_band || undefined,
+        current_hs_provision: form.current_hs_provision || undefined,
+        support_needed: form.support_needed.length ? form.support_needed : undefined,
         gdpr_consent: consent,
       });
       setSubmitted(true);
@@ -54,21 +91,29 @@ export default function Contact() {
   };
 
   const update = (f, v) => setForm({ ...form, [f]: v });
+  const toggleSupport = (v) =>
+    setForm((f) => ({
+      ...f,
+      support_needed: f.support_needed.includes(v)
+        ? f.support_needed.filter((x) => x !== v)
+        : [...f.support_needed, v],
+    }));
+  const isConsultancy = CONSULTANCY_TYPES.includes(form.type);
 
   return (
     <>
       <SEO
-        title="Book a Demo"
-        description="Book a free 30-minute Apex Clarity demo for your social-housing retrofit or M&E contracting business, walked through against your own workflow."
+        title="Book a Consultation"
+        description="Book a consultation with Apex Clarity — outsourced H&S and compliance support for UK contractors, or a walkthrough of the compliance platform."
         path="/contact"
       />
       <section className="pt-32 pb-16 bg-brand-dark relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl">
-            <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Get In Touch</span>
-            <h1 className="text-5xl font-black text-white mb-6">Book Your Free Demo</h1>
-            <p className="text-white/50 text-lg">A 30-minute walkthrough against a job that looks like yours — RAMS, permits, briefings and the evidence trail behind them.</p>
+            <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Book a Consultation</span>
+            <h1 className="text-5xl font-black text-white mb-6">Let&apos;s Talk</h1>
+            <p className="text-white/50 text-lg">Whether you need outsourced H&amp;S support or want to see the platform, tell us what you are dealing with and we will come back with an honest answer.</p>
           </motion.div>
         </div>
       </section>
@@ -84,7 +129,7 @@ export default function Contact() {
                     <CheckCircle className="w-8 h-8 text-teal" />
                   </div>
                   <h2 className="text-2xl font-black text-ink mb-3">Message Received</h2>
-                  <p className="text-ink-secondary">We&apos;ll be in touch within one working day to arrange your demo.</p>
+                  <p className="text-ink-secondary">We&apos;ll be in touch within one working day.</p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="bg-surface-raised rounded-3xl p-8 md:p-10 border border-hairline/10 shadow-sm space-y-6">
@@ -115,13 +160,60 @@ export default function Contact() {
                         <SelectContent>{industriesList.map(i => <SelectItem key={i} value={i}>{i}</SelectItem>)}</SelectContent>
                       </Select>
                     </div>
-                    <div className="space-y-2"><Label>Solution Interest</Label>
+                    <div className={`space-y-2 ${isConsultancy ? "hidden" : ""}`}><Label>Solution Interest</Label>
                       <Select value={form.service} onValueChange={v => update("service", v)}>
                         <SelectTrigger className="h-11 rounded-xl"><SelectValue placeholder="Select solution" /></SelectTrigger>
                         <SelectContent>{servicesList.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}</SelectContent>
                       </Select>
                     </div>
                   </div>
+                  {isConsultancy && (
+                    <div className="space-y-6 border-t border-hairline/10 pt-6">
+                      <div>
+                        <p className="text-sm font-bold text-ink mb-1">A few quick questions</p>
+                        <p className="text-xs text-ink-secondary">These let us scope the right level of support before we speak, so we do not waste your time.</p>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-2"><Label>Approximate staff count</Label>
+                          <Select value={form.staff_count_band} onValueChange={v => update("staff_count_band", v)}>
+                            <SelectTrigger className="h-11 rounded-xl"><SelectValue placeholder="Select range" /></SelectTrigger>
+                            <SelectContent>{staffBands.map(b => <SelectItem key={b} value={b}>{b}</SelectItem>)}</SelectContent>
+                          </Select>
+                        </div>
+                        <div className="space-y-2"><Label>Active sites or projects</Label>
+                          <Select value={form.site_count_band} onValueChange={v => update("site_count_band", v)}>
+                            <SelectTrigger className="h-11 rounded-xl"><SelectValue placeholder="Select range" /></SelectTrigger>
+                            <SelectContent>{siteBands.map(b => <SelectItem key={b} value={b}>{b}</SelectItem>)}</SelectContent>
+                          </Select>
+                        </div>
+                      </div>
+                      <div className="space-y-2"><Label>Current H&amp;S provision</Label>
+                        <Select value={form.current_hs_provision} onValueChange={v => update("current_hs_provision", v)}>
+                          <SelectTrigger className="h-11 rounded-xl"><SelectValue placeholder="How is H&amp;S handled today?" /></SelectTrigger>
+                          <SelectContent>{hsProvision.map(o => <SelectItem key={o} value={o}>{o}</SelectItem>)}</SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-2">
+                        <Label>What support do you need?</Label>
+                        <div className="flex flex-wrap gap-2 pt-1">
+                          {supportOptions.map((o) => {
+                            const on = form.support_needed.includes(o);
+                            return (
+                              <button
+                                key={o} type="button" onClick={() => toggleSupport(o)} aria-pressed={on}
+                                className={`text-xs font-medium rounded-full px-3.5 py-2 border transition-colors ${
+                                  on ? "bg-teal text-canvas border-teal" : "border-hairline/20 text-ink-secondary hover:border-ink/30"
+                                }`}
+                              >
+                                {o}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="space-y-2"><Label>Message</Label>
                     <Textarea rows={4} placeholder="Tell us about your business challenges..." value={form.message} onChange={e => update("message", e.target.value)} className="rounded-xl" />
                   </div>
@@ -155,7 +247,7 @@ export default function Contact() {
               <div className="bg-surface-raised rounded-3xl p-8 border border-hairline/10">
                 <div className="flex items-center gap-3 mb-6"><Calendar className="w-5 h-5 text-teal" /><h3 className="font-bold text-ink">What To Expect</h3></div>
                 <div className="space-y-4">
-                  {["A reply within one working day", "A 30-minute walkthrough, no charge", "No obligation and no hard sell", "Walked through against your own workflow", "An honest answer on what is and is not built yet"].map(item => (
+                  {["A reply within one working day", "A 30-minute conversation, no charge", "No obligation and no hard sell", "An honest view of what we would take on — and what we would not", "Clear scope and indicative cost before you commit"].map(item => (
                     <div key={item} className="flex items-start gap-3">
                       <CheckCircle className="w-4 h-4 text-teal shrink-0 mt-0.5" />
                       <span className="text-sm text-ink-secondary">{item}</span>

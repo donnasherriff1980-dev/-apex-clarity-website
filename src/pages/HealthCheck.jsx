@@ -56,6 +56,7 @@ export default function HealthCheck() {
     try {
       await submitLead({
         source: "health_check",
+        enquiry_type: "H&S Consultancy",
         name,
         company,
         email,
@@ -91,17 +92,17 @@ export default function HealthCheck() {
     return (
       <>
         <SEO
-          title="Free Business Health Check"
-          description="Answer 8 questions for a free score showing how your H&S evidence and compliance processes currently stand up, broken down by area."
+          title="Free H&S Compliance Check"
+          description="Answer 8 questions for a free score showing how your health, safety and compliance arrangements currently stand up — and where an outsourced H&S team would take the load off."
           path="/health-check"
         />
         <section className="pt-32 pb-24 bg-brand-dark relative overflow-hidden">
           <div className="absolute inset-0 grid-pattern" />
           <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
-              <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Free Assessment</span>
-              <h1 className="text-5xl md:text-6xl font-black text-white mb-6">How Healthy Is<br /><span className="gradient-text-brand">Your Business?</span></h1>
-              <p className="text-xl text-white/50 mb-10 max-w-2xl mx-auto">Eight questions on how you evidence work today. You get a score broken down by area — free, no obligation.</p>
+              <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Free H&amp;S Compliance Check</span>
+              <h1 className="text-5xl md:text-6xl font-black text-white mb-6">How Would Your H&amp;S<br /><span className="gradient-text-brand">Stand Up Today?</span></h1>
+              <p className="text-xl text-white/50 mb-10 max-w-2xl mx-auto">Eight questions about how health, safety and compliance work in your business today. You get a score broken down by area — free, no obligation.</p>
               <Button onClick={() => setStage("quiz")} size="lg" className="bg-teal text-canvas hover:bg-teal/90 font-bold h-14 px-10 rounded-2xl">
                 Start Free Assessment <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -124,7 +125,7 @@ export default function HealthCheck() {
               </div>
             ))}
           </div>
-          <p className="text-center text-sm text-ink-secondary mt-6">Assessment covers all critical business areas</p>
+          <p className="text-center text-sm text-ink-secondary mt-6">Covering the areas our consultants support day to day</p>
         </section>
       </>
     );
@@ -149,7 +150,7 @@ export default function HealthCheck() {
         <div className="max-w-3xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
             <span className="text-xs font-bold text-teal uppercase tracking-widest mb-4 block">Your Results</span>
-            <h1 className="text-4xl font-black text-white mb-8">Business Health Report</h1>
+            <h1 className="text-4xl font-black text-white mb-8">Your H&amp;S Compliance Check</h1>
             {/* Ring is fixed decorative chrome around the badge, not itself a status
                 colour (the letter/background/text below already carry the grade) */}
             <div className={`inline-flex flex-col items-center justify-center w-44 h-44 rounded-full border-4 border-teal/30 ${result.bgColor} mb-6`}>
@@ -165,7 +166,7 @@ export default function HealthCheck() {
               className="glass rounded-3xl p-8 md:p-10 border border-white/10 text-center">
               <BarChart3 className="w-10 h-10 text-teal mx-auto mb-4" />
               <h3 className="text-2xl font-black text-white mb-3">Unlock Your Full Report</h3>
-              <p className="text-white/50 mb-8">See your score broken down question by question, and we&apos;ll follow up to talk through the weakest areas.</p>
+              <p className="text-white/50 mb-8">See your score broken down question by question. We&apos;ll follow up to talk through the weakest areas and what supporting them would involve.</p>
               <div className="max-w-sm mx-auto space-y-4">
                 <Input placeholder="Your name" value={name} onChange={e => setName(e.target.value)} className="bg-white/8 border-white/15 text-white placeholder:text-white/30 h-11 rounded-xl" />
                 <Input placeholder="Company name" value={company} onChange={e => setCompany(e.target.value)} className="bg-white/8 border-white/15 text-white placeholder:text-white/30 h-11 rounded-xl" />
@@ -209,9 +210,9 @@ export default function HealthCheck() {
                 );
               })}
               <div className="text-center pt-8">
-                <p className="text-white/50 mb-6 text-sm">Want expert guidance on improving your score?</p>
-                <Button onClick={() => window.location.href = "/contact?type=demo"} size="lg" className="bg-teal text-canvas hover:bg-teal/90 font-bold h-14 px-10 rounded-2xl">
-                  Book Free Demo <ArrowRight className="w-5 h-5 ml-2" />
+                <p className="text-white/50 mb-6 text-sm">Want to talk through what would actually fix the weak areas?</p>
+                <Button onClick={() => window.location.href = "/contact?type=consultation"} size="lg" className="bg-teal text-canvas hover:bg-teal/90 font-bold h-14 px-10 rounded-2xl">
+                  Book a Consultation <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </div>
             </motion.div>

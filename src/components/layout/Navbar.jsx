@@ -7,22 +7,22 @@ import ThemeToggle from "@/components/common/ThemeToggle";
 import { useHeaderSurface } from "@/lib/HeaderSurfaceContext";
 import { SOLUTIONS } from "@/lib/solutions";
 
-const solutions = SOLUTIONS.map((s) => ({ label: s.title, path: `/solutions/${s.slug}`, desc: s.navDesc }));
+const platformModules = SOLUTIONS.map((s) => ({ label: s.title, path: `/solutions/${s.slug}`, desc: s.navDesc }));
 
-// /resources is intentionally absent: the page and its filtering machinery
-// remain in the codebase for a future set of substantive sector articles,
-// but it is not linked from navigation and not listed in the sitemap while
-// it has no published content.
+// Approved consultancy IA. Home is reached via the logo, so it is not a nav
+// item. Contact is not top-level either — the primary CTA and the footer
+// both provide it.
 //
-// "Case Studies" became "How It Works": a nav item promising case studies
-// that leads to a page explaining we have none yet was advertising the
-// absence. The /case-studies route is retained so existing links resolve.
+// Managed Compliance and Pricing are anchors into /consultancy for now:
+// their standalone pages are explicitly out of scope for Phase A, and a nav
+// item pointing at a route that does not exist would be a broken link. When
+// those pages are built, only these two paths change.
 const navLinks = [
-  { label: "Solutions", hasDropdown: true },
+  { label: "Consultancy", path: "/consultancy" },
+  { label: "Managed Compliance", path: "/consultancy#managed-compliance" },
+  { label: "Platform", hasDropdown: true },
   { label: "Industries", path: "/industries" },
-  { label: "Platform", path: "/platform" },
-  { label: "Platform Tour", path: "/platform-tour", highlight: true },
-  { label: "How It Works", path: "/case-studies" },
+  { label: "Pricing", path: "/consultancy#packages" },
   { label: "About", path: "/about" },
 ];
 
@@ -106,7 +106,7 @@ export default function Navbar() {
                         {/* Dropdown owns its own bg-surface, so it always uses the
                             theme-resolved ink token regardless of navbar state above. */}
                         <div className="p-3 grid gap-1">
-                          {solutions.map((sol) => (
+                          {platformModules.map((sol) => (
                             <Link
                               key={sol.path}
                               to={sol.path}
@@ -117,9 +117,12 @@ export default function Navbar() {
                             </Link>
                           ))}
                         </div>
-                        <div className="p-3 border-t border-hairline/5">
-                          <Link to="/solutions" className="flex items-center gap-2 px-4 py-2 text-sm text-teal font-medium">
-                            View all solutions <ArrowRight className="w-3.5 h-3.5" />
+                        <div className="p-3 border-t border-hairline/5 grid gap-1">
+                          <Link to="/platform" className="flex items-center gap-2 px-4 py-2 text-sm text-teal font-medium">
+                            Explore the platform <ArrowRight className="w-3.5 h-3.5" />
+                          </Link>
+                          <Link to="/contact?type=demo" className="flex items-center gap-2 px-4 py-2 text-sm text-ink-secondary font-medium hover:text-ink">
+                            Book a platform demo <ArrowRight className="w-3.5 h-3.5" />
                           </Link>
                         </div>
                       </motion.div>
@@ -149,14 +152,9 @@ export default function Navbar() {
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-3">
             <ThemeToggle inverse={!scrolled && surface === "dark"} />
-            <Link to="/contact">
-              <Button variant="ghost" className={`hover:bg-hairline/10 text-sm h-9 ${fg}`}>
-                Contact
-              </Button>
-            </Link>
-            <Link to="/contact?type=demo">
+            <Link to="/contact?type=consultation">
               <Button className="bg-teal text-canvas hover:bg-teal/90 font-semibold text-sm h-9 px-5 rounded-xl focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-canvas">
-                Book Demo
+                Book a Consultation
               </Button>
             </Link>
           </div>
@@ -186,8 +184,8 @@ export default function Navbar() {
             className="lg:hidden bg-canvas/98 border-t border-hairline/10 overflow-hidden"
           >
             <div className="px-4 py-6 space-y-1">
-              <p className="px-4 pt-1 pb-2 text-[10px] font-bold uppercase tracking-widest text-ink-secondary">Solutions</p>
-              {solutions.map((sol) => (
+              <p className="px-4 pt-1 pb-2 text-[10px] font-bold uppercase tracking-widest text-ink-secondary">Platform</p>
+              {platformModules.map((sol) => (
                 <Link key={sol.path} to={sol.path} className="block px-4 py-2.5 text-sm text-ink/70 hover:text-ink rounded-xl hover:bg-hairline/5">
                   {sol.label}
                 </Link>
@@ -198,9 +196,15 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
+              <Link to="/platform-tour" className="block px-4 py-3 text-sm text-ink/70 hover:text-ink rounded-xl hover:bg-hairline/5">
+                Platform Tour
+              </Link>
+              <Link to="/contact" className="block px-4 py-3 text-sm text-ink/70 hover:text-ink rounded-xl hover:bg-hairline/5">
+                Contact
+              </Link>
               <div className="pt-4">
-                <Link to="/contact?type=demo">
-                  <Button className="w-full bg-teal text-canvas hover:bg-teal/90 font-semibold">Book Demo</Button>
+                <Link to="/contact?type=consultation">
+                  <Button className="w-full bg-teal text-canvas hover:bg-teal/90 font-semibold">Book a Consultation</Button>
                 </Link>
               </div>
             </div>
