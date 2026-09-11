@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import LucyOrb from "@/components/common/LucyOrb";
+import LucyOrbLive from "@/components/common/LucyOrbLive";
 import { useDeclareHeaderSurface } from "@/lib/HeaderSurfaceContext";
 
 export default function HeroSection() {
@@ -24,7 +24,7 @@ export default function HeroSection() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="order-2 lg:order-2 flex items-center justify-center"
           >
-            <LucyOrb size="clamp(160px, 38vw, 340px)" />
+            <LucyOrbLive size="clamp(160px, 38vw, 340px)" />
           </motion.div>
 
           {/* Text — second on mobile, left column on desktop */}
