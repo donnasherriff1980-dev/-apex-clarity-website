@@ -9,20 +9,21 @@ import { SOLUTIONS } from "@/lib/solutions";
 
 const platformModules = SOLUTIONS.map((s) => ({ label: s.title, path: `/solutions/${s.slug}`, desc: s.navDesc }));
 
-// Approved consultancy IA. Home is reached via the logo, so it is not a nav
-// item. Contact is not top-level either — the primary CTA and the footer
-// both provide it.
+// Software-first IA. Apex Clarity is sold primarily as an operational control
+// and compliance platform, so Platform, Solutions, Industries and Pricing lead.
+// H&S Support sits after Pricing as the optional, complementary offer it is.
 //
-// Managed Compliance and Pricing are anchors into /consultancy for now:
-// their standalone pages are explicitly out of scope for Phase A, and a nav
-// item pointing at a route that does not exist would be a broken link. When
-// those pages are built, only these two paths change.
+// Home is reached via the logo, so it is not a nav item. Contact is not
+// top-level either — the primary CTA and the footer both provide it.
+//
+// The module dropdown hangs off Solutions, because every item in it is a
+// /solutions/:slug page.
 const navLinks = [
-  { label: "Consultancy", path: "/consultancy" },
-  { label: "Managed Compliance", path: "/consultancy#managed-compliance" },
-  { label: "Platform", hasDropdown: true },
+  { label: "Platform", path: "/platform" },
+  { label: "Solutions", hasDropdown: true },
   { label: "Industries", path: "/industries" },
-  { label: "Pricing", path: "/consultancy#packages" },
+  { label: "Pricing", path: "/pricing" },
+  { label: "H&S Support", path: "/hs-support" },
   { label: "About", path: "/about" },
 ];
 
@@ -152,9 +153,9 @@ export default function Navbar() {
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-3">
             <ThemeToggle inverse={!scrolled && surface === "dark"} />
-            <Link to="/contact?type=consultation">
+            <Link to="/contact?type=demo">
               <Button className="bg-teal text-canvas hover:bg-teal/90 font-semibold text-sm h-9 px-5 rounded-xl focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-canvas">
-                Book a Consultation
+                Book a Demo
               </Button>
             </Link>
           </div>
@@ -174,17 +175,23 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu — owns its own bg-canvas, so it always uses the
-          theme-resolved ink token once open, same reasoning as the dropdown. */}
+          theme-resolved ink token once open, same reasoning as the dropdown.
+
+          The background is deliberately the unmodified `bg-canvas`. It was
+          `bg-canvas/98`, and this project's Tailwind build does not emit a /98
+          opacity step — so the class produced no rule at all and the panel
+          rendered fully transparent, with the page's hero showing straight
+          through the open menu. */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-canvas/98 border-t border-hairline/10 overflow-hidden"
+            className="lg:hidden bg-canvas border-t border-hairline/10 overflow-hidden"
           >
             <div className="px-4 py-6 space-y-1">
-              <p className="px-4 pt-1 pb-2 text-[10px] font-bold uppercase tracking-widest text-ink-secondary">Platform</p>
+              <p className="px-4 pt-1 pb-2 text-[10px] font-bold uppercase tracking-widest text-ink-secondary">Solutions</p>
               {platformModules.map((sol) => (
                 <Link key={sol.path} to={sol.path} className="block px-4 py-2.5 text-sm text-ink/70 hover:text-ink rounded-xl hover:bg-hairline/5">
                   {sol.label}
@@ -203,8 +210,8 @@ export default function Navbar() {
                 Contact
               </Link>
               <div className="pt-4">
-                <Link to="/contact?type=consultation">
-                  <Button className="w-full bg-teal text-canvas hover:bg-teal/90 font-semibold">Book a Consultation</Button>
+                <Link to="/contact?type=demo">
+                  <Button className="w-full bg-teal text-canvas hover:bg-teal/90 font-semibold">Book a Demo</Button>
                 </Link>
               </div>
             </div>

@@ -93,7 +93,7 @@ export default function HealthCheck() {
       <>
         <SEO
           title="Free H&S Compliance Check"
-          description="Answer 8 questions for a free score showing how your health, safety and compliance arrangements currently stand up — and where an outsourced H&S team would take the load off."
+          description="Answer 8 questions for a free score showing how your health, safety and compliance arrangements currently stand up — and where the Apex Clarity platform would take the load off."
           path="/health-check"
         />
         <section className="pt-32 pb-24 bg-brand-dark relative overflow-hidden">
@@ -125,7 +125,7 @@ export default function HealthCheck() {
               </div>
             ))}
           </div>
-          <p className="text-center text-sm text-ink-secondary mt-6">Covering the areas our consultants support day to day</p>
+          <p className="text-center text-sm text-ink-secondary mt-6">Covering the areas Apex Clarity is built to control day to day</p>
         </section>
       </>
     );
@@ -210,9 +210,9 @@ export default function HealthCheck() {
                 );
               })}
               <div className="text-center pt-8">
-                <p className="text-white/50 mb-6 text-sm">Want to talk through what would actually fix the weak areas?</p>
-                <Button onClick={() => window.location.href = "/contact?type=consultation"} size="lg" className="bg-teal text-canvas hover:bg-teal/90 font-bold h-14 px-10 rounded-2xl">
-                  Book a Consultation <ArrowRight className="w-5 h-5 ml-2" />
+                <p className="text-white/50 mb-6 text-sm">Want to see how the platform would close the weak areas?</p>
+                <Button onClick={() => window.location.href = "/contact?type=demo"} size="lg" className="bg-teal text-canvas hover:bg-teal/90 font-bold h-14 px-10 rounded-2xl">
+                  Book a Demo <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </div>
             </motion.div>

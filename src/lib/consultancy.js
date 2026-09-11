@@ -4,7 +4,14 @@ import {
 } from "lucide-react";
 
 /**
- * Single source of truth for the Apex H&S Consultancy layer.
+ * Single source of truth for the Apex H&S Support layer.
+ *
+ * POSITIONING — Apex Clarity is primarily a B2B SaaS operational control and
+ * compliance platform (see src/lib/pricing.js and /pricing). H&S support is a
+ * SEPARATE, OPTIONAL, COMPLEMENTARY service for customers who also need
+ * competent people alongside the software. It is not the headline offer, and
+ * this file must never read as though the company is principally an
+ * outsourced H&S department.
  *
  * TRUTHFULNESS RULES — these are not stylistic preferences:
  *
@@ -12,19 +19,24 @@ import {
  *     accreditation or chartered status. Duties under HSWA 1974 ss.2-3 are
  *     non-delegable: the client remains the duty holder whatever they buy.
  *  2. Never advertise unlimited consultancy, calls, documents or support.
- *  3. Never state a monthly fee covers specialist/high-risk work — see
+ *  3. Never state a fee covers specialist/high-risk work — see
  *     SPECIALIST_EXCLUSIONS below, which must stay visible on the page.
  *  4. Never describe Lucy as giving health & safety advice.
  *  5. Anything the platform does not ship today belongs in ROADMAP, not in
  *     PLATFORM_LIVE. Verified against the platform entity schemas: there is
  *     no Incident, near-miss, inspection-capture, training-matrix, KPI or
  *     reporting entity, so those are consultancy-delivered or roadmap.
+ *  6. Never imply the software subscription includes support, advisory hours,
+ *     document authoring, site visits or management of a customer's H&S
+ *     function. It does not, and /pricing says so explicitly.
+ *  7. No published consultancy prices, no packages, no allowances and no
+ *     onboarding fee. Support is scoped and quoted per customer.
  */
 
 export const POSITIONING = {
-  core: "Your outsourced H&S and compliance team — without the cost of a full-time department.",
+  core: "Competent H&S support, alongside the platform — for the parts you cannot cover in-house.",
   supporting:
-    "Apex combines practical health, safety and operational compliance support with purpose-built compliance technology.",
+    "Apex Clarity is the software your teams run the work on. H&S support is a separate, optional service for organisations that also want experienced health and safety people alongside it — scoped to what you actually need, not sold as a package you have to take.",
 };
 
 export const PROBLEMS = [
@@ -186,9 +198,9 @@ export const WHY_APEX = [
       "Construction, trades, property maintenance, retrofit, renewables, M&E and facilities. We are not generalist H&S consultants who will learn your industry on your time.",
   },
   {
-    title: "You get the technology as part of the service",
+    title: "The work lands in your platform, not our filing system",
     detail:
-      "Your RAMS, permits, competence records and evidence live in Apex Clarity from day one — not in our filing system. If you later take the platform on directly, the records are already yours.",
+      "Support is delivered into your own Apex Clarity tenant, so the RAMS, permits, competence records and evidence stay yours. The software subscription and the support engagement are priced separately — if you stop the support, you keep the records and the platform.",
   },
   {
     title: "We tell you what we are not",
@@ -198,84 +210,46 @@ export const WHY_APEX = [
   {
     title: "Defined scope, not vague retainers",
     detail:
-      "Every package states its allowances, review frequency and what sits outside it. You will know before you sign what is included and what is charged separately.",
+      "Every engagement is written down: what we will do, how often, and what sits outside it. You will know before you sign what is included and what is charged separately. We do not sell unlimited support.",
   },
 ];
 
 /**
- * Positioning figures, approved by the founder. Always rendered as
- * "from £X per month + VAT" and always alongside SCOPE_NOTES.
- * Essentials deliberately includes ZERO site visits — that is a margin
- * control, not an oversight. Do not add one.
+ * How H&S support is sold. There are deliberately NO published prices, no
+ * packages, no monthly allowances and no onboarding fee here — support is
+ * scoped and quoted per customer after a conversation. Do not reintroduce a
+ * price grid: it was removed because it presented the company as an
+ * outsourced H&S department rather than a software business.
  */
-export const PACKAGES = [
+export const ENGAGEMENT_MODEL = [
   {
-    name: "Compliance Essentials",
-    from: "£395",
-    onboarding: "£750",
-    fits: "5–25 people, single site",
-    highlights: [
-      "Apex Clarity platform access (up to 10 users)",
-      "H&S policy and arrangements maintained",
-      "2 documents reviewed or updated per month",
-      "Expiry monitoring on certificates and competence records",
-      "Up to 2 hours advisory per month",
-      "Quarterly 45-minute review call",
-      "No site visits included",
-    ],
+    title: "1. A conversation",
+    detail:
+      "We talk through your sites, your team, your contracts and where compliance actually hurts. No charge, and no obligation to buy anything.",
   },
   {
-    name: "Managed H&S",
-    from: "£695",
-    onboarding: "£1,250",
-    fits: "25–75 people, multi-project",
-    highlights: [
-      "Apex Clarity platform access (up to 25 users)",
-      "4 documents authored or reviewed per month",
-      "Toolbox talk programme set up and maintained",
-      "Contractor evidence — up to 5 contractors per quarter",
-      "1 site visit per quarter, within our travel zone",
-      "Up to 4 hours advisory per month",
-      "Monthly 60-minute review call",
-    ],
-    featured: true,
+    title: "2. A written scope",
+    detail:
+      "We set out exactly what we would take on, how often, and what we would not. Anything requiring specialist competence is named, not glossed over.",
   },
   {
-    name: "H&S Partner",
-    from: "£1,095",
-    onboarding: "£1,950",
-    fits: "75–200 people, multi-site",
-    highlights: [
-      "Apex Clarity platform access (up to 60 users)",
-      "8 documents authored or reviewed per month",
-      "1 site visit per month, within our travel zone",
-      "Incident triage and corrective-action tracking",
-      "Contractor compliance managed — up to 15 contractors",
-      "Up to 8 hours advisory per month",
-      "Monthly management report and quarterly management meeting",
-    ],
+    title: "3. A quote against that scope",
+    detail:
+      "Priced against the work described, not an open-ended retainer. Work beyond the agreed scope is quoted and agreed before it starts.",
   },
   {
-    name: "Multi-Site / Bespoke",
-    from: "£1,500",
-    onboarding: "Quoted",
-    fits: "Multi-site or complex operations",
-    highlights: [
-      "Scoped to your sites, structure and risk profile",
-      "Allowances, visit frequency and reporting agreed in writing",
-      "Platform user count agreed to your headcount",
-      "Named lead consultant",
-      "Priced on defined hours, not open-ended",
-    ],
+    title: "4. Delivered into your platform",
+    detail:
+      "The documents, records and evidence that come out of the engagement live in your own Apex Clarity tenant from day one.",
   },
 ];
 
-export const SCOPE_NOTES = [
-  "All prices are from, exclude VAT, and depend on scope agreed after a discovery conversation.",
-  "A one-off onboarding fee applies before the monthly retainer begins. It covers your compliance baseline review, document gap analysis, platform setup and configuration, and a 90-day action plan.",
-  "Allowances are per package and are not cumulative. Work beyond your allowance is quoted and agreed before it starts.",
-  "Site visits are as stated per package and within our stated travel zone. Visits outside that zone, or beyond your allowance, are charged separately.",
-  "We do not offer unlimited consultancy, unlimited support calls or unlimited documents. Defined allowances are how we keep the service deliverable and the price honest.",
+export const SUPPORT_NOTES = [
+  "Health & Safety support and consultancy services are not included in the software subscription. They are quoted separately.",
+  "Support is scoped to your operation after a discovery conversation. We do not publish fixed consultancy prices, because the honest answer depends on what you actually need.",
+  "We do not offer unlimited consultancy, unlimited support calls or unlimited documents. Defined scope is how we keep the service deliverable and the price honest.",
+  "Site visits are as agreed in your scope and within our stated travel zone. Visits outside that zone, or beyond the agreed scope, are charged separately.",
+  "Nothing in a support engagement transfers legal responsibility for health and safety, which remains with the duty holder.",
 ];
 
 /**

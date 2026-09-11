@@ -7,13 +7,14 @@ import { motion, AnimatePresence } from "framer-motion";
 const COOKIE_STORAGE_KEY = "apex_cookie_consent";
 
 export default function StickyDemo() {
-  // The floating CTA follows the page it sits on: a platform page offers a
-  // demo, everywhere else offers a consultation. A single sitewide "Book a
-  // Demo" would actively undercut the consultancy funnel on /consultancy.
+  // The floating CTA follows the page it sits on. Apex Clarity sells software
+  // first, so "Book a Demo" is the default everywhere; only /hs-support — the
+  // optional, separately quoted support offer — asks for a scoping
+  // conversation instead, because there is no product to demo there.
   const { pathname } = useLocation();
-  const isPlatformContext = pathname.startsWith("/platform") || pathname.startsWith("/solutions");
-  const ctaLabel = isPlatformContext ? "Book a Demo" : "Book a Consultation";
-  const ctaHref = isPlatformContext ? "/contact?type=demo" : "/contact?type=consultation";
+  const isSupportContext = pathname.startsWith("/hs-support");
+  const ctaLabel = isSupportContext ? "Discuss your requirements" : "Book a Demo";
+  const ctaHref = isSupportContext ? "/contact?type=consultation" : "/contact?type=demo";
 
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);

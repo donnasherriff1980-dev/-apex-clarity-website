@@ -18,19 +18,31 @@ import { SERVICES } from "@/lib/consultancy";
 
 const industriesList = INDUSTRIES.map((i) => i.label).concat("Other");
 const servicesList = SOLUTIONS.map((s) => s.title).concat(["Full Platform", "Not Sure"]);
-const enquiryTypes = ["H&S Consultancy", "Managed Compliance", "Book a Demo", "General Enquiry"];
+// Visitor-facing enquiry options. `value` is the Lead entity's enquiry_type
+// enum and MUST stay one of its permitted values — the label is what the
+// visitor reads. Software-first ordering: a demo leads, H&S support follows.
+//
+// "H&S Support" is deliberately a relabel of the stored "H&S Consultancy"
+// value rather than a new one: changing the enum would be a schema migration
+// on live data, and would reject every submission until it landed.
+const enquiryTypes = [
+  { value: "Book a Demo", label: "Book a Demo" },
+  { value: "H&S Consultancy", label: "H&S Support" },
+  { value: "General Enquiry", label: "General Enquiry" },
+];
 
-// Enquiry types that are consultancy-side and therefore need qualification.
-// These drive package scoping, so getting them wrong at the enquiry stage is
-// how a client ends up on the wrong tier.
-const CONSULTANCY_TYPES = ["H&S Consultancy", "Managed Compliance"];
+// Enquiry types that are support-side and therefore need qualification, so we
+// can scope an engagement before speaking rather than guessing at it.
+const SUPPORT_TYPES = ["H&S Consultancy", "Managed Compliance"];
 
-// ?type= shortcuts used across the site.
+// ?type= shortcuts used across the site. Values, not labels.
 const TYPE_PARAM_MAP = {
+  demo: "Book a Demo",
+  pricing: "Book a Demo",
   consultation: "H&S Consultancy",
   consultancy: "H&S Consultancy",
-  managed: "Managed Compliance",
-  demo: "Book a Demo",
+  support: "H&S Consultancy",
+  managed: "H&S Consultancy",
   "health-check": "H&S Consultancy",
 };
 
@@ -48,7 +60,7 @@ const supportOptions = SERVICES.map((s) => s.title);
 export default function Contact() {
   useDeclareHeaderSurface("dark");
   const [searchParams] = useSearchParams();
-  const initialType = TYPE_PARAM_MAP[searchParams.get("type")] || "H&S Consultancy";
+  const initialType = TYPE_PARAM_MAP[searchParams.get("type")] || "Book a Demo";
   const [form, setForm] = useState({
     name: "", company: "", email: "", phone: "", industry: "", service: "",
     type: initialType, message: "",
@@ -98,22 +110,22 @@ export default function Contact() {
         ? f.support_needed.filter((x) => x !== v)
         : [...f.support_needed, v],
     }));
-  const isConsultancy = CONSULTANCY_TYPES.includes(form.type);
+  const isSupportEnquiry = SUPPORT_TYPES.includes(form.type);
 
   return (
     <>
       <SEO
-        title="Book a Consultation"
-        description="Book a consultation with Apex Clarity — outsourced H&S and compliance support for UK contractors, or a walkthrough of the compliance platform."
+        title="Book a Demo"
+        description="Book a demo of Apex Clarity — operational control and compliance software for UK contractors — or talk to us about optional H&S support alongside it."
         path="/contact"
       />
       <section className="pt-32 pb-16 bg-brand-dark relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl">
-            <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Book a Consultation</span>
+            <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Book a Demo</span>
             <h1 className="text-5xl font-black text-white mb-6">Let&apos;s Talk</h1>
-            <p className="text-white/50 text-lg">Whether you need outsourced H&amp;S support or want to see the platform, tell us what you are dealing with and we will come back with an honest answer.</p>
+            <p className="text-white/50 text-lg">Whether you want to see the platform, work out which tier fits, or ask about optional H&amp;S support alongside it, tell us what you are dealing with and we will come back with an honest answer.</p>
           </motion.div>
         </div>
       </section>
@@ -134,13 +146,13 @@ export default function Contact() {
               ) : (
                 <form onSubmit={handleSubmit} className="bg-surface-raised rounded-3xl p-8 md:p-10 border border-hairline/10 shadow-sm space-y-6">
                   {/* Enquiry type */}
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {enquiryTypes.map((t) => (
-                      <button key={t} type="button" onClick={() => update("type", t)}
+                      <button key={t.value} type="button" onClick={() => update("type", t.value)}
                         className={`px-3 py-2.5 rounded-xl text-xs font-semibold border transition-all ${
-                          form.type === t ? "bg-ink text-canvas border-ink" : "border-hairline/20 text-ink-secondary hover:border-ink/30"
+                          form.type === t.value ? "bg-ink text-canvas border-ink" : "border-hairline/20 text-ink-secondary hover:border-ink/30"
                         }`}>
-                        {t}
+                        {t.label}
                       </button>
                     ))}
                   </div>
@@ -160,14 +172,14 @@ export default function Contact() {
                         <SelectContent>{industriesList.map(i => <SelectItem key={i} value={i}>{i}</SelectItem>)}</SelectContent>
                       </Select>
                     </div>
-                    <div className={`space-y-2 ${isConsultancy ? "hidden" : ""}`}><Label>Solution Interest</Label>
+                    <div className={`space-y-2 ${isSupportEnquiry ? "hidden" : ""}`}><Label>Solution Interest</Label>
                       <Select value={form.service} onValueChange={v => update("service", v)}>
                         <SelectTrigger className="h-11 rounded-xl"><SelectValue placeholder="Select solution" /></SelectTrigger>
                         <SelectContent>{servicesList.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}</SelectContent>
                       </Select>
                     </div>
                   </div>
-                  {isConsultancy && (
+                  {isSupportEnquiry && (
                     <div className="space-y-6 border-t border-hairline/10 pt-6">
                       <div>
                         <p className="text-sm font-bold text-ink mb-1">A few quick questions</p>

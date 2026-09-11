@@ -10,20 +10,17 @@ import { SERVICES } from "@/lib/consultancy";
 
 const platformModules = SOLUTIONS.map((s) => ({ label: s.title, path: `/solutions/${s.slug}` }));
 
-// Consultancy service pages are not built in Phase A, so these point at the
-// consultancy landing page rather than at routes that do not exist yet.
-const consultancy = SERVICES.map((s) => ({
-  label: s.title,
-  path: s.slug === "managed-compliance" ? "/consultancy#managed-compliance" : "/consultancy",
-}));
+// Individual H&S support service pages are not built, so these point at the
+// H&S Support landing page rather than at routes that do not exist yet.
+const hsSupport = SERVICES.map((s) => ({ label: s.title, path: "/hs-support" }));
 
 // /resources omitted while it has no published articles (see Navbar).
 const company = [
   { label: "About Us", path: "/about" },
   { label: "Our Vision", path: "/vision" },
-  { label: "Consultancy", path: "/consultancy" },
   { label: "Platform", path: "/platform" },
-  { label: "Pricing", path: "/consultancy#packages" },
+  { label: "Pricing", path: "/pricing" },
+  { label: "H&S Support", path: "/hs-support" },
   { label: "How It Works", path: "/case-studies" },
   { label: "Contact", path: "/contact" },
   { label: "Privacy Policy", path: "/privacy" },
@@ -117,7 +114,7 @@ export default function Footer() {
               <span className="text-ink-secondary text-xs mt-0.5 block">Operational control. Proven compliance.</span>
             </div>
             <p className="text-ink-secondary text-sm leading-relaxed mb-6">
-              Outsourced health, safety and compliance support for UK contractors — combined with purpose-built compliance technology.
+              Operational control and compliance software for UK contractors — projects, jobs and actions, H&amp;S governance, documents and evidence, with a full audit trail. Optional H&amp;S support available alongside it.
             </p>
             <div className="space-y-3 text-sm">
               <a href="mailto:info@apexclarity.co.uk" className="flex items-center gap-2 text-ink-secondary hover:text-teal transition-colors">
@@ -129,11 +126,11 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Consultancy */}
+          {/* Platform */}
           <div>
-            <h4 className="text-teal font-semibold text-xs uppercase tracking-widest mb-6">Consultancy</h4>
+            <h4 className="text-teal font-semibold text-xs uppercase tracking-widest mb-6">Platform</h4>
             <ul className="space-y-3">
-              {consultancy.map((s) => (
+              {platformModules.map((s) => (
                 <li key={s.label}>
                   <Link to={s.path} className="text-sm text-ink-secondary hover:text-ink transition-colors">{s.label}</Link>
                 </li>
@@ -141,11 +138,11 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Platform */}
+          {/* H&S Support */}
           <div>
-            <h4 className="text-teal font-semibold text-xs uppercase tracking-widest mb-6">Platform</h4>
+            <h4 className="text-teal font-semibold text-xs uppercase tracking-widest mb-6">H&amp;S Support</h4>
             <ul className="space-y-3">
-              {platformModules.map((s) => (
+              {hsSupport.map((s) => (
                 <li key={s.label}>
                   <Link to={s.path} className="text-sm text-ink-secondary hover:text-ink transition-colors">{s.label}</Link>
                 </li>

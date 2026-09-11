@@ -18,7 +18,7 @@ import { useChromaKeyedVideo } from "@/hooks/useChromaKeyedVideo";
 // completes the same poster -> video handoff the app performs.
 //
 // LucyOrb.jsx is left untouched, so every other Lucy on the site (Meet Lucy,
-// CTA, Product Journey, Platform Tour, Vision, Consultancy) is unchanged.
+// CTA, Product Journey, Platform Tour, Vision, H&S Support) is unchanged.
 //
 // Degrades safely: if the video cannot load or decode, or the canvas taints,
 // or the visitor prefers reduced motion, the poster simply stays visible —

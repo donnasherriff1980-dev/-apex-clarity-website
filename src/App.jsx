@@ -32,7 +32,8 @@ import Services from '@/pages/Services';
 import ServiceDetail from '@/pages/ServiceDetail';
 import CookiePolicy from '@/pages/CookiePolicy';
 import Vision from '@/pages/Vision';
-import Consultancy from '@/pages/Consultancy';
+import HSSupport from '@/pages/HSSupport';
+import Pricing from '@/pages/Pricing';
 
 const ServiceRedirect = () => {
   const { slug } = useParams();
@@ -66,7 +67,8 @@ const AuthenticatedApp = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/vision" element={<Vision />} />
-        <Route path="/consultancy" element={<Consultancy />} />
+        <Route path="/hs-support" element={<HSSupport />} />
+        <Route path="/pricing" element={<Pricing />} />
         <Route path="/platform" element={<Platform />} />
         <Route path="/platform-tour" element={<PlatformTour />} />
         <Route path="/solutions" element={<Services />} />
@@ -78,7 +80,8 @@ const AuthenticatedApp = () => {
         <Route path="/health-check" element={<HealthCheck />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
-        {/* Legacy URLs — redirect to the canonical /solutions path */}
+        {/* Legacy URLs — redirect to the canonical paths */}
+        <Route path="/consultancy" element={<Navigate to="/hs-support" replace />} />
         <Route path="/services" element={<Navigate to="/solutions" replace />} />
         <Route path="/services/:slug" element={<ServiceRedirect />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />

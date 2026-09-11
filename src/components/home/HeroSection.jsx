@@ -47,7 +47,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-lg text-white/55 leading-relaxed max-w-xl mb-10">
-              The health, safety and compliance evidence platform for UK social-housing retrofit and M&amp;E contractors. RAMS, permits, toolbox talks, competence and COSHH — drafted, reviewed, approved and issued on one controlled lifecycle.
+              The operational control and compliance platform for UK contractors. Run projects, sites and jobs, drive the work through actions, and govern RAMS, risk assessments, permits, toolbox talks, competence and documents on one controlled lifecycle — with contractor compliance and a full audit trail behind every record.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
