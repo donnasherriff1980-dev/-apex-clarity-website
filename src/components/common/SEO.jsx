@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 
-const SITE_NAME = "Apex Clarity";
+const SITE_NAME = "Kenvio";
+const DEFAULT_TITLE = "Kenvio | Operational Control & Compliance Software for UK Contractors";
+// AWAITING KENVIO BRAND ASSETS: placeholder image, not the launch asset.
 const DEFAULT_IMAGE = "https://media.base44.com/images/public/6a24770b8156364d64a8152b/89ac9e742_Testerlogo.png";
-const SITE_URL = "https://www.apexclarity.co.uk";
+const SITE_URL = "https://kenvio.co.uk";
 
 function setMeta(attr, key, content) {
   if (!content) return;
@@ -31,7 +33,7 @@ function setCanonical(href) {
  */
 export default function SEO({ title, description, path = "", image = DEFAULT_IMAGE, noIndex = false }) {
   useEffect(() => {
-    const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
+    const fullTitle = title ? `${title} | ${SITE_NAME}` : DEFAULT_TITLE;
     document.title = fullTitle;
 
     setMeta("name", "description", description);

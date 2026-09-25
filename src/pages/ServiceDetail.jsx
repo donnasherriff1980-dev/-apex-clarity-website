@@ -58,7 +58,7 @@ export default function ServiceDetail() {
 
       <section className="py-20 bg-surface-raised">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <div className="mb-4"><span className="text-xs font-bold text-teal uppercase tracking-widest">How Apex Clarity Handles It</span></div>
+          <div className="mb-4"><span className="text-xs font-bold text-teal uppercase tracking-widest">How Kenvio Handles It</span></div>
           <p className="text-lg text-ink-secondary leading-relaxed mb-10">{sol.solution}</p>
           <div className="grid md:grid-cols-2 gap-4">
             {sol.benefits.map(b => (

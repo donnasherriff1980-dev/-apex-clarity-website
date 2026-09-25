@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Users, ShieldAlert, FileText, Briefcase, BarChart3, X, GraduationCap, ArrowRight } from "lucide-react";
+import { ShieldAlert, FileText, Briefcase, ClipboardCheck, X, GraduationCap, ArrowRight } from "lucide-react";
 import SEO from "@/components/common/SEO";
 import CTASection from "@/components/home/CTASection";
 import { useDeclareHeaderSurface } from "@/lib/HeaderSurfaceContext";
 
 const fragmentedSystems = [
-  { icon: Users, label: "Customers" },
-  { icon: ShieldAlert, label: "Health & Safety" },
-  { icon: FileText, label: "Documents" },
   { icon: Briefcase, label: "Jobs" },
-  { icon: BarChart3, label: "Reporting" },
+  { icon: ShieldAlert, label: "Health & Safety" },
+  { icon: ClipboardCheck, label: "Permits" },
+  { icon: GraduationCap, label: "Competence" },
+  { icon: FileText, label: "Documents" },
 ];
 
 export default function About() {
@@ -20,7 +20,7 @@ export default function About() {
     <>
       <SEO
         title="Our Story"
-        description="Why Apex Clarity exists — built from years working in construction, renewable energy and retrofit, not from a boardroom."
+        description="Why Kenvio exists — built from years working in construction, renewable energy and retrofit, not from a boardroom."
         path="/about"
       />
 
@@ -31,7 +31,7 @@ export default function About() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
             <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Our Story</span>
             <h1 className="text-3xl md:text-5xl font-black text-white leading-tight">
-              We didn&apos;t build Apex Clarity because the industry needed another piece of software.
+              We didn&apos;t build Kenvio because the industry needed another piece of software.
               <br /><br />
               <span className="gradient-text-brand">We built it because the people doing the work deserved something better.</span>
             </h1>
@@ -43,7 +43,7 @@ export default function About() {
       <section className="py-24 bg-surface">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-xl text-ink leading-relaxed mb-10">
-            Apex Clarity wasn&apos;t created because I wanted to build another CRM. It was created because I spent years working in construction, renewable energy and retrofit, and saw the same problems in businesses of every size.
+            Kenvio wasn&apos;t created because I wanted to build another piece of admin software. It was created because I spent years working in construction, renewable energy and retrofit, and saw the same problems in businesses of every size.
           </motion.p>
 
           <motion.blockquote
@@ -101,9 +101,9 @@ export default function About() {
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center">
             <div className="w-px h-12 bg-gradient-to-b from-transparent via-teal/50 to-teal mx-auto mb-6" />
             <p className="text-2xl md:text-3xl font-bold text-white leading-snug max-w-2xl mx-auto">
-              That&apos;s when Apex Clarity became much more than another compliance platform.
+              That&apos;s when Kenvio became more than another compliance tool.
               <br />
-              <span className="gradient-text-brand">It became a complete operational platform.</span>
+              <span className="gradient-text-brand">It became an operational control platform.</span>
             </p>
           </motion.div>
         </div>
@@ -120,7 +120,7 @@ export default function About() {
               <GraduationCap className="w-5 h-5 text-teal" />
             </div>
             <p className="text-ink-secondary leading-relaxed">
-              Smaller businesses were often the ones struggling hardest with this — the standards didn&apos;t shrink to match the budget. That&apos;s part of what motivated me to enrol on my NEBOSH qualification while continuing to build Apex Clarity, so I understood Health &amp; Safety properly myself, not just the software around it.
+              Smaller businesses were often the ones struggling hardest with this — the standards didn&apos;t shrink to match the budget. That&apos;s part of what motivated me to enrol on my NEBOSH qualification while continuing to build Kenvio, so I understood Health &amp; Safety properly myself, not just the software around it.
             </p>
           </motion.div>
 

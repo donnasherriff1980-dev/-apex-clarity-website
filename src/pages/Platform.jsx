@@ -39,7 +39,7 @@ export default function Platform() {
     <>
       <SEO
         title="The Platform"
-        description="Health & safety governance for UK social-housing retrofit and M&E contractors — risk assessments, RAMS, permits, toolbox talks, competence and emergency arrangements on one controlled lifecycle."
+        description="The Kenvio platform — projects and jobs, risk assessments, RAMS, permits, toolbox talks, competence and emergency arrangements on one controlled lifecycle, for UK contractors."
         path="/platform"
       />
       <section className="pt-32 pb-24 bg-brand-dark relative overflow-hidden">

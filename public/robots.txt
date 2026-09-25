@@ -5,4 +5,4 @@ Disallow: /register
 Disallow: /forgot-password
 Disallow: /reset-password
 
-Sitemap: https://www.apexclarity.co.uk/sitemap.xml
+Sitemap: https://kenvio.co.uk/sitemap.xml

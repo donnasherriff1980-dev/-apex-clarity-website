@@ -44,7 +44,7 @@ export default function CaseStudies() {
     <>
       <SEO
         title="How Implementation Works"
-        description="What implementing Apex Clarity involves for a UK social-housing retrofit or M&E contractor — mapping how you evidence work today, configuring your libraries and templates, and running one live job end to end."
+        description="What implementing Kenvio involves for a UK social-housing retrofit or M&E contractor — mapping how you evidence work today, configuring your libraries and templates, and running one live job end to end."
         path="/case-studies"
       />
       <section className="pt-32 pb-24 bg-brand-dark relative overflow-hidden">
@@ -80,7 +80,7 @@ export default function CaseStudies() {
             className="mt-12 bg-surface-raised rounded-2xl p-8 border border-teal/20">
             <p className="text-ink leading-relaxed">
               <span className="font-bold">On customer references:</span>{" "}
-              Apex Clarity is early. We are working with our first contractors now, and we will publish named case studies with their agreement when there is something real to show — not composite examples or figures we cannot stand behind. If you want to speak to someone using it, ask on the demo and we will tell you honestly where we are.
+              Kenvio is early. We are working with our first contractors now, and we will publish named case studies with their agreement when there is something real to show — not composite examples or figures we cannot stand behind. If you want to speak to someone using it, ask on the demo and we will tell you honestly where we are.
             </p>
           </motion.div>
         </div>

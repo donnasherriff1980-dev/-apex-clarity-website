@@ -5,7 +5,7 @@ import SEO from "@/components/common/SEO";
 export default function CookiePolicy() {
   return (
     <>
-      <SEO title="Cookie Policy" description="How Apex Clarity uses cookies on this website." path="/cookie-policy" />
+      <SEO title="Cookie Policy" description="How Kenvio uses cookies on this website." path="/cookie-policy" />
       <section className="pt-32 pb-16 bg-brand-dark">
         <div className="max-w-4xl mx-auto px-6"><motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
           <h1 className="text-4xl font-black text-white mb-4">Cookie Policy</h1>
@@ -15,6 +15,7 @@ export default function CookiePolicy() {
       <section className="py-20 bg-surface">
         <div className="max-w-4xl mx-auto px-6">
           <div className="bg-surface-raised rounded-3xl p-8 md:p-12 border border-hairline/10 shadow-sm space-y-10">
+            {/* EMAIL — HOLD: info@apexclarity.co.uk stays until the Kenvio mailbox is confirmed active. */}
             {[
               { title: "1. What Are Cookies", body: "Cookies are small text files stored on your device when you visit a website. They help the site function and let us understand how it's used." },
               { title: "2. Essential Cookies", body: "These are required for the website to work correctly (for example, remembering your cookie preference) and cannot be switched off." },

@@ -15,7 +15,7 @@ export default function IndustriesSection() {
           <span className="text-xs font-bold text-teal uppercase tracking-widest mb-4 block">Built For Your Sector</span>
           <h2 className="text-4xl md:text-5xl font-black text-ink mb-4">Who We Build For</h2>
           <p className="text-lg text-ink-secondary max-w-2xl mx-auto">
-            Apex Clarity is built for UK social-housing retrofit and M&amp;E contractors first — the sectors where the evidence behind the work is inspected hardest.
+            Kenvio is built for UK social-housing retrofit and M&amp;E contractors first — the sectors where the evidence behind the work is inspected hardest.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export default function IndustriesSection() {
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-white/40 text-xs font-bold uppercase tracking-wider mb-4">What Apex Clarity Holds</h4>
+                    <h4 className="text-white/40 text-xs font-bold uppercase tracking-wider mb-4">What Kenvio Holds</h4>
                     <div className="space-y-3">
                       {ind.evidence.map((s) => (
                         <div key={s} className="flex items-start gap-2 text-white text-sm font-medium">

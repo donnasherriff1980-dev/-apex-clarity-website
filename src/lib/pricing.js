@@ -29,7 +29,7 @@
 export const PRICING_POSITIONING = {
   core: "One platform for your operations, your compliance and your evidence.",
   supporting:
-    "Apex Clarity is the system your teams work in day to day — projects, sites and jobs, actions, H&S governance, documents and approvals, competence and contractor evidence — with a full audit trail behind all of it. Priced as software, per organisation, per month.",
+    "Kenvio is the system your teams work in day to day — projects, sites and jobs, actions, H&S governance, documents and approvals, and competence evidence — with a recorded review and approval history behind every governed record. Priced as software, per organisation, per month.",
 };
 
 /**
@@ -70,6 +70,7 @@ export const TIERS = [
       "Regular client, principal-contractor or framework evidence requests",
     ],
     featured: true,
+    featuredLabel: "Recommended for most growing contractors",
     cta: "Book a Demo",
     ctaPath: "/contact?type=demo",
   },
@@ -83,7 +84,7 @@ export const TIERS = [
       "For established contractors with a formal H&S function, contractor supply chains and regular external scrutiny.",
     bestFor: [
       "A wider operation with its own H&S and compliance ownership",
-      "Subcontractor and supply-chain compliance to keep on top of",
+      "Formal review and approval across several teams",
       "Audits, accreditation submissions and client assurance as routine",
       "Governance oversight of everything outstanding across the business",
     ],
@@ -92,7 +93,7 @@ export const TIERS = [
   },
   {
     name: "Enterprise",
-    price: "Let's talk",
+    price: "Talk to us",
     period: null,
     vat: null,
     fits: "Multi-company or complex operations",
@@ -104,7 +105,7 @@ export const TIERS = [
       "Specific commercial, contractual or data requirements",
       "A rollout planned around your own operating model",
     ],
-    cta: "Discuss your requirements",
+    cta: "Talk to us",
     ctaPath: "/contact?type=demo",
   },
 ];
@@ -123,10 +124,9 @@ export const SUBSCRIPTION_INCLUDES = [
   "Competence requirements and evidence records with expiry dates",
   "Emergency arrangements with review and test dates",
   "Document control with expiry dates and bulk import",
-  "Contractor and supply-chain compliance records",
   "An approvals queue with recorded decision reasons",
   "A governance overview of everything outstanding",
-  "A full audit trail across every governed record",
+  "A recorded review and approval history on governed records",
   "Lucy, the governed AI assistant built into the platform",
 ];
 
@@ -141,6 +141,6 @@ export const PRICING_NOTES = [
   "Prices are per organisation, per month, and exclude VAT.",
   SUBSCRIPTION_EXCLUSION_STATEMENT,
   "Tiers are set by the scale and complexity of your operation and how you intend to use the platform. We agree the right fit with you before you commit to anything.",
-  "Apex Clarity holds and governs your compliance evidence. It does not certify your compliance, and it does not transfer your legal duties — under the Health and Safety at Work etc. Act 1974 the duty holder remains responsible.",
+  "Kenvio holds and governs your compliance evidence. It does not certify your compliance, and it does not transfer your legal duties — under the Health and Safety at Work etc. Act 1974 the duty holder remains responsible.",
   "Lucy assists your people with drafting and scope. She does not approve, certify or sign anything off, and she does not replace a competent person.",
 ];

@@ -38,7 +38,7 @@ export const SOLUTIONS = [
     problem:
       "H&S evidence usually lives in several places at once — a RAMS folder on the server, permits in a book on site, toolbox talk sheets in a van, competence certificates in someone's inbox. Nobody can answer \"what is outstanding right now?\" without ringing round.",
     solution:
-      "Apex Clarity gives Health & Safety a single control centre. Every module reports into it, and a governance overview lists what is sitting in draft, what is waiting on review, what has been approved but not yet issued, and what is overdue. It is deliberately presented as an administrative view — not a compliance score — because the judgement stays with your competent person.",
+      "Kenvio gives Health & Safety a single control centre. Every module reports into it, and a governance overview lists what is sitting in draft, what is waiting on review, what has been approved but not yet issued, and what is overdue. It is deliberately presented as an administrative view — not a compliance score — because the judgement stays with your competent person.",
     whatChanges:
       "The question \"where are we?\" stops being a phone-round. It becomes a screen your H&S lead, contracts manager and client-facing staff are all looking at.",
   },

@@ -42,7 +42,7 @@ const SCRIPTED_RESPONSES = [
   },
   {
     match: ["pas 2035", "retrofit", "social housing", "shdf", "eco4", "trustmark"],
-    reply: "Retrofit evidence sits against the property and the job \u2014 RAMS packs, toolbox talk attendance, competence evidence and permit hand-backs all attach to the work they were raised for. When a funder or registered provider asks for a property file, it is already assembled.",
+    reply: "Retrofit evidence sits against the site and the job \u2014 RAMS packs, toolbox talk attendance, competence evidence and permit hand-backs all attach to the work they were raised for, so it can be pulled together when a funder or registered provider asks for it.",
   },
 ];
 
@@ -92,7 +92,7 @@ export default function MeetLucySection() {
 
       <div className="relative max-w-5xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-14">
-          <span className="text-xs font-bold text-teal-300 uppercase tracking-widest mb-4 block">The Face of Apex Clarity</span>
+          <span className="text-xs font-bold text-teal-300 uppercase tracking-widest mb-4 block">The Face of Kenvio</span>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Meet Lucy</h2>
           <span className="inline-flex items-center gap-1.5 text-xs text-white/70 bg-white/8 border border-white/15 rounded-full px-3 py-1.5">
             <Sparkles className="w-3 h-3 text-teal-300" /> Preview conversation — illustrative, not live AI

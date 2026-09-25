@@ -22,7 +22,7 @@ export const INDUSTRIES = [
       "Multiple trades across one property, one file",
     ],
     evidence: [
-      "RAMS packs held per property and job",
+      "RAMS packs held per site and job",
       "Toolbox talk attendance per delivery session",
       "Competence evidence by role and licence",
       "Permit hand-back with completion state recorded",
@@ -125,7 +125,7 @@ export const INDUSTRIES = [
       "Issued RAMS with full approval history",
       "Competence evidence gaps surfaced early",
       "Toolbox talk records per session",
-      "Audit-readiness overview maintained continuously",
+      "Governance overview of what is outstanding",
     ],
     accent: "from-blue-500 to-indigo-500",
   },

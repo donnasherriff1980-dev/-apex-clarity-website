@@ -6,13 +6,8 @@ import { Mail, MapPin, ArrowRight, Loader2 } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { submitLead } from "@/lib/leads";
 import { SOLUTIONS } from "@/lib/solutions";
-import { SERVICES } from "@/lib/consultancy";
 
 const platformModules = SOLUTIONS.map((s) => ({ label: s.title, path: `/solutions/${s.slug}` }));
-
-// Individual H&S support service pages are not built, so these point at the
-// H&S Support landing page rather than at routes that do not exist yet.
-const hsSupport = SERVICES.map((s) => ({ label: s.title, path: "/hs-support" }));
 
 // /resources omitted while it has no published articles (see Navbar).
 const company = [
@@ -20,7 +15,7 @@ const company = [
   { label: "Our Vision", path: "/vision" },
   { label: "Platform", path: "/platform" },
   { label: "Pricing", path: "/pricing" },
-  { label: "H&S Support", path: "/hs-support" },
+  { label: "H&S Support (optional)", path: "/hs-support" },
   { label: "How It Works", path: "/case-studies" },
   { label: "Contact", path: "/contact" },
   { label: "Privacy Policy", path: "/privacy" },
@@ -70,8 +65,8 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="max-w-md">
-              <h3 className="text-2xl font-bold mb-2">Stay Ahead of the Curve</h3>
-              <p className="text-ink-secondary text-sm">Get operational insights, platform updates and industry guides.</p>
+              <h3 className="text-2xl font-bold mb-2">Kenvio Updates</h3>
+              <p className="text-ink-secondary text-sm">Occasional product updates from Kenvio.</p>
             </div>
             <div className="w-full md:w-auto">
               <form onSubmit={handleSubscribe} className="flex flex-col gap-2 w-full md:w-auto">
@@ -106,17 +101,18 @@ export default function Footer() {
 
       {/* Main */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
             <div className="mb-6">
-              <span className="text-teal font-black tracking-widest text-sm leading-none block">APEX CLARITY</span>
+              <span className="text-teal font-black tracking-widest text-sm leading-none block">KENVIO</span>
               <span className="text-ink-secondary text-xs mt-0.5 block">Operational control. Proven compliance.</span>
             </div>
             <p className="text-ink-secondary text-sm leading-relaxed mb-6">
-              Operational control and compliance software for UK contractors — projects, jobs and actions, H&amp;S governance, documents and evidence, with a full audit trail. Optional H&amp;S support available alongside it.
+              Operational control and compliance software for UK contractors — projects, jobs and actions, H&amp;S governance, documents and evidence on one controlled lifecycle. Additional H&amp;S support available separately where required.
             </p>
             <div className="space-y-3 text-sm">
+              {/* EMAIL — HOLD: old address kept until the Kenvio mailbox is confirmed active. */}
               <a href="mailto:info@apexclarity.co.uk" className="flex items-center gap-2 text-ink-secondary hover:text-teal transition-colors">
                 <Mail className="w-4 h-4" /> info@apexclarity.co.uk
               </a>
@@ -131,18 +127,6 @@ export default function Footer() {
             <h4 className="text-teal font-semibold text-xs uppercase tracking-widest mb-6">Platform</h4>
             <ul className="space-y-3">
               {platformModules.map((s) => (
-                <li key={s.label}>
-                  <Link to={s.path} className="text-sm text-ink-secondary hover:text-ink transition-colors">{s.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* H&S Support */}
-          <div>
-            <h4 className="text-teal font-semibold text-xs uppercase tracking-widest mb-6">H&amp;S Support</h4>
-            <ul className="space-y-3">
-              {hsSupport.map((s) => (
                 <li key={s.label}>
                   <Link to={s.path} className="text-sm text-ink-secondary hover:text-ink transition-colors">{s.label}</Link>
                 </li>
@@ -181,6 +165,8 @@ export default function Footer() {
       <div className="border-t border-hairline/8">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left">
+            {/* LEGAL ENTITY — HOLD: "Apex Clarity Ltd" stays until the registered
+                company name and number are confirmed. Do not substitute a guess. */}
             <p className="text-sm text-ink-secondary/70">© 2026 Apex Clarity Ltd. All rights reserved.</p>
           </div>
           <p className="text-sm text-ink-secondary/70">Prove your compliance. Protect your contracts.</p>

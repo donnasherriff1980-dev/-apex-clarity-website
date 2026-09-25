@@ -13,7 +13,7 @@ export default function Solutions() {
     <>
       <SEO
         title="Solutions"
-        description="Risk assessments, RAMS, permits and control of work, toolbox talks, competence evidence, COSHH and emergency arrangements — the H&S governance modules Apex Clarity ships today."
+        description="Risk assessments, RAMS, permits and control of work, toolbox talks, competence evidence, COSHH and emergency arrangements — the operational control and H&S governance modules Kenvio ships today, for UK contractors."
         path="/solutions"
       />
       <section className="pt-32 pb-24 bg-brand-dark relative overflow-hidden">

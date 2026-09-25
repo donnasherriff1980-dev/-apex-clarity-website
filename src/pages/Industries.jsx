@@ -13,7 +13,7 @@ export default function Industries() {
     <>
       <SEO
         title="Industries We Serve"
-        description="Apex Clarity is built for UK social-housing retrofit contractors and M&E contractors, and for the principal contractors, FM providers, renewables installers and specialist subcontractors working alongside them."
+        description="Kenvio is built for UK social-housing retrofit contractors and M&E contractors, and for the principal contractors, FM providers, renewables installers and specialist subcontractors working alongside them."
         path="/industries"
       />
       <section className="pt-32 pb-24 bg-brand-dark relative overflow-hidden">
@@ -23,7 +23,7 @@ export default function Industries() {
             <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Industries</span>
             <h1 className="text-5xl md:text-6xl font-black text-white leading-tight mb-6">Built For Your Sector</h1>
             <p className="text-xl text-white/50 leading-relaxed">
-              We build for UK social-housing retrofit and M&amp;E contractors first. Everything below describes the evidence these regimes ask you to produce — Apex Clarity holds and governs that evidence, it does not certify compliance on your behalf.
+              We build for UK social-housing retrofit and M&amp;E contractors first. Everything below describes the evidence these regimes ask you to produce — Kenvio holds and governs that evidence, it does not certify compliance on your behalf.
             </p>
           </motion.div>
         </div>
@@ -57,7 +57,7 @@ export default function Industries() {
                       </div>
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold uppercase tracking-widest text-ink-secondary mb-4">What Apex Clarity Holds</h4>
+                      <h4 className="text-xs font-bold uppercase tracking-widest text-ink-secondary mb-4">What Kenvio Holds</h4>
                       <div className="space-y-2.5">
                         {ind.evidence.map(s => (
                           <div key={s} className="flex items-start gap-2 text-sm font-medium text-ink"><div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-2" />{s}</div>

@@ -37,7 +37,7 @@ export default function HeroSection() {
             <span className="text-xs font-bold text-teal-300 uppercase tracking-widest mb-4 block">Meet Lucy</span>
 
             <p className="text-white/70 text-base md:text-lg leading-relaxed mb-7 max-w-md border-l-2 border-teal-400/40 pl-4">
-              "Welcome to Apex Clarity. I'll help you keep work moving, identify what's missing and make sure nothing important gets overlooked."
+              "Welcome to Kenvio. I'll help your team get a first draft of risk assessments and method statements down faster — your competent person still reviews and approves."
             </p>
 
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.1] tracking-tight mb-6">
@@ -47,7 +47,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-lg text-white/55 leading-relaxed max-w-xl mb-10">
-              The operational control and compliance platform for UK contractors. Run projects, sites and jobs, drive the work through actions, and govern RAMS, risk assessments, permits, toolbox talks, competence and documents on one controlled lifecycle — with contractor compliance and a full audit trail behind every record.
+              The operational control and compliance platform for UK contractors. Run projects, sites and jobs, drive the work through actions, and govern RAMS, risk assessments, permits, toolbox talks, competence and documents on one controlled lifecycle — with a recorded review and approval history behind every governed record.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">

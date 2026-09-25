@@ -34,9 +34,9 @@ import {
  */
 
 export const POSITIONING = {
-  core: "Competent H&S support, alongside the platform — for the parts you cannot cover in-house.",
+  core: "Kenvio can provide additional H&S support where required.",
   supporting:
-    "Apex Clarity is the software your teams run the work on. H&S support is a separate, optional service for organisations that also want experienced health and safety people alongside it — scoped to what you actually need, not sold as a package you have to take.",
+    "Kenvio is the software your teams run the work on. Kenvio can also provide additional H&S support where required — separately scoped, separately quoted, and not included in the software subscription.",
 };
 
 export const PROBLEMS = [
@@ -52,9 +52,9 @@ export const SERVICES = [
   {
     slug: "outsourced-hs",
     icon: ShieldCheck,
-    title: "Outsourced Health & Safety Support",
+    title: "Retained H&S Support",
     summary:
-      "Practical retained H&S support for SMEs without a full-time internal H&S manager — someone to call, and someone keeping things moving between calls.",
+      "Practical H&S support for SMEs without a full-time internal H&S manager — someone to call, within a written scope agreed in advance.",
     delivery: "consultancy",
   },
   {
@@ -108,16 +108,16 @@ export const SERVICES = [
   {
     slug: "managed-compliance",
     icon: Repeat,
-    title: "Managed Compliance",
+    title: "Ongoing Scoped Support",
     summary:
-      "Ongoing monthly support combining document review, action tracking, compliance oversight, reporting and scheduled management meetings.",
+      "Regular support agreed in writing — document review, action follow-up and scheduled review meetings — quoted against the scope you choose.",
     delivery: "hybrid",
   },
 ];
 
 export const DELIVERY_LABELS = {
-  consultancy: "Delivered by our consultants",
-  hybrid: "Our consultants, recorded in Apex Clarity",
+  consultancy: "Delivered as H&S support",
+  hybrid: "H&S support, recorded in Kenvio",
 };
 
 /**
@@ -144,7 +144,7 @@ export const CONSULTANCY_DELIVERED = [
   "Policy and management-system authoring",
   "Contractor onboarding, chasing and verification",
   "Training matrices and programme management",
-  "Monthly management reporting, compiled by your consultant from your Apex records",
+  "Management reporting, compiled from your Kenvio records",
   "Advisory calls and management meetings",
 ];
 
@@ -180,7 +180,7 @@ export const ROADMAP = [
  * lacks.
  */
 export const FUTURE_CAPABILITY_NOTE =
-  "Where a workflow is not yet automated within Apex Clarity, our consultants manage the agreed process with you and maintain the compliance evidence that comes out of it. As the platform develops, more of these administrative workflows move into Apex — and your records come with them.";
+  "Where a workflow is not yet automated within Kenvio, H&S support can manage the agreed process with you and maintain the evidence that comes out of it, within the scope you agree. As the platform develops, more of these administrative workflows move into Kenvio — and your records come with them.";
 
 export const SECTORS = [
   "Construction & trades",
@@ -200,7 +200,7 @@ export const WHY_APEX = [
   {
     title: "The work lands in your platform, not our filing system",
     detail:
-      "Support is delivered into your own Apex Clarity tenant, so the RAMS, permits, competence records and evidence stay yours. The software subscription and the support engagement are priced separately — if you stop the support, you keep the records and the platform.",
+      "Support is delivered into your own Kenvio account, so the RAMS, permits, competence records and evidence stay yours. The software subscription and the support engagement are priced separately — if you stop the support, you keep the records and the platform.",
   },
   {
     title: "We tell you what we are not",
@@ -240,7 +240,7 @@ export const ENGAGEMENT_MODEL = [
   {
     title: "4. Delivered into your platform",
     detail:
-      "The documents, records and evidence that come out of the engagement live in your own Apex Clarity tenant from day one.",
+      "The documents, records and evidence that come out of the engagement live in your own Kenvio account from day one.",
   },
 ];
 
@@ -248,7 +248,7 @@ export const SUPPORT_NOTES = [
   "Health & Safety support and consultancy services are not included in the software subscription. They are quoted separately.",
   "Support is scoped to your operation after a discovery conversation. We do not publish fixed consultancy prices, because the honest answer depends on what you actually need.",
   "We do not offer unlimited consultancy, unlimited support calls or unlimited documents. Defined scope is how we keep the service deliverable and the price honest.",
-  "Site visits are as agreed in your scope and within our stated travel zone. Visits outside that zone, or beyond the agreed scope, are charged separately.",
+  "Site visits are subject to location and are quoted as part of your agreed scope. Visits beyond that scope are quoted separately before they take place.",
   "Nothing in a support engagement transfers legal responsibility for health and safety, which remains with the duty holder.",
 ];
 
@@ -269,4 +269,4 @@ export const SPECIALIST_EXCLUSIONS = [
 ];
 
 export const COMPETENCE_STATEMENT =
-  "Apex Clarity provides health, safety and compliance support within the competence of our team. We do not provide specialist advice outside that competence: where work requires it, we will tell you and either bring in or refer you to an appropriately competent specialist. We support you to meet your legal duties — we do not assume them. Under the Health and Safety at Work etc. Act 1974 the duty holder remains responsible for health and safety in their business, and nothing we provide transfers that responsibility.";
+  "Kenvio provides health, safety and compliance support within the competence of the people delivering it. We do not provide specialist advice outside that competence: where work requires it, we will tell you and either bring in or refer you to an appropriately competent specialist. We support you to meet your legal duties — we do not assume them. Under the Health and Safety at Work etc. Act 1974 the duty holder remains responsible for health and safety in their business, and nothing we provide transfers that responsibility.";

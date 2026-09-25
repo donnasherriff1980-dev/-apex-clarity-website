@@ -53,7 +53,7 @@ export default function ProblemSection() {
         >
           <div className="w-px h-12 bg-gradient-to-b from-transparent via-teal/50 to-teal mx-auto mb-6" />
           <p className="text-2xl md:text-3xl font-bold text-ink leading-snug">
-            Apex Clarity makes the evidence<br className="hidden md:block" /> a by-product of the work.
+            Kenvio makes the evidence<br className="hidden md:block" /> a by-product of the work.
           </p>
         </motion.div>
       </div>

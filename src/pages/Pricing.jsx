@@ -22,7 +22,7 @@ export default function Pricing() {
     <>
       <SEO
         title="Pricing"
-        description="Apex Clarity software pricing — operational control and compliance software for UK contractors. Core £299, Growth £599, Business £999 per month + VAT, and Enterprise on request."
+        description="Kenvio software pricing — operational control and compliance software for UK contractors. Core £299, Growth £599, Business £999 per month + VAT, and Enterprise — talk to us."
         path="/pricing"
       />
 
@@ -78,7 +78,7 @@ export default function Pricing() {
                 }`}
               >
                 {t.featured && (
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-teal mb-3">Most popular</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-teal mb-3">{t.featuredLabel}</span>
                 )}
                 <h3 className="text-white font-bold text-lg mb-1">{t.name}</h3>
                 <p className="text-white/40 text-xs mb-4">{t.fits}</p>

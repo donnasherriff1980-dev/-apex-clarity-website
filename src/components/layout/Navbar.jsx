@@ -76,7 +76,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-18 py-3">
           {/* Logo */}
           <Link to="/" className="flex flex-col items-start">
-            <span className="text-teal font-black tracking-widest text-sm leading-none">APEX CLARITY</span>
+            <span className="text-teal font-black tracking-widest text-sm leading-none">KENVIO</span>
             <span className={`text-xs mt-0.5 ${fgMuted}`}>Operational control. Proven compliance.</span>
           </Link>
 
@@ -203,9 +203,6 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <Link to="/platform-tour" className="block px-4 py-3 text-sm text-ink/70 hover:text-ink rounded-xl hover:bg-hairline/5">
-                Platform Tour
-              </Link>
               <Link to="/contact" className="block px-4 py-3 text-sm text-ink/70 hover:text-ink rounded-xl hover:bg-hairline/5">
                 Contact
               </Link>

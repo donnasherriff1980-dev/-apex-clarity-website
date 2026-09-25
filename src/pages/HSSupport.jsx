@@ -24,8 +24,8 @@ export default function HSSupport() {
   return (
     <>
       <SEO
-        title="H&S Support"
-        description="Optional health, safety and compliance support alongside the Apex Clarity platform — for UK construction, trades, property maintenance, retrofit, renewables, M&E and facilities businesses. Scoped and quoted, never sold as an off-the-shelf package."
+        title="Optional H&S Support"
+        description="Kenvio can provide additional H&S support where required — separately scoped, separately quoted and not included in the software subscription. Site visits subject to location and quote."
         path="/hs-support"
       />
 
@@ -36,8 +36,8 @@ export default function HSSupport() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
             <SectionLabel>H&amp;S Support — Optional</SectionLabel>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-6">
-              Competent H&amp;S support,{" "}
-              <span className="gradient-text-brand">alongside the platform.</span>
+              Additional H&amp;S support,{" "}
+              <span className="gradient-text-brand">where you need it.</span>
             </h1>
             <p className="text-lg md:text-xl text-white/55 leading-relaxed mb-10 max-w-2xl">
               {POSITIONING.supporting}
@@ -62,13 +62,14 @@ export default function HSSupport() {
       <section className="py-20 bg-surface">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <p className="text-2xl md:text-3xl font-bold text-ink leading-snug">
-            Apex Clarity is a compliance and operations platform first. H&amp;S support is something you can add — not
+            Kenvio is a compliance and operations platform first. H&amp;S support is something you can add — not
             something you have to buy.
           </p>
           <p className="text-ink-secondary mt-6 max-w-2xl mx-auto leading-relaxed">
-            <span className="font-semibold text-ink">{SUBSCRIPTION_EXCLUSION_STATEMENT}</span> Plenty of our customers
-            run the platform entirely with their own people. Where there is a genuine gap in competence or capacity, our
-            consultants can cover the parts you agree with us — and the records land in your own platform either way.
+            <span className="font-semibold text-ink">{SUBSCRIPTION_EXCLUSION_STATEMENT}</span> You can run the
+            platform entirely with your own people. Where there is a genuine gap in competence or capacity, Kenvio can
+            provide additional H&amp;S support for the parts you agree — separately scoped and separately quoted — and
+            the records land in your own platform either way.
           </p>
           <div className="mt-8">
             <Link to="/pricing" className="inline-flex items-center gap-2 text-teal font-semibold text-sm hover:gap-3 transition-all">
@@ -235,7 +236,7 @@ export default function HSSupport() {
             <LucyOrb size={44} className="shrink-0" />
             <p className="text-sm text-ink-secondary leading-relaxed">
               <span className="font-semibold text-ink">A note on Lucy.</span> Lucy is the governed AI assistant built
-              into Apex Clarity. She helps your people — and ours — get a first draft of a risk assessment or method
+              into Kenvio. She helps your people get a first draft of a risk assessment or method
               statement down faster. She does not give health and safety advice, she does not approve anything, and she
               does not act as your competent person. A competent person does.
             </p>
@@ -246,11 +247,11 @@ export default function HSSupport() {
       {/* 7. Industries served */}
       <section className="py-24 bg-canvas">
         <div className="max-w-5xl mx-auto px-6 lg:px-8 text-center">
-          <SectionLabel>Who We Work With</SectionLabel>
+          <SectionLabel>Who It Is For</SectionLabel>
           <h2 className="text-3xl md:text-4xl font-black text-ink mb-4">Built around your sector</h2>
           <p className="text-ink-secondary max-w-2xl mx-auto mb-12">
-            We work with contractor-heavy SMEs that need competent H&amp;S support but do not justify a full internal
-            department. We are not generalist consultants for every industry.
+            H&amp;S support is aimed at contractor-heavy SMEs that need competent help but do not justify a full
+            internal department. It is not a generalist service for every industry.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             {SECTORS.map((s) => (
@@ -271,8 +272,8 @@ export default function HSSupport() {
       <section className="py-24 bg-surface">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-14">
-            <SectionLabel>Why Apex</SectionLabel>
-            <h2 className="text-4xl font-black text-ink">Why contractors choose us</h2>
+            <SectionLabel>Why Kenvio</SectionLabel>
+            <h2 className="text-4xl font-black text-ink">Why work with Kenvio</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {WHY_APEX.map((w, i) => (

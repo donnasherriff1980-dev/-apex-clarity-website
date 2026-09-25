@@ -2,14 +2,15 @@ import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
 import { BrowserRouter as Router, Route, Routes, Navigate, useParams } from 'react-router-dom';
-import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import { ThemeProvider } from '@/lib/ThemeContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
-// Auth pages
+// Auth pages. /login, /forgot-password and /reset-password stay routed: the
+// Base44 SDK's redirectToLogin() and its password-reset emails target them on
+// this domain. They are unlinked from the marketing site and disallowed in
+// robots.txt. Public self-registration (/register) is not offered.
 import Login from '@/pages/Login';
-import Register from '@/pages/Register';
 import ForgotPassword from '@/pages/ForgotPassword';
 import ResetPassword from '@/pages/ResetPassword';
 
@@ -22,18 +23,17 @@ import About from '@/pages/About';
 import Industries from '@/pages/Industries';
 import Resources from '@/pages/Resources';
 import Contact from '@/pages/Contact';
-import HealthCheck from '@/pages/HealthCheck';
 import Privacy from '@/pages/Privacy';
 import Terms from '@/pages/Terms';
 import CaseStudies from '@/pages/CaseStudies';
 import Platform from '@/pages/Platform';
-import PlatformTour from '@/pages/PlatformTour';
 import Services from '@/pages/Services';
 import ServiceDetail from '@/pages/ServiceDetail';
 import CookiePolicy from '@/pages/CookiePolicy';
 import Vision from '@/pages/Vision';
 import HSSupport from '@/pages/HSSupport';
 import Pricing from '@/pages/Pricing';
+import NotFound from '@/pages/NotFound';
 
 const ServiceRedirect = () => {
   const { slug } = useParams();
@@ -59,7 +59,6 @@ const AuthenticatedApp = () => {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
 
@@ -70,24 +69,25 @@ const AuthenticatedApp = () => {
         <Route path="/hs-support" element={<HSSupport />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/platform" element={<Platform />} />
-        <Route path="/platform-tour" element={<PlatformTour />} />
         <Route path="/solutions" element={<Services />} />
         <Route path="/solutions/:slug" element={<ServiceDetail />} />
         <Route path="/industries" element={<Industries />} />
         <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/health-check" element={<HealthCheck />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         {/* Legacy URLs — redirect to the canonical paths */}
         <Route path="/consultancy" element={<Navigate to="/hs-support" replace />} />
         <Route path="/services" element={<Navigate to="/solutions" replace />} />
         <Route path="/services/:slug" element={<ServiceRedirect />} />
+        {/* Retired for launch — kept as redirects so existing links still land. */}
+        <Route path="/platform-tour" element={<Navigate to="/contact?type=demo" replace />} />
+        <Route path="/health-check" element={<Navigate to="/contact?type=demo" replace />} />
+        <Route path="/register" element={<Navigate to="/contact?type=demo" replace />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
-
-      <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 };

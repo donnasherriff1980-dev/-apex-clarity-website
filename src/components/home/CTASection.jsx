@@ -23,7 +23,7 @@ export default function CTASection() {
             See it for yourself.
           </h2>
           <p className="text-lg text-ink-secondary mb-10 max-w-xl mx-auto">
-            A 30-minute conversation about your operations, your compliance position, and where Apex Clarity fits.
+            A 30-minute conversation about your operations, your compliance position, and where Kenvio fits.
           </p>
 
           <Link to="/contact?type=demo">

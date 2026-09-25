@@ -116,7 +116,7 @@ export default function Contact() {
     <>
       <SEO
         title="Book a Demo"
-        description="Book a demo of Apex Clarity — operational control and compliance software for UK contractors — or talk to us about optional H&S support alongside it."
+        description="Book a demo of Kenvio — operational control and compliance software for UK contractors — or talk to us about optional H&S support alongside it."
         path="/contact"
       />
       <section className="pt-32 pb-16 bg-brand-dark relative overflow-hidden">
@@ -232,7 +232,7 @@ export default function Contact() {
                   <div className="flex items-start gap-3">
                     <Checkbox id="gdpr-consent" checked={consent} onCheckedChange={(v) => setConsent(!!v)} className="mt-0.5" />
                     <label htmlFor="gdpr-consent" className="text-xs text-ink-secondary leading-relaxed cursor-pointer">
-                      I agree to Apex Clarity storing and processing my details in line with the{" "}
+                      I agree to Kenvio storing and processing my details in line with the{" "}
                       <Link to="/privacy" className="text-teal hover:underline">Privacy Policy</Link>, so we can respond to my enquiry. *
                     </label>
                   </div>
@@ -252,6 +252,7 @@ export default function Contact() {
               <div className="bg-brand-dark rounded-3xl p-8 text-white">
                 <h3 className="text-xl font-bold mb-6">Contact Details</h3>
                 <div className="space-y-5">
+                  {/* EMAIL — HOLD: old address kept until the Kenvio mailbox is confirmed active. */}
                   <a href="mailto:info@apexclarity.co.uk" className="flex items-center gap-3 text-white/50 hover:text-teal transition-colors text-sm"><Mail className="w-5 h-5 text-teal shrink-0" />info@apexclarity.co.uk</a>
                   <div className="flex items-center gap-3 text-white/50 text-sm"><MapPin className="w-5 h-5 text-teal shrink-0" />United Kingdom</div>
                 </div>
@@ -259,7 +260,7 @@ export default function Contact() {
               <div className="bg-surface-raised rounded-3xl p-8 border border-hairline/10">
                 <div className="flex items-center gap-3 mb-6"><Calendar className="w-5 h-5 text-teal" /><h3 className="font-bold text-ink">What To Expect</h3></div>
                 <div className="space-y-4">
-                  {["A reply within one working day", "A 30-minute conversation, no charge", "No obligation and no hard sell", "An honest view of what we would take on — and what we would not", "Clear scope and indicative cost before you commit"].map(item => (
+                  {["A reply within one working day", "A 30-minute walkthrough using a relevant contractor workflow", "A clear recommendation on the right tier", "No obligation and no hard sell"].map(item => (
                     <div key={item} className="flex items-start gap-3">
                       <CheckCircle className="w-4 h-4 text-teal shrink-0 mt-0.5" />
                       <span className="text-sm text-ink-secondary">{item}</span>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   LayoutGrid, ListChecks, ShieldCheck, FileCheck2,
-  GraduationCap, Users2, History, Sparkles, ArrowRight,
+  GraduationCap, Siren, History, Sparkles, ArrowRight,
 } from "lucide-react";
 
 /**
@@ -43,14 +43,14 @@ const CAPABILITIES = [
     detail: "Competence requirements and evidence records with expiry dates, so you know who is qualified to do what, today.",
   },
   {
-    icon: Users2,
-    title: "Contractor compliance",
-    detail: "Contractor and supply-chain records held in the same system as the work, rather than tracked from memory.",
+    icon: Siren,
+    title: "Emergency arrangements",
+    detail: "Muster, first aid, fire and rescue arrangements held on the same lifecycle, with review and test dates tracked.",
   },
   {
     icon: History,
-    title: "Audit trail and proof",
-    detail: "A full audit trail behind every governed record — issued versions are replaced, not quietly overwritten.",
+    title: "Approval history and proof",
+    detail: "Who drafted, reviewed and approved each governed record, and when — and issued versions are replaced, not quietly overwritten.",
   },
   {
     icon: Sparkles,
@@ -71,7 +71,7 @@ export default function OperationalControlSection() {
             One platform to control the work,<br className="hidden md:block" /> manage compliance and hold the evidence.
           </h2>
           <p className="text-lg text-ink-secondary max-w-2xl mx-auto">
-            Apex Clarity is the system your teams work in day to day — not a folder you fill in afterwards. The
+            Kenvio is the system your teams work in day to day — not a folder you fill in afterwards. The
             compliance record is produced by running the job, which is why it is there when someone asks for it.
           </p>
         </div>

@@ -264,7 +264,7 @@ export default function ProductJourney() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent to-teal/30" />
       <div className="relative max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-14">
-          <span className="text-xs font-bold text-teal uppercase tracking-widest mb-4 block">See Apex In Action</span>
+          <span className="text-xs font-bold text-teal uppercase tracking-widest mb-4 block">See Kenvio In Action</span>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">One retrofit job, from site to hand-back.</h2>
           <p className="text-lg text-white/50 max-w-2xl mx-auto">
             Follow the evidence trail the way a client audit would: the job, the risk assessment, the RAMS pack, the approval, the permit, the briefing, and what is left outstanding at the end.
