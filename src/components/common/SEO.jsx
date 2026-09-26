@@ -2,8 +2,7 @@ import { useEffect } from "react";
 
 const SITE_NAME = "Kenvio";
 const DEFAULT_TITLE = "Kenvio | Operational Control & Compliance Software for UK Contractors";
-// AWAITING KENVIO BRAND ASSETS: placeholder image, not the launch asset.
-const DEFAULT_IMAGE = "https://media.base44.com/images/public/6a24770b8156364d64a8152b/89ac9e742_Testerlogo.png";
+const DEFAULT_IMAGE = "https://kenvio.co.uk/brand/kenvio-share.png";
 const SITE_URL = "https://kenvio.co.uk";
 
 function setMeta(attr, key, content) {
