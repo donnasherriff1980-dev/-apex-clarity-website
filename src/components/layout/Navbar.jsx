@@ -77,7 +77,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex flex-col items-start">
             <span className="text-teal font-black tracking-widest text-sm leading-none">KENVIO</span>
-            <span className={`text-xs mt-0.5 ${fgMuted}`}>Operational control. Proven compliance.</span>
+            <span className={`text-xs mt-0.5 ${fgMuted}`}>Operational control. Evidence you can stand behind.</span>
           </Link>
 
           {/* Desktop nav */}

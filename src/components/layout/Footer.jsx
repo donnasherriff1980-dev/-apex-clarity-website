@@ -106,7 +106,7 @@ export default function Footer() {
           <div>
             <div className="mb-6">
               <span className="text-teal font-black tracking-widest text-sm leading-none block">KENVIO</span>
-              <span className="text-ink-secondary text-xs mt-0.5 block">Operational control. Proven compliance.</span>
+              <span className="text-ink-secondary text-xs mt-0.5 block">Operational control. Evidence you can stand behind.</span>
             </div>
             <p className="text-ink-secondary text-sm leading-relaxed mb-6">
               Operational control and compliance software for UK contractors — projects, jobs and actions, H&amp;S governance, documents and evidence on one controlled lifecycle. Additional H&amp;S support available separately where required.
@@ -169,7 +169,7 @@ export default function Footer() {
                 company name and number are confirmed. Do not substitute a guess. */}
             <p className="text-sm text-ink-secondary/70">© 2026 Apex Clarity Ltd. All rights reserved.</p>
           </div>
-          <p className="text-sm text-ink-secondary/70">Prove your compliance. Protect your contracts.</p>
+          <p className="text-sm text-ink-secondary/70">Control the work. Keep the evidence.</p>
         </div>
       </div>
     </footer>

@@ -10,5 +10,9 @@ export const base44 = createClient({
   functionsVersion,
   serverUrl: '',
   requiresAuth: false,
-  appBaseUrl
+  appBaseUrl,
+  // Analytics is off for launch: the cookie banner, Cookie Policy and Privacy
+  // Policy all state that no analytics tracking runs. Re-enabling it needs
+  // consent handling and updated policy wording first.
+  analytics: { enabled: false }
 });
