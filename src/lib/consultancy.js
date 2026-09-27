@@ -195,7 +195,7 @@ export const WHY_APEX = [
   {
     title: "Sector-specific, not generalist",
     detail:
-      "Construction, trades, property maintenance, retrofit, renewables, M&E and facilities — support from people who know the work, not a generalist service learning your industry on your time.",
+      "Construction, trades, property maintenance, retrofit, renewables, M&E and facilities — support shaped around contractor-heavy sectors and the realities of the work, not a generalist service learning your industry on your time.",
   },
   {
     title: "The work lands in your platform, not our filing system",

@@ -66,8 +66,8 @@ export default function HSSupport() {
             people. Hands-on H&amp;S support is optional — something you can add, never something you have to buy.
           </p>
           <p className="text-ink-secondary mt-6 max-w-2xl mx-auto leading-relaxed">
-            <span className="font-semibold text-ink">{SUBSCRIPTION_EXCLUSION_STATEMENT}</span> Most customers run
-            Kenvio entirely with their own competent people. Where there is a genuine gap in competence or capacity,
+            <span className="font-semibold text-ink">{SUBSCRIPTION_EXCLUSION_STATEMENT}</span> Kenvio can be run
+            entirely with your own competent people. Where there is a genuine gap in competence or capacity,
             Kenvio can provide support for the parts you agree — separately scoped, separately quoted, and never
             bundled as unlimited consultancy into the subscription — and the records land in your own platform either way.
           </p>
