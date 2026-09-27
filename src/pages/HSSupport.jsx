@@ -36,8 +36,8 @@ export default function HSSupport() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
             <SectionLabel>H&amp;S Support — Optional</SectionLabel>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-6">
-              Additional H&amp;S support,{" "}
-              <span className="gradient-text-brand">where you need it.</span>
+              Hands-on H&amp;S support,{" "}
+              <span className="gradient-text-brand">only where you need it.</span>
             </h1>
             <p className="text-lg md:text-xl text-white/55 leading-relaxed mb-10 max-w-2xl">
               {POSITIONING.supporting}
@@ -62,14 +62,14 @@ export default function HSSupport() {
       <section className="py-20 bg-surface">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <p className="text-2xl md:text-3xl font-bold text-ink leading-snug">
-            Kenvio is a compliance and operations platform first. H&amp;S support is something you can add — not
-            something you have to buy.
+            The software subscription comes first. Use Kenvio to run and evidence the work with your own competent
+            people. Hands-on H&amp;S support is optional — something you can add, never something you have to buy.
           </p>
           <p className="text-ink-secondary mt-6 max-w-2xl mx-auto leading-relaxed">
-            <span className="font-semibold text-ink">{SUBSCRIPTION_EXCLUSION_STATEMENT}</span> You can run the
-            platform entirely with your own people. Where there is a genuine gap in competence or capacity, Kenvio can
-            provide additional H&amp;S support for the parts you agree — separately scoped and separately quoted — and
-            the records land in your own platform either way.
+            <span className="font-semibold text-ink">{SUBSCRIPTION_EXCLUSION_STATEMENT}</span> Most customers run
+            Kenvio entirely with their own competent people. Where there is a genuine gap in competence or capacity,
+            Kenvio can provide support for the parts you agree — separately scoped, separately quoted, and never
+            bundled as unlimited consultancy into the subscription — and the records land in your own platform either way.
           </p>
           <div className="mt-8">
             <Link to="/pricing" className="inline-flex items-center gap-2 text-teal font-semibold text-sm hover:gap-3 transition-all">
@@ -108,7 +108,7 @@ export default function HSSupport() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-14">
             <SectionLabel>What We Can Cover</SectionLabel>
-            <h2 className="text-4xl md:text-5xl font-black text-ink mb-4">H&amp;S Support Services</h2>
+            <h2 className="text-4xl md:text-5xl font-black text-ink mb-4">What can be provided</h2>
             <p className="text-lg text-ink-secondary max-w-2xl mx-auto">
               Take the parts you cannot cover in-house. Nothing here is bundled into the software subscription — each is
               scoped and quoted separately.
@@ -164,7 +164,7 @@ export default function HSSupport() {
 
           <div className="mt-10 bg-white/[0.03] border border-white/8 rounded-2xl p-6 max-w-4xl mx-auto">
             <div className="flex items-center gap-2 mb-4">
-              <Info className="w-4 h-4 text-teal-300" />
+              <Info className="w-4 h-4 text-teal" />
               <h3 className="text-white font-bold text-sm">What to expect on scope and price</h3>
             </div>
             <ul className="space-y-2.5">
@@ -293,7 +293,7 @@ export default function HSSupport() {
       {/* 9. Consultation CTA */}
       <section className="py-28 bg-canvas relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-teal-500/10 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-teal/10 rounded-full blur-[100px]" />
         <div className="relative max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-black text-ink mb-6">Start with a conversation.</h2>
           <p className="text-lg text-ink-secondary mb-10 max-w-xl mx-auto">

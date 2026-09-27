@@ -44,7 +44,7 @@ export default function CaseStudies() {
     <>
       <SEO
         title="How Implementation Works"
-        description="What implementing Kenvio involves for a UK social-housing retrofit or M&E contractor — mapping how you evidence work today, configuring your libraries and templates, and running one live job end to end."
+        description="What implementing Kenvio involves for a UK contractor — mapping how you run and evidence work today, configuring your libraries and templates, and running one live job end to end."
         path="/case-studies"
       />
       <section className="pt-32 pb-24 bg-brand-dark relative overflow-hidden">

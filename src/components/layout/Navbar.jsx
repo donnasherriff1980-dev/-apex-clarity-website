@@ -8,22 +8,21 @@ import { useHeaderSurface } from "@/lib/HeaderSurfaceContext";
 import { useTheme } from "@/lib/ThemeContext";
 import { SOLUTIONS } from "@/lib/solutions";
 
-// Compact Solutions menu: seven headline modules with a one-line descriptor
-// each. Projects and Audit Readiness stay on /solutions (reached via "View all").
-// "Risk Assessments & RAMS" lands on the risk-assessments page, which is the
-// entry point to both assessments and the RAMS packs built from them.
+// Compact Solutions menu, ordered platform-first: the operational areas lead
+// and the two H&S entries close the list. Everything else is under "View all".
 const SOLUTION_MENU = [
-  { slug: "health-safety", label: "Health & Safety Governance", desc: "Control centre and governance overview" },
-  { slug: "risk-assessments", label: "Risk Assessments & RAMS", desc: "Assessments, COSHH and RAMS packs" },
-  { slug: "permits", label: "Permits & Control of Work", desc: "Issue, extend, hand back" },
-  { slug: "toolbox-talks", label: "Toolbox Talks & Briefings", desc: "Sessions and attendance" },
-  { slug: "competence", label: "Workforce Competence", desc: "Evidence by role" },
-  { slug: "documents", label: "Document Control & Evidence", desc: "Controlled documents, bulk import" },
-  { slug: "emergency-arrangements", label: "Emergency Arrangements", desc: "Muster, first aid, fire, rescue" },
+  { key: "projects", slug: "projects", label: "Projects, Sites & Jobs", desc: "The structure every record attaches to" },
+  { key: "actions", slug: "projects", label: "Work & Actions", desc: "Owners, due dates, what is outstanding" },
+  { key: "competence", slug: "competence", label: "Workforce & Competence", desc: "Expected evidence by role" },
+  { key: "documents", slug: "documents", label: "Documents & Evidence", desc: "Controlled documents, bulk import" },
+  { key: "audits", slug: "audits", label: "Approvals & Governance", desc: "Recorded decisions, one outstanding view" },
+  { key: "permits", slug: "permits", label: "Permits & Control of Work", desc: "Issue, extend, hand back" },
+  { key: "health-safety", slug: "health-safety", label: "Health & Safety Controls", desc: "RAMS, COSHH, talks, emergency arrangements" },
+  { key: "risk-assessments", slug: "risk-assessments", label: "Risk Assessments & RAMS", desc: "Assessments and RAMS packs" },
 ];
 const platformModules = SOLUTION_MENU
   .filter((m) => SOLUTIONS.some((s) => s.slug === m.slug))
-  .map((m) => ({ label: m.label, path: `/solutions/${m.slug}`, desc: m.desc }));
+  .map((m) => ({ key: m.key, label: m.label, path: `/solutions/${m.slug}`, desc: m.desc }));
 
 // Software-first IA. Apex Clarity is sold primarily as an operational control
 // and compliance platform, so Platform, Solutions, Industries and Pricing lead.
@@ -132,7 +131,7 @@ export default function Navbar() {
                         <div className="p-2 grid grid-cols-2 gap-x-1 gap-y-0.5">
                           {platformModules.map((sol) => (
                             <Link
-                              key={sol.path}
+                              key={sol.key}
                               to={sol.path}
                               className="flex flex-col px-3 py-2 rounded-lg hover:bg-[#1E2A3A]/[0.05] transition-colors group"
                             >
@@ -213,7 +212,7 @@ export default function Navbar() {
             <div className="px-4 py-6 space-y-1">
               <p className="px-4 pt-1 pb-2 text-[10px] font-bold uppercase tracking-widest text-ink-secondary">Solutions</p>
               {platformModules.map((sol) => (
-                <Link key={sol.path} to={sol.path} className="block px-4 py-2.5 text-sm text-ink/70 hover:text-ink rounded-xl hover:bg-hairline/5">
+                <Link key={sol.key} to={sol.path} className="block px-4 py-2.5 text-sm text-ink/70 hover:text-ink rounded-xl hover:bg-hairline/5">
                   {sol.label}
                 </Link>
               ))}

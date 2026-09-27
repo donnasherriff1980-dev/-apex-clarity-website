@@ -41,7 +41,7 @@ export default function ServiceDetail() {
             <h1 className="text-4xl md:text-5xl font-black text-white mb-4">{sol.title}</h1>
             <p className="text-xl text-white/50">{sol.summary}</p>
             {sol.lucy && (
-              <span className="inline-flex items-center gap-1.5 text-xs text-teal-200 bg-teal-400/10 border border-teal-300/20 rounded-full px-3 py-1.5 mt-6">
+              <span className="inline-flex items-center gap-1.5 text-xs text-teal bg-teal/10 border border-teal/20 rounded-full px-3 py-1.5 mt-6">
                 <Sparkles className="w-3 h-3" /> Lucy provides drafting assistance on this module
               </span>
             )}

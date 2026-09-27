@@ -27,9 +27,9 @@
  */
 
 export const PRICING_POSITIONING = {
-  core: "One platform for your operations, your compliance and your evidence.",
+  core: "One platform to run the work and keep the evidence.",
   supporting:
-    "Kenvio is the system your teams work in day to day — projects, sites and jobs, actions, H&S governance, documents and approvals, and competence evidence — with a recorded review and approval history behind every governed record. Priced as software, per organisation, per month.",
+    "Kenvio is the system your teams work in day to day — projects, sites and jobs, actions, people and competence, documents and approvals, permits and H&S controls — with the review and approval history recorded as you go. Priced as software, per organisation, per month.",
 };
 
 /**
@@ -49,7 +49,7 @@ export const TIERS = [
     bestFor: [
       "Running a single operation or a small number of live projects",
       "Replacing spreadsheets, shared drives and paper files",
-      "Getting RAMS, permits, toolbox talks and competence onto one controlled lifecycle",
+      "Getting jobs, actions, documents and controls onto one controlled lifecycle",
       "Being able to answer a client evidence request the same day",
     ],
     cta: "Book a Demo",
@@ -81,7 +81,7 @@ export const TIERS = [
     vat: "+ VAT",
     fits: "Established contractors",
     summary:
-      "For established contractors with a formal H&S function, contractor supply chains and regular external scrutiny.",
+      "For established contractors with several teams, a supply chain to manage and regular external scrutiny.",
     bestFor: [
       "A wider operation with its own H&S and compliance ownership",
       "Formal review and approval across several teams",
@@ -117,16 +117,13 @@ export const TIERS = [
 export const SUBSCRIPTION_INCLUDES = [
   "Organisations, sites, projects and jobs",
   "Actions and work management, with owners and due dates",
-  "Risk assessments — general and COSHH, from a reusable hazard library",
-  "Method statements and combined RAMS packs",
-  "Permits and permit templates, including hand-back with completion state",
-  "Toolbox talks, delivery sessions and attendance records",
   "Competence requirements and evidence records with expiry dates",
-  "Emergency arrangements with review and test dates",
   "Document control with expiry dates and bulk import",
   "An approvals queue with recorded decision reasons",
   "A governance overview of everything outstanding",
   "A recorded review and approval history on governed records",
+  "Permits and permit templates, including hand-back with completion state",
+  "Health & Safety controls: risk assessments and COSHH from a reusable hazard library, method statements and RAMS packs, toolbox talks and attendance, emergency arrangements with review and test dates",
   "Lucy, the governed AI assistant built into the platform",
 ];
 

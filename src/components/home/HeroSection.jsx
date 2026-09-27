@@ -34,32 +34,28 @@ export default function HeroSection() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
             className="order-1 lg:order-1"
           >
-            <span className="text-xs font-bold text-teal-300 uppercase tracking-widest mb-4 block">Meet Lucy</span>
-
-            <p className="text-white/70 text-base md:text-lg leading-relaxed mb-7 max-w-md border-l-2 border-teal-400/40 pl-4">
-              "Welcome to Kenvio. I'll help your team get a first draft of risk assessments and method statements down faster — your competent person still reviews and approves."
-            </p>
+            <span className="text-xs font-bold text-teal uppercase tracking-widest mb-4 block">The Operational Control Platform</span>
 
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.1] tracking-tight mb-6">
-              Prove your <span className="gradient-text-brand">compliance.</span>
+              Control the work.
               <br />
-              Protect your contracts.
+              <span className="gradient-text-brand">Keep the evidence.</span>
             </h1>
 
             <p className="text-lg text-white/55 leading-relaxed max-w-xl mb-10">
-              The operational control and compliance platform for UK contractors. Run projects, sites and jobs, drive the work through actions, and govern RAMS, risk assessments, permits, toolbox talks, competence and documents on one controlled lifecycle — with a recorded review and approval history behind every governed record.
+              Kenvio is the operational control platform for UK contractors. Run projects, sites and jobs, drive the work through actions, keep people, documents and approvals connected — and hold your H&amp;S controls in the same system, with the review and approval history recorded as you go.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact?type=demo">
+              <Link to="/platform#see-kenvio-working">
                 <Button size="lg" className="bg-teal text-canvas hover:bg-teal/90 font-bold h-14 px-8 text-base rounded-2xl focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-canvas w-full sm:w-auto">
-                  Book a Demo
+                  See Kenvio working
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
-              <Link to="/platform">
+              <Link to="/contact?type=demo">
                 <Button size="lg" variant="outline" className="border-hairline/15 text-white hover:bg-hairline/8 h-14 px-8 text-base rounded-2xl w-full sm:w-auto">
-                  Explore the Platform
+                  Book a Demo
                 </Button>
               </Link>
             </div>

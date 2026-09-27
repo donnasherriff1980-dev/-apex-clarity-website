@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <SEO
-        description="Kenvio is the operational control and compliance platform for UK contractors — projects, jobs, RAMS, permits, competence, documents and evidence on one controlled lifecycle."
+        description="Kenvio is the operational control platform for UK contractors — projects, sites, jobs, actions, people, documents, approvals, permits and H&S controls in one connected system, with the evidence kept as the work is done."
         path="/"
       />
       <HeroSection />

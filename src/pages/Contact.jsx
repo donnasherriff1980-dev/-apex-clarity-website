@@ -116,7 +116,7 @@ export default function Contact() {
     <>
       <SEO
         title="Book a Demo"
-        description="Book a demo of Kenvio — operational control and compliance software for UK contractors — or talk to us about optional H&S support alongside it."
+        description="Book a demo of the Kenvio platform, or ask about optional hands-on H&S support."
         path="/contact"
       />
       <section className="pt-32 pb-16 bg-brand-dark relative overflow-hidden">

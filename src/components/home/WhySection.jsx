@@ -56,16 +56,16 @@ export default function WhySection() {
   return (
     <section className="py-24 bg-canvas relative overflow-hidden">
       <div className="absolute inset-0 grid-pattern" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-transparent to-teal-400/30" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-transparent to-teal/30" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="text-xs font-bold text-teal uppercase tracking-widest mb-4 block">Why Lucy Matters</span>
+          <span className="text-xs font-bold text-teal uppercase tracking-widest mb-4 block">Lucy</span>
           <h2 className="text-4xl md:text-5xl font-black text-ink mb-4">
-            Lucy Never Replaces<br className="hidden md:block" /> Competent People.
+            A governed assistant,<br className="hidden md:block" /> not a decision-maker.
           </h2>
           <p className="text-lg text-ink-secondary max-w-2xl mx-auto">
-            We would rather tell you exactly what she does today than imply she does more. Here is the honest split.
+            Lucy helps your team get a first draft down faster — your competent person still reviews and approves. We would rather say exactly what she does today than imply more. Here is the honest split.
           </p>
         </div>
 

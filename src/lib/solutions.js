@@ -228,7 +228,7 @@ export const SOLUTIONS = [
     bg: "bg-indigo-400/10",
     accent: "from-indigo-500 to-blue-500",
     summary:
-      "The operational spine — organisations, sites, projects and jobs — that every piece of H&S evidence attaches to.",
+      "The operational spine — organisations, sites, projects and jobs — that every record attaches to — jobs, actions, documents, permits and H&S controls alike.",
     benefits: [
       "Organisation and site records",
       "Projects and jobs",

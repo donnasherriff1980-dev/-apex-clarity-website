@@ -22,7 +22,7 @@ export default function Pricing() {
     <>
       <SEO
         title="Pricing"
-        description="Kenvio software pricing — operational control and compliance software for UK contractors. Core £299, Growth £599, Business £999 per month + VAT, and Enterprise — talk to us."
+        description="Kenvio platform pricing — Core £299, Growth £599, Business £999 per month + VAT, and Enterprise — talk to us. H&S support is quoted separately."
         path="/pricing"
       />
 
@@ -110,7 +110,7 @@ export default function Pricing() {
 
           <div className="mt-10 bg-white/[0.03] border border-white/8 rounded-2xl p-6 max-w-4xl mx-auto">
             <div className="flex items-center gap-2 mb-4">
-              <Info className="w-4 h-4 text-teal-300" />
+              <Info className="w-4 h-4 text-teal" />
               <h3 className="text-white font-bold text-sm">How our pricing works</h3>
             </div>
             <ul className="space-y-2.5">
@@ -131,7 +131,7 @@ export default function Pricing() {
             <SectionLabel>Included In Every Tier</SectionLabel>
             <h2 className="text-4xl md:text-5xl font-black text-ink mb-4">The whole platform, on every plan.</h2>
             <p className="text-lg text-ink-secondary max-w-2xl mx-auto">
-              We do not hold core compliance capability back behind a higher tier. Everything below ships today.
+              We do not hold core capability back behind a higher tier. Everything below ships today.
             </p>
           </div>
 
@@ -169,7 +169,8 @@ export default function Pricing() {
               </div>
             </div>
             <p className="text-ink-secondary leading-relaxed mb-4">
-              <span className="font-semibold text-ink">{SUBSCRIPTION_EXCLUSION_STATEMENT}</span> If you also need
+              <span className="font-semibold text-ink">Use Kenvio to run and evidence the work. If you need additional hands-on H&amp;S support, Kenvio can provide that separately.</span>{" "}
+              {SUBSCRIPTION_EXCLUSION_STATEMENT} If you also need
               competent H&amp;S support alongside the platform — documents written or reviewed, inspections, contractor
               checks or someone to call — that is available separately as a scoped engagement.
             </p>
@@ -187,7 +188,7 @@ export default function Pricing() {
       {/* 5. CTA */}
       <section className="py-28 bg-brand-dark relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-teal-500/10 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-teal/10 rounded-full blur-[100px]" />
         <div className="relative max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">See it on your own work.</h2>
           <p className="text-lg text-white/50 mb-10 max-w-xl mx-auto">

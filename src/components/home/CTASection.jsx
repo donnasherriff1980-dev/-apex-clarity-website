@@ -9,7 +9,7 @@ export default function CTASection() {
   return (
     <section className="py-32 bg-canvas relative overflow-hidden">
       <div className="absolute inset-0 grid-pattern" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-teal-500/10 rounded-full blur-[100px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-teal/10 rounded-full blur-[100px]" />
 
       <div className="relative max-w-3xl mx-auto px-6 lg:px-8 text-center">
         <motion.div
@@ -23,7 +23,7 @@ export default function CTASection() {
             See it for yourself.
           </h2>
           <p className="text-lg text-ink-secondary mb-10 max-w-xl mx-auto">
-            A 30-minute conversation about your operations, your compliance position, and where Kenvio fits.
+            A 30-minute walkthrough of Kenvio on a job that looks like yours.
           </p>
 
           <Link to="/contact?type=demo">

@@ -7,11 +7,11 @@ import { X } from "lucide-react";
 // belonged to any compliance vendor. These are the things that actually go
 // wrong on a social-housing retrofit or M&E contract.
 const problems = [
-  "RAMS superseded weeks ago, still on site",
-  "Permit extended verbally, hand-back never recorded",
-  "Toolbox talk delivered, signing sheet lost",
-  "Competence evidence held in someone's inbox",
-  "COSHH assessment copied from the last job",
+  "Job started, nobody sure who owns the outstanding actions",
+  "Site paperwork in three systems and a WhatsApp group",
+  "Operative on site, ticket expired last month",
+  "Approval given verbally, nothing recorded",
+  "Permit extended by phone, hand-back never logged",
   "Client audit lands, fortnight of evidence-hunting begins",
 ];
 
@@ -24,7 +24,7 @@ export default function ProblemSection() {
           The work gets done. The evidence goes missing.
         </h2>
         <p className="text-ink-secondary max-w-2xl mx-auto mb-12">
-          Contractors rarely lose a contract because the work was unsafe. They lose it because they could not prove, on the day they were asked, that it was not.
+          Contractors rarely lose a contract because the work was bad. They lose it because nobody could show, on the day they were asked, what was done, who did it, what was approved and what evidence exists.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-14 max-w-2xl mx-auto">

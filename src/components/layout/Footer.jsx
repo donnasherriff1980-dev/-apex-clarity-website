@@ -6,15 +6,14 @@ import { Mail, MapPin, ArrowRight, Loader2 } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { submitLead } from "@/lib/leads";
 import { useTheme } from "@/lib/ThemeContext";
-import { SOLUTIONS } from "@/lib/solutions";
+import { PLATFORM_AREAS } from "@/lib/platformAreas";
 
-const platformModules = SOLUTIONS.map((s) => ({ label: s.title, path: `/solutions/${s.slug}` }));
+const product = [{ label: "Platform", path: "/platform" }].concat(PLATFORM_AREAS.map((a) => ({ label: a.title, path: a.path })));
 
 // /resources omitted while it has no published articles (see Navbar).
 const company = [
   { label: "About Us", path: "/about" },
   { label: "Our Vision", path: "/vision" },
-  { label: "Platform", path: "/platform" },
   { label: "Pricing", path: "/pricing" },
   { label: "H&S Support (optional)", path: "/hs-support" },
   { label: "How It Works", path: "/case-studies" },
@@ -42,7 +41,7 @@ export default function Footer() {
   const [error, setError] = useState(false);
   const [consent, setConsent] = useState(false);
   const { resolved } = useTheme();
-  const wordmark = resolved === "dark" ? "/brand/kenvio-wordmark-dark.png" : "/brand/kenvio-wordmark-light.png";
+  const wordmark = resolved === "dark" ? "/brand/kenvio-wordmark-dark-alpha.png" : "/brand/kenvio-wordmark-light-alpha.png";
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
@@ -112,7 +111,7 @@ export default function Footer() {
               <span className="text-ink-secondary text-xs mt-1 block">Operational control. Evidence you can stand behind.</span>
             </div>
             <p className="text-ink-secondary text-sm leading-relaxed mb-6">
-              Operational control and compliance software for UK contractors — projects, jobs and actions, H&amp;S governance, documents and evidence on one controlled lifecycle. Additional H&amp;S support available separately where required.
+              The operational control platform for UK contractors — projects, sites, jobs, actions, people, documents, approvals and permits in one system, with H&amp;S controls built in. Additional hands-on H&amp;S support is available separately where required.
             </p>
             <div className="space-y-3 text-sm">
               {/* EMAIL — HOLD: old address kept until the Kenvio mailbox is confirmed active. */}
@@ -127,9 +126,9 @@ export default function Footer() {
 
           {/* Platform */}
           <div>
-            <h4 className="text-teal font-semibold text-xs uppercase tracking-widest mb-6">Platform</h4>
+            <h4 className="text-teal font-semibold text-xs uppercase tracking-widest mb-6">Product</h4>
             <ul className="space-y-3">
-              {platformModules.map((s) => (
+              {product.map((s) => (
                 <li key={s.label}>
                   <Link to={s.path} className="text-sm text-ink-secondary hover:text-ink transition-colors">{s.label}</Link>
                 </li>

@@ -22,7 +22,7 @@ export const INDUSTRIES = [
       "Multiple trades across one property, one file",
     ],
     evidence: [
-      "RAMS packs held per site and job",
+      "Every property a job, every job linked to its site and programme",
       "Toolbox talk attendance per delivery session",
       "Competence evidence by role and licence",
       "Permit hand-back with completion state recorded",
@@ -42,7 +42,7 @@ export const INDUSTRIES = [
       "Proving who was competent to do which task",
     ],
     evidence: [
-      "Competence requirements defined per role",
+      "Competence requirements defined per role before work is assigned",
       "Permit templates for control-of-work",
       "COSHH assessments and substance register",
       "Emergency arrangements with test dates tracked",
@@ -62,7 +62,7 @@ export const INDUSTRIES = [
       "RIDDOR and incident evidence",
     ],
     evidence: [
-      "One controlled lifecycle for every RAMS pack",
+      "Subcontractor records, actions and approvals in one place",
       "Approvals queue across all submitted records",
       "Superseded-record warnings on linked documents",
       "Governance overview of everything outstanding",
@@ -82,7 +82,7 @@ export const INDUSTRIES = [
       "Client-facing evidence on demand",
     ],
     evidence: [
-      "Documents held against site and job",
+      "Planned and reactive jobs with actions tracked to close",
       "Permits issued, extended and handed back",
       "Actions assigned and tracked to close",
       "Bulk import for existing back catalogues",
@@ -102,7 +102,7 @@ export const INDUSTRIES = [
       "Funder evidence requirements",
     ],
     evidence: [
-      "Accreditation held as competence evidence",
+      "Installation jobs with documents held against the site",
       "Risk assessments from a reusable hazard library",
       "Method statements per installation type",
       "Emergency arrangements per site",
@@ -122,7 +122,7 @@ export const INDUSTRIES = [
       "Evidence requested in a different format each time",
     ],
     evidence: [
-      "Issued RAMS with full approval history",
+      "Pre-qualification evidence assembled from live records",
       "Competence evidence gaps surfaced early",
       "Toolbox talk records per session",
       "Governance overview of what is outstanding",

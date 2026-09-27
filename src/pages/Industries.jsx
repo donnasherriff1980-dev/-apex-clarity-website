@@ -13,7 +13,7 @@ export default function Industries() {
     <>
       <SEO
         title="Industries We Serve"
-        description="Kenvio is built for UK social-housing retrofit contractors and M&E contractors, and for the principal contractors, FM providers, renewables installers and specialist subcontractors working alongside them."
+        description="How UK contractors run and evidence their work in Kenvio — social-housing retrofit, M&E, principal contractors, facilities management, renewables and specialist subcontractors."
         path="/industries"
       />
       <section className="pt-32 pb-24 bg-brand-dark relative overflow-hidden">
@@ -23,7 +23,7 @@ export default function Industries() {
             <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Industries</span>
             <h1 className="text-5xl md:text-6xl font-black text-white leading-tight mb-6">Built For Your Sector</h1>
             <p className="text-xl text-white/50 leading-relaxed">
-              We build for UK social-housing retrofit and M&amp;E contractors first. Everything below describes the evidence these regimes ask you to produce — Kenvio holds and governs that evidence, it does not certify compliance on your behalf.
+              Every sector below runs projects, sites, jobs and people the same way — what changes is what has to be proved, and to whom. Kenvio connects the work and holds the evidence; it does not certify compliance on your behalf.
             </p>
           </motion.div>
         </div>
@@ -49,7 +49,7 @@ export default function Industries() {
                   </div>
                   <div className="flex-1 grid md:grid-cols-2 gap-8">
                     <div>
-                      <h4 className="text-xs font-bold uppercase tracking-widest text-ink-secondary mb-4">What You Have To Prove</h4>
+                      <h4 className="text-xs font-bold uppercase tracking-widest text-ink-secondary mb-4">What the work demands</h4>
                       <div className="space-y-2.5">
                         {ind.challenges.map(c => (
                           <div key={c} className="flex items-start gap-2 text-sm text-ink-secondary"><div className="w-1.5 h-1.5 rounded-full bg-red-400/60 shrink-0 mt-2" />{c}</div>
@@ -57,7 +57,7 @@ export default function Industries() {
                       </div>
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold uppercase tracking-widest text-ink-secondary mb-4">What Kenvio Holds</h4>
+                      <h4 className="text-xs font-bold uppercase tracking-widest text-ink-secondary mb-4">What Kenvio connects</h4>
                       <div className="space-y-2.5">
                         {ind.evidence.map(s => (
                           <div key={s} className="flex items-start gap-2 text-sm font-medium text-ink"><div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-2" />{s}</div>
@@ -75,7 +75,7 @@ export default function Industries() {
       <section className="py-24 bg-brand-dark">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-black text-white mb-6">Not Sure You Fit?</h2>
-          <p className="text-white/50 mb-8">If your next contract depends on producing evidence someone else will inspect, it is worth a conversation.</p>
+          <p className="text-white/50 mb-8">If your next contract depends on running the job well and proving it afterwards, it is worth a conversation.</p>
           <Link to="/contact?type=demo">
             <Button size="lg" className="bg-teal text-canvas hover:bg-teal/90 font-bold h-14 px-10 rounded-2xl">
               Book a Demo <ArrowRight className="w-5 h-5 ml-2" />

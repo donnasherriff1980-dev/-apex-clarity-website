@@ -92,10 +92,10 @@ export default function MeetLucySection() {
 
       <div className="relative max-w-5xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-14">
-          <span className="text-xs font-bold text-teal-300 uppercase tracking-widest mb-4 block">The Face of Kenvio</span>
+          <span className="text-xs font-bold text-teal uppercase tracking-widest mb-4 block">The Face of Kenvio</span>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Meet Lucy</h2>
           <span className="inline-flex items-center gap-1.5 text-xs text-white/70 bg-white/8 border border-white/15 rounded-full px-3 py-1.5">
-            <Sparkles className="w-3 h-3 text-teal-300" /> Preview conversation — illustrative, not live AI
+            <Sparkles className="w-3 h-3 text-teal" /> Preview conversation — illustrative, not live AI
           </span>
         </div>
 
@@ -139,9 +139,9 @@ export default function MeetLucySection() {
               <AnimatePresence>
                 {typing && (
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center gap-1.5 text-white/30 text-sm pl-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-teal-300 animate-pulse" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-teal-300 animate-pulse [animation-delay:150ms]" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-teal-300 animate-pulse [animation-delay:300ms]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse [animation-delay:150ms]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse [animation-delay:300ms]" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -155,7 +155,7 @@ export default function MeetLucySection() {
                       <button
                         key={q}
                         onClick={() => ask(q)}
-                        className="text-xs font-medium text-teal-200 bg-teal-400/10 border border-teal-300/20 rounded-full px-3.5 py-2 hover:bg-teal-400/20 transition-colors"
+                        className="text-xs font-medium text-teal bg-teal/10 border border-teal/20 rounded-full px-3.5 py-2 hover:bg-teal/20 transition-colors"
                       >
                         {q}
                       </button>
@@ -170,11 +170,11 @@ export default function MeetLucySection() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ask Lucy a question..."
-                    className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-teal-300/40"
+                    className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-teal/40"
                   />
                   <button
                     type="submit"
-                    className="w-10 h-10 rounded-xl bg-teal-400/15 border border-teal-300/25 flex items-center justify-center text-teal-200 hover:bg-teal-400/25 transition-colors shrink-0"
+                    className="w-10 h-10 rounded-xl bg-teal/15 border border-teal/25 flex items-center justify-center text-teal hover:bg-teal/25 transition-colors shrink-0"
                     aria-label="Ask Lucy"
                   >
                     <Send className="w-4 h-4" />

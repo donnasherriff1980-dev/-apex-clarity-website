@@ -29,8 +29,8 @@ const CAPABILITIES = [
   },
   {
     icon: ShieldCheck,
-    title: "H&S governance",
-    detail: "Risk assessments, RAMS, permits, toolbox talks and emergency arrangements on one controlled lifecycle: draft, review, approve, issue.",
+    title: "Health & Safety controls",
+    detail: "Risk assessments, RAMS, toolbox talks and emergency arrangements, governed on the same lifecycle as everything else.",
   },
   {
     icon: FileCheck2,
@@ -55,7 +55,7 @@ const CAPABILITIES = [
   {
     icon: Sparkles,
     title: "Lucy, your governed AI assistant",
-    detail: "Lucy helps your people draft risk assessments and method statements. She does not advise, approve or sign anything off — a competent person does.",
+    detail: "Lucy helps people prepare drafts and work through structured tasks. She does not advise, approve or sign anything off — a competent person does.",
   },
 ];
 
@@ -68,7 +68,7 @@ export default function OperationalControlSection() {
         <div className="text-center mb-16">
           <span className="text-xs font-bold text-teal uppercase tracking-widest mb-4 block">Operational Control</span>
           <h2 className="text-4xl md:text-5xl font-black text-ink mb-4">
-            One platform to control the work,<br className="hidden md:block" /> manage compliance and hold the evidence.
+            One system to run the work,<br className="hidden md:block" /> connect the people and keep the evidence.
           </h2>
           <p className="text-lg text-ink-secondary max-w-2xl mx-auto">
             Kenvio is the system your teams work in day to day — not a folder you fill in afterwards. The

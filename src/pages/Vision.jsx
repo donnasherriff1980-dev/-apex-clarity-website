@@ -92,7 +92,7 @@ export default function Vision() {
         <div className="relative max-w-3xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col items-center text-center mb-12">
             <LucyOrb size={110} className="mb-8" />
-            <span className="text-xs font-bold text-teal-300 uppercase tracking-widest mb-4 block">Why Lucy Exists</span>
+            <span className="text-xs font-bold text-teal uppercase tracking-widest mb-4 block">Why Lucy Exists</span>
             <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-2xl md:text-3xl font-bold text-white leading-snug max-w-xl">
               Lucy wasn&apos;t created to replace people.
               <br />
@@ -111,7 +111,7 @@ export default function Vision() {
                 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
                 className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl px-4 py-3"
               >
-                <c.icon className="w-4 h-4 text-teal-300 shrink-0" />
+                <c.icon className="w-4 h-4 text-teal shrink-0" />
                 <span className="text-white/70 text-sm font-medium">{c.label}</span>
               </motion.div>
             ))}
@@ -119,12 +119,12 @@ export default function Vision() {
 
           <motion.div
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="glass rounded-2xl p-8 border border-teal-300/20 text-center max-w-2xl mx-auto"
+            className="glass rounded-2xl p-8 border border-teal/20 text-center max-w-2xl mx-auto"
           >
             <p className="text-white font-semibold leading-relaxed">
               Lucy never replaces the competent person. She doesn&apos;t approve, certify or sign work off — that stays with the business and the person responsible for it.
               <br />
-              <span className="text-teal-300">Lucy&apos;s job is to take the blank-page work out of drafting, so your competent people can spend their time on judgement.</span>
+              <span className="text-teal">Lucy&apos;s job is to take the blank-page work out of drafting, so your competent people can spend their time on judgement.</span>
             </p>
           </motion.div>
         </div>
