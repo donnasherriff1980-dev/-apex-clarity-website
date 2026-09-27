@@ -8,17 +8,16 @@ import { useHeaderSurface } from "@/lib/HeaderSurfaceContext";
 import { useTheme } from "@/lib/ThemeContext";
 import { SOLUTIONS } from "@/lib/solutions";
 
-// Compact Solutions menu, ordered platform-first: the operational areas lead
-// and the two H&S entries close the list. Everything else is under "View all".
+// Compact Solutions menu: six answers to "what does Kenvio help me manage?"
+// Individual H&S modules (RAMS, toolbox talks, COSHH, emergency arrangements)
+// sit within Health & Safety Controls here and on the full Solutions page.
 const SOLUTION_MENU = [
-  { key: "projects", slug: "projects", label: "Projects, Sites & Jobs", desc: "The structure every record attaches to" },
-  { key: "actions", slug: "projects", label: "Work & Actions", desc: "Owners, due dates, what is outstanding" },
-  { key: "competence", slug: "competence", label: "Workforce & Competence", desc: "Expected evidence by role" },
-  { key: "documents", slug: "documents", label: "Documents & Evidence", desc: "Controlled documents, bulk import" },
-  { key: "audits", slug: "audits", label: "Approvals & Governance", desc: "Recorded decisions, one outstanding view" },
-  { key: "permits", slug: "permits", label: "Permits & Control of Work", desc: "Issue, extend, hand back" },
+  { key: "projects", slug: "projects", label: "Run Projects & Jobs", desc: "The structure every record attaches to" },
+  { key: "actions", slug: "projects", label: "Manage Work & Actions", desc: "Owners, due dates, what is outstanding" },
+  { key: "competence", slug: "competence", label: "Manage People & Competence", desc: "Expected evidence by role" },
+  { key: "documents", slug: "documents", label: "Control Documents & Evidence", desc: "Controlled documents, bulk import" },
+  { key: "approvals", slug: "audits", label: "Manage Approvals & Permits", desc: "Recorded decisions, control of work" },
   { key: "health-safety", slug: "health-safety", label: "Health & Safety Controls", desc: "RAMS, COSHH, talks, emergency arrangements" },
-  { key: "risk-assessments", slug: "risk-assessments", label: "Risk Assessments & RAMS", desc: "Assessments and RAMS packs" },
 ];
 const platformModules = SOLUTION_MENU
   .filter((m) => SOLUTIONS.some((s) => s.slug === m.slug))
