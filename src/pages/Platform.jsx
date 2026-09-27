@@ -16,7 +16,7 @@ const DEMO = "/contact?type=demo";
 // The Northgate Retrofit & Mechanical Ltd demo environment. Null until it is
 // live; when set, the "See Kenvio working" section and the final CTA link
 // straight to it instead of the contact form.
-const DEMO_ENVIRONMENT_URL = null;
+const DEMO_ENVIRONMENT_URL = "https://apex-clarity-demo.base44.app";
 
 // Everything below describes what ships today. Nothing here claims a
 // capability, an outcome or a customer that cannot be shown on a demo.
