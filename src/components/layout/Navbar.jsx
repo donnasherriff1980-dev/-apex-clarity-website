@@ -8,7 +8,22 @@ import { useHeaderSurface } from "@/lib/HeaderSurfaceContext";
 import { useTheme } from "@/lib/ThemeContext";
 import { SOLUTIONS } from "@/lib/solutions";
 
-const platformModules = SOLUTIONS.map((s) => ({ label: s.title, path: `/solutions/${s.slug}`, desc: s.navDesc }));
+// Compact Solutions menu: seven headline modules with a one-line descriptor
+// each. Projects and Audit Readiness stay on /solutions (reached via "View all").
+// "Risk Assessments & RAMS" lands on the risk-assessments page, which is the
+// entry point to both assessments and the RAMS packs built from them.
+const SOLUTION_MENU = [
+  { slug: "health-safety", label: "Health & Safety Governance", desc: "Control centre and governance overview" },
+  { slug: "risk-assessments", label: "Risk Assessments & RAMS", desc: "Assessments, COSHH and RAMS packs" },
+  { slug: "permits", label: "Permits & Control of Work", desc: "Issue, extend, hand back" },
+  { slug: "toolbox-talks", label: "Toolbox Talks & Briefings", desc: "Sessions and attendance" },
+  { slug: "competence", label: "Workforce Competence", desc: "Evidence by role" },
+  { slug: "documents", label: "Document Control & Evidence", desc: "Controlled documents, bulk import" },
+  { slug: "emergency-arrangements", label: "Emergency Arrangements", desc: "Muster, first aid, fire, rescue" },
+];
+const platformModules = SOLUTION_MENU
+  .filter((m) => SOLUTIONS.some((s) => s.slug === m.slug))
+  .map((m) => ({ label: m.label, path: `/solutions/${m.slug}`, desc: m.desc }));
 
 // Software-first IA. Apex Clarity is sold primarily as an operational control
 // and compliance platform, so Platform, Solutions, Industries and Pricing lead.
@@ -72,7 +87,9 @@ export default function Navbar() {
   // Wordmark follows the same surface logic as the text: the theme-resolved
   // canvas once scrolled, the page's declared hero surface while transparent.
   const onDark = scrolled ? resolved === "dark" : surface === "dark";
-  const wordmark = onDark ? "/brand/kenvio-wordmark-dark.png" : "/brand/kenvio-wordmark-light.png";
+  // Transparent variants of the approved artwork, so the mark sits on the
+  // header surface rather than in a baked-in box.
+  const wordmark = onDark ? "/brand/kenvio-wordmark-dark-alpha.png" : "/brand/kenvio-wordmark-light-alpha.png";
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-hairline/15 ${
@@ -81,9 +98,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 py-3">
           {/* Logo */}
-          <Link to="/" className="flex flex-col items-start">
-            <img src={wordmark} alt="Kenvio" className="h-6 w-auto" />
-            <span className={`text-xs mt-1 ${fgMuted}`}>Operational control. Evidence you can stand behind.</span>
+          <Link to="/" className="flex flex-col items-start gap-[3px]" aria-label="Kenvio home">
+            <img src={wordmark} alt="Kenvio" className="h-7 w-auto block select-none" draggable="false" />
+            <span className={`text-[10.5px] leading-none tracking-[0.01em] pl-[2px] ${fgMuted}`}>Operational control. Evidence you can stand behind.</span>
           </Link>
 
           {/* Desktop nav */}
@@ -108,28 +125,25 @@ export default function Navbar() {
                         transition={{ duration: 0.18 }}
                         onMouseEnter={() => setSolutionsOpen(true)}
                         onMouseLeave={() => setSolutionsOpen(false)}
-                        className="absolute top-full left-0 mt-1 w-72 bg-surface/95 backdrop-blur-xl border border-hairline/10 rounded-2xl shadow-2xl overflow-hidden"
+                        className="absolute top-full left-0 mt-2 w-[540px] bg-[#F5F3EE] text-[#1E2A3A] border border-[#1E2A3A]/10 rounded-xl shadow-[0_18px_40px_-12px_rgba(6,11,13,0.45)] overflow-hidden"
                       >
-                        {/* Dropdown owns its own bg-surface, so it always uses the
-                            theme-resolved ink token regardless of navbar state above. */}
-                        <div className="p-3 grid gap-1">
+                        {/* Fixed off-white panel with navy type, independent of theme,
+                            so the menu reads the same over every header surface. */}
+                        <div className="p-2 grid grid-cols-2 gap-x-1 gap-y-0.5">
                           {platformModules.map((sol) => (
                             <Link
                               key={sol.path}
                               to={sol.path}
-                              className="flex flex-col px-4 py-3 rounded-xl hover:bg-hairline/8 transition-colors group"
+                              className="flex flex-col px-3 py-2 rounded-lg hover:bg-[#1E2A3A]/[0.05] transition-colors group"
                             >
-                              <span className="text-sm font-semibold text-ink group-hover:text-teal transition-colors">{sol.label}</span>
-                              <span className="text-xs text-ink-secondary mt-0.5">{sol.desc}</span>
+                              <span className="text-[13px] font-semibold leading-snug text-[#1E2A3A] group-hover:text-[#2F7F76] transition-colors">{sol.label}</span>
+                              <span className="text-[11px] leading-snug text-[#5B6B7A] mt-0.5">{sol.desc}</span>
                             </Link>
                           ))}
                         </div>
-                        <div className="p-3 border-t border-hairline/5 grid gap-1">
-                          <Link to="/platform" className="flex items-center gap-2 px-4 py-2 text-sm text-teal font-medium">
-                            Explore the platform <ArrowRight className="w-3.5 h-3.5" />
-                          </Link>
-                          <Link to="/contact?type=demo" className="flex items-center gap-2 px-4 py-2 text-sm text-ink-secondary font-medium hover:text-ink">
-                            Book a platform demo <ArrowRight className="w-3.5 h-3.5" />
+                        <div className="px-4 py-2.5 border-t border-[#1E2A3A]/10 bg-[#EFECE5]">
+                          <Link to="/solutions" className="inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-[#2F7F76] hover:gap-2.5 transition-all">
+                            View all solutions <ArrowRight className="w-3.5 h-3.5" />
                           </Link>
                         </div>
                       </motion.div>
@@ -203,6 +217,9 @@ export default function Navbar() {
                   {sol.label}
                 </Link>
               ))}
+              <Link to="/solutions" className="block px-4 py-2.5 text-sm text-teal font-medium rounded-xl hover:bg-hairline/5">
+                View all solutions →
+              </Link>
               <div className="border-t border-hairline/10 my-3" />
               {navLinks.filter(l => !l.hasDropdown).map((link) => (
                 <Link key={link.label} to={link.path} className="block px-4 py-3 text-sm text-ink/70 hover:text-ink rounded-xl hover:bg-hairline/5">
