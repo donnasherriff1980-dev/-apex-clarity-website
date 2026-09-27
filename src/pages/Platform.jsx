@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -104,10 +104,55 @@ function SectionLabel({ children, light = false }) {
 
 // Reserved slot in the product-demo frame. Renders a labelled, clearly
 // non-live placeholder until real product visuals are dropped in.
-function DemoSlot({ label, className = "" }) {
+const DEMO_SCREENS = [
+  { id: "home", label: "Home", caption: "Operational focus, attention strip, work status, compliance and H&S signals", src: "/demo/home" },
+  { id: "organisations", label: "Organisations", caption: "Organisations, contacts, sites and projects in one structure", src: "/demo/organisations" },
+  { id: "projects", label: "Projects", caption: "Projects by stage, each scoped to organisations and sites", src: "/demo/projects" },
+  { id: "health-safety", label: "Health & Safety", caption: "Every H&S module with its own attention count, in one hub", src: "/demo/health-safety" },
+  { id: "bulk-import", label: "Document import", caption: "Bulk import of existing documents: upload, review, confirm", src: "/demo/bulk-import" },
+];
+
+function DemoShowcase() {
+  const [active, setActive] = useState(DEMO_SCREENS[0]);
   return (
-    <div className={`rounded-lg border border-dashed border-white/15 bg-white/[0.03] flex items-center justify-center ${className}`}>
-      <span className="text-[11px] font-semibold uppercase tracking-widest text-white/30">{label}</span>
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-3 md:p-4 shadow-2xl">
+      <div className="flex items-center gap-2 px-2 pb-3">
+        <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+        <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+        <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+        <span className="ml-3 text-[11px] font-semibold text-white/35 truncate">Northgate Retrofit &amp; Mechanical Ltd — demo environment</span>
+        <span className="ml-auto text-[10px] font-semibold uppercase tracking-widest text-teal bg-teal/10 border border-teal/25 rounded-full px-2 py-0.5">Live demo screens</span>
+      </div>
+      <div className="flex flex-wrap gap-2 px-2 pb-3" role="tablist" aria-label="Demo screens">
+        {DEMO_SCREENS.map((sc) => {
+          const on = sc.id === active.id;
+          return (
+            <button
+              key={sc.id}
+              type="button"
+              role="tab"
+              aria-selected={on}
+              onClick={() => setActive(sc)}
+              className={`text-xs font-semibold rounded-full px-3 py-1.5 border transition-colors ${on ? "bg-teal text-brand-dark border-teal" : "bg-white/5 text-white/70 border-white/10 hover:bg-white/10"}`}
+            >
+              {sc.label}
+            </button>
+          );
+        })}
+      </div>
+      <div className="rounded-lg overflow-hidden border border-white/10 bg-[#f4f3ef]">
+        <picture>
+          <source srcSet={`${active.src}.webp`} type="image/webp" />
+          <img
+            src={`${active.src}.png`}
+            alt={`Kenvio demo: ${active.label} screen`}
+            className="w-full h-auto block"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </div>
+      <p className="px-2 pt-3 text-xs text-white/45">{active.caption}</p>
     </div>
   );
 }
@@ -167,37 +212,15 @@ export default function Platform() {
             </p>
           </div>
 
-          {/* Reserved product-demo frame. Slots are labelled placeholders, not
-              screenshots; real product visuals from the Northgate demo replace
-              them. Nothing here presents itself as live data. */}
-          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-3 md:p-4 shadow-2xl">
-            <div className="flex items-center gap-2 px-2 pb-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-              <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-              <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-              <span className="ml-3 text-[11px] font-semibold text-white/35 truncate">Northgate Retrofit &amp; Mechanical Ltd — demo environment</span>
-              <span className="ml-auto text-[10px] font-semibold uppercase tracking-widest text-teal bg-teal/10 border border-teal/25 rounded-full px-2 py-0.5">Preview being prepared</span>
-            </div>
-            <div className="grid gap-3" style={{ gridTemplateRows: "auto 1fr" }}>
-              <DemoSlot label="Attention strip" className="h-11" />
-              <div className="grid grid-cols-1 md:grid-cols-[1fr_260px] gap-3">
-                <div className="grid gap-3">
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                    {["Operational intelligence", "KPI", "KPI", "KPI"].map((l, i) => (
-                      <DemoSlot key={i} label={l} className="h-20" />
-                    ))}
-                  </div>
-                  <DemoSlot label="Dashboard view" className="h-64 md:h-80" />
-                </div>
-                <DemoSlot label="Focus Rail" className="h-40 md:h-auto md:min-h-[26rem]" />
-              </div>
-            </div>
-          </div>
+          {/* Real product screens captured from the live Kenvio Demo environment
+              (Northgate Retrofit & Mechanical Ltd, a fictional company). Nothing
+              here is mocked up; each image is a screenshot of the running product. */}
+          <DemoShowcase />
 
           <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
             <p className="text-sm text-white/45 max-w-xl">
-              The walkthrough is being prepared. Until it is published here, we will show you the same workflow live,
-              against a job that looks like yours.
+              Screens captured from the live Kenvio demo environment. Northgate Retrofit &amp; Mechanical Ltd is a
+              fictional company used to show the product with realistic data.
             </p>
             <Link to={demoHref} className="sm:ml-auto">
               <Button className="bg-white/10 text-white hover:bg-white/15 border border-white/15 font-semibold rounded-xl h-11 px-6">
