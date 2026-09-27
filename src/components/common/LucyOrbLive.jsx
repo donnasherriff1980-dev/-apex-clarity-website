@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useChromaKeyedVideo } from "@/hooks/useChromaKeyedVideo";
 
 // LucyOrbLive — Lucy exactly as she appears inside the Apex Clarity
@@ -37,12 +37,32 @@ const SOURCE_VIDEO_STYLE = {
   pointerEvents: "none",
 };
 
+// Every Lucy on the site renders through this one component, so the orb is
+// identical everywhere and only its size and placement vary. Because the
+// keyed video loop costs the same per instance whatever its display size,
+// the video and canvas are mounted only while the orb is on screen (with a
+// generous margin); off screen it shows the same poster the app itself
+// pre-rolls, and the keying loop is released.
 export default function LucyOrbLive({ size = 220, className = "" }) {
   const [framePainted, setFramePainted] = useState(false);
-  const { canvasRef, videoRef } = useChromaKeyedVideo(IDLE_SRC, () => setFramePainted(true));
+  const [inView, setInView] = useState(false);
+  const rootRef = useRef(null);
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") { setInView(true); return; }
+    const io = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { rootMargin: "200px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => { if (!inView) setFramePainted(false); }, [inView]);
 
   return (
-    <div className={`relative ${className}`} style={{ width: size, height: size }} aria-hidden="true">
+    <div ref={rootRef} className={`relative ${className}`} style={{ width: size, height: size }} aria-hidden="true">
       <div className="lucy-orb-glow" />
       <div className="relative w-full h-full">
         {/* Pre-roll still — the only thing that can paint before the idle
@@ -62,6 +82,20 @@ export default function LucyOrbLive({ size = 220, className = "" }) {
             WebkitMaskMode: "luminance",
           }}
         />
+        {inView && <LiveLayer onFirstFrame={() => setFramePainted(true)} framePainted={framePainted} />}
+      </div>
+      <div className="lucy-orb-rim" />
+      <div className="lucy-orb-particles" />
+    </div>
+  );
+}
+
+// The keyed video + canvas pair, mounted only while the orb is on screen so
+// the hook's paint loop starts and stops with visibility.
+function LiveLayer({ onFirstFrame, framePainted }) {
+  const { canvasRef, videoRef } = useChromaKeyedVideo(IDLE_SRC, onFirstFrame);
+  return (
+    <>
         <video
           ref={videoRef}
           src={IDLE_SRC}
@@ -81,9 +115,6 @@ export default function LucyOrbLive({ size = 220, className = "" }) {
             framePainted ? "opacity-100" : "opacity-0"
           }`}
         />
-      </div>
-      <div className="lucy-orb-rim" />
-      <div className="lucy-orb-particles" />
-    </div>
+    </>
   );
 }
