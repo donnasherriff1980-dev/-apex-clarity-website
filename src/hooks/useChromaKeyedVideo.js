@@ -19,9 +19,17 @@ import { useEffect, useRef } from 'react';
 // `onFirstFrame` (optional) fires exactly once, the first time a real
 // chroma-keyed frame is actually drawn onto the canvas — the caller's
 // signal that this instance has genuinely become visible.
-export function useChromaKeyedVideo(src, onFirstFrame) {
+// `active` (default true): while false the paint loop is suspended — the
+// canvas keeps its last painted frame (Lucy stays Lucy, just still) and no
+// work is done. Setting it true again resumes the loop where it left off.
+// The very first frame is always painted regardless of `active`, so an
+// off-screen orb is already Lucy by the time it scrolls into view.
+export function useChromaKeyedVideo(src, onFirstFrame, active = true) {
   const canvasRef = useRef(null);
   const videoRef = useRef(null);
+  const activeRef = useRef(active);
+  activeRef.current = active;
+  const resumeRef = useRef(null);
   // Read via a ref inside the paint loop rather than depending on
   // `onFirstFrame` in the effect below — an inline arrow function passed
   // by the caller on every render must never restart the video/paint loop.
@@ -34,7 +42,7 @@ export function useChromaKeyedVideo(src, onFirstFrame) {
     if (!video || !canvas || !src) return;
 
     const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-    let raf;
+    let raf = null;
     let stopped = false;
     let direction = 1;
     let last = 0;
@@ -42,6 +50,13 @@ export function useChromaKeyedVideo(src, onFirstFrame) {
 
     const paint = (now) => {
       if (stopped) return;
+      if (!activeRef.current && firstFrameFired) {
+        // Suspend: leave the last frame on the canvas, drop the timer so
+        // there is no time jump on resume, and let resume() restart us.
+        raf = null;
+        last = 0;
+        return;
+      }
       if (!last) last = now;
       const dt = (now - last) / 1000;
       last = now;
@@ -84,17 +99,34 @@ export function useChromaKeyedVideo(src, onFirstFrame) {
       raf = requestAnimationFrame(paint);
     };
 
-    if (!reduceMotion) {
+    resumeRef.current = () => {
+      // Never spin before the clip has a decodable frame (readyState >= 2):
+      // a resume request that arrives earlier is satisfied by 'loadeddata'.
+      if (stopped || reduceMotion || raf !== null || video.readyState < 2) return;
       raf = requestAnimationFrame(paint);
+    };
+    // The loop only starts once the clip has a decodable frame, so nothing
+    // spins while the video is still downloading (or never arrives — then
+    // the poster simply stays). autoPlay loads the clip; the paint loop
+    // pauses it on the first ready frame and takes over with the ping-pong
+    // scrub (no video.play() here).
+    const onReady = () => resumeRef.current?.();
+    if (!reduceMotion) {
+      if (video.readyState >= 2) onReady();
+      else video.addEventListener('loadeddata', onReady, { once: true });
     }
-    // autoPlay loads the clip; the paint loop pauses it on the first ready
-    // frame and takes over with the ping-pong scrub (no video.play() here).
 
     return () => {
       stopped = true;
+      resumeRef.current = null;
+      video.removeEventListener('loadeddata', onReady);
       if (raf) cancelAnimationFrame(raf);
     };
   }, [src]);
+
+  useEffect(() => {
+    if (active) resumeRef.current?.();
+  }, [active]);
 
   return { canvasRef, videoRef };
 }

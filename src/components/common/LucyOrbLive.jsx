@@ -38,19 +38,21 @@ const SOURCE_VIDEO_STYLE = {
 };
 
 // Every Lucy on the site renders through this one component, so the orb is
-// identical everywhere and only its size and placement vary. Because the
-// keyed video loop costs the same per instance whatever its display size,
-// the video and canvas are mounted only while the orb is on screen (with a
-// generous margin); off screen it shows the same poster the app itself
-// pre-rolls, and the keying loop is released.
+// identical everywhere and only its size and placement vary. The video and
+// canvas are always mounted; what the viewport controls is only whether the
+// keying loop is running. Off screen the loop is suspended and the canvas
+// holds its last frame, so Lucy never drops back to the poster. The poster
+// is shown only until the first real frame paints, then cross-fades out for
+// good for the rest of the page visit.
 export default function LucyOrbLive({ size = 220, className = "" }) {
   const [framePainted, setFramePainted] = useState(false);
-  const [inView, setInView] = useState(false);
+  const [inView, setInView] = useState(true);
   const rootRef = useRef(null);
+  const { canvasRef, videoRef } = useChromaKeyedVideo(IDLE_SRC, () => setFramePainted(true), inView);
 
   useEffect(() => {
     const el = rootRef.current;
-    if (!el || typeof IntersectionObserver === "undefined") { setInView(true); return; }
+    if (!el || typeof IntersectionObserver === "undefined") return;
     const io = new IntersectionObserver(
       ([entry]) => setInView(entry.isIntersecting),
       { rootMargin: "200px 0px" }
@@ -59,20 +61,24 @@ export default function LucyOrbLive({ size = 220, className = "" }) {
     return () => io.disconnect();
   }, []);
 
-  useEffect(() => { if (!inView) setFramePainted(false); }, [inView]);
-
   return (
-    <div ref={rootRef} className={`relative ${className}`} style={{ width: size, height: size }} aria-hidden="true">
+    <div
+      ref={rootRef}
+      className={`relative ${className}`}
+      style={{ width: size, height: size }}
+      aria-hidden="true"
+      data-lucy-state={framePainted ? "live" : "poster"}
+      data-lucy-active={inView ? "true" : "false"}
+    >
       <div className="lucy-orb-glow" />
       <div className="relative w-full h-full">
-        {/* Pre-roll still — the only thing that can paint before the idle
-            video has decoded a real frame. Fades out on first real frame,
-            exactly as the application does. */}
+        {/* Pre-roll still — visible only until the first real frame has
+            painted, then cross-faded out and never shown again. */}
         <img
           src={POSTER_SRC}
           alt=""
           draggable={false}
-          className={`absolute inset-0 w-full h-full object-contain rounded-full lucy-orb-alive transition-opacity duration-300 ${
+          className={`absolute inset-0 w-full h-full object-contain rounded-full lucy-orb-alive transition-opacity duration-700 ease-out ${
             framePainted ? "opacity-0" : "opacity-100"
           }`}
           style={{
@@ -82,20 +88,6 @@ export default function LucyOrbLive({ size = 220, className = "" }) {
             WebkitMaskMode: "luminance",
           }}
         />
-        {inView && <LiveLayer onFirstFrame={() => setFramePainted(true)} framePainted={framePainted} />}
-      </div>
-      <div className="lucy-orb-rim" />
-      <div className="lucy-orb-particles" />
-    </div>
-  );
-}
-
-// The keyed video + canvas pair, mounted only while the orb is on screen so
-// the hook's paint loop starts and stops with visibility.
-function LiveLayer({ onFirstFrame, framePainted }) {
-  const { canvasRef, videoRef } = useChromaKeyedVideo(IDLE_SRC, onFirstFrame);
-  return (
-    <>
         <video
           ref={videoRef}
           src={IDLE_SRC}
@@ -104,6 +96,7 @@ function LiveLayer({ onFirstFrame, framePainted }) {
           loop
           muted
           playsInline
+          preload="auto"
           className="absolute inset-0 w-full h-full object-contain"
           style={SOURCE_VIDEO_STYLE}
         />
@@ -111,10 +104,13 @@ function LiveLayer({ onFirstFrame, framePainted }) {
           ref={canvasRef}
           width={320}
           height={320}
-          className={`absolute inset-0 w-full h-full rounded-full transition-opacity duration-300 ${
+          className={`absolute inset-0 w-full h-full rounded-full transition-opacity duration-700 ease-out ${
             framePainted ? "opacity-100" : "opacity-0"
           }`}
         />
-    </>
+      </div>
+      <div className="lucy-orb-rim" />
+      <div className="lucy-orb-particles" />
+    </div>
   );
 }
