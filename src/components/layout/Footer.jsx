@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Mail, MapPin, ArrowRight, Loader2 } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { submitLead } from "@/lib/leads";
+import { useTheme } from "@/lib/ThemeContext";
 import { SOLUTIONS } from "@/lib/solutions";
 
 const platformModules = SOLUTIONS.map((s) => ({ label: s.title, path: `/solutions/${s.slug}` }));
@@ -40,6 +41,8 @@ export default function Footer() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [consent, setConsent] = useState(false);
+  const { resolved } = useTheme();
+  const wordmark = resolved === "dark" ? "/brand/kenvio-wordmark-dark.png" : "/brand/kenvio-wordmark-light.png";
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
@@ -105,8 +108,8 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="mb-6">
-              <span className="text-teal font-black tracking-widest text-sm leading-none block">KENVIO</span>
-              <span className="text-ink-secondary text-xs mt-0.5 block">Operational control. Evidence you can stand behind.</span>
+              <img src={wordmark} alt="Kenvio" className="h-6 w-auto block" />
+              <span className="text-ink-secondary text-xs mt-1 block">Operational control. Evidence you can stand behind.</span>
             </div>
             <p className="text-ink-secondary text-sm leading-relaxed mb-6">
               Operational control and compliance software for UK contractors — projects, jobs and actions, H&amp;S governance, documents and evidence on one controlled lifecycle. Additional H&amp;S support available separately where required.

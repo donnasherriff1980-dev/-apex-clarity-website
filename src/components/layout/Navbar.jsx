@@ -5,6 +5,7 @@ import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "@/components/common/ThemeToggle";
 import { useHeaderSurface } from "@/lib/HeaderSurfaceContext";
+import { useTheme } from "@/lib/ThemeContext";
 import { SOLUTIONS } from "@/lib/solutions";
 
 const platformModules = SOLUTIONS.map((s) => ({ label: s.title, path: `/solutions/${s.slug}`, desc: s.navDesc }));
@@ -33,6 +34,7 @@ export default function Navbar() {
   const [solutionsOpen, setSolutionsOpen] = useState(false);
   const location = useLocation();
   const { surface } = useHeaderSurface();
+  const { resolved } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -67,6 +69,10 @@ export default function Navbar() {
     : surface === "dark"
       ? "text-ink-on-dark/60"
       : "text-ink-on-light/60";
+  // Wordmark follows the same surface logic as the text: the theme-resolved
+  // canvas once scrolled, the page's declared hero surface while transparent.
+  const onDark = scrolled ? resolved === "dark" : surface === "dark";
+  const wordmark = onDark ? "/brand/kenvio-wordmark-dark.png" : "/brand/kenvio-wordmark-light.png";
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-hairline/15 ${
@@ -76,8 +82,8 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-18 py-3">
           {/* Logo */}
           <Link to="/" className="flex flex-col items-start">
-            <span className="text-teal font-black tracking-widest text-sm leading-none">KENVIO</span>
-            <span className={`text-xs mt-0.5 ${fgMuted}`}>Operational control. Evidence you can stand behind.</span>
+            <img src={wordmark} alt="Kenvio" className="h-6 w-auto" />
+            <span className={`text-xs mt-1 ${fgMuted}`}>Operational control. Evidence you can stand behind.</span>
           </Link>
 
           {/* Desktop nav */}
