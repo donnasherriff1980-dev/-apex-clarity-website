@@ -89,6 +89,10 @@
       "type": "array",
       "description": "Consultancy qualification: the support areas the enquirer selected",
       "items": { "type": "string" }
+    },
+    "notified_at": {
+      "type": "string",
+      "description": "Set by notify_new_lead when the founder notification email was sent (ISO 8601). Guards against duplicate emails."
     }
   },
   "required": [
