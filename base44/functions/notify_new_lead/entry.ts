@@ -30,22 +30,37 @@ Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
     const body = await req.json().catch(() => ({}));
-    // Accept { lead_id } (workflow payload) or a raw entity-trigger payload.
-    const leadId = body?.lead_id || body?.data?.id || body?.entity_id || null;
-    if (!leadId || typeof leadId !== 'string') {
-      return Response.json({ error: 'lead_id is required' }, { status: 400 });
+
+    // Resolve which Leads to notify. The workflow runtime's payload shape is
+    // not documented, so accept every plausible shape, and if none carries
+    // an id, fall back to any Lead created in the last 30 minutes that has
+    // not been notified. notified_at makes every path idempotent, so the
+    // fallback can only ever send an email that was owed and not yet sent.
+    const candidates = [
+      body?.lead_id, body?.payload?.lead_id, body?.data?.id, body?.payload?.data?.id,
+      body?.entity_id, body?.input?.entity_id, body?.input?.data?.id, body?.trigger?.entity_id,
+    ].filter((v) => typeof v === 'string' && v.length > 0);
+    let leads = [];
+    if (candidates.length > 0) {
+      try { const l = await base44.asServiceRole.entities.Lead.get(candidates[0]); if (l) leads = [l]; } catch { leads = []; }
+    }
+    if (leads.length === 0) {
+      const since = Date.now() - 30 * 60 * 1000;
+      const recent = await base44.asServiceRole.entities.Lead.filter({}, '-created_date', 20);
+      leads = recent.filter((l) => !l.notified_at && new Date(l.created_date).getTime() >= since).slice(0, 5);
+    }
+    if (leads.length === 0) {
+      return Response.json({ status: 'nothing_to_notify', received_keys: Object.keys(body || {}) });
     }
 
-    let lead = null;
-    try { lead = await base44.asServiceRole.entities.Lead.get(leadId); } catch { lead = null; }
-    if (!lead) return Response.json({ error: 'Lead not found' }, { status: 404 });
-    if (lead.notified_at) {
-      return Response.json({ status: 'already_notified', lead_id: leadId, notified_at: lead.notified_at });
-    }
+    const results = [];
+    for (const lead of leads) {
+      const leadId = lead.id;
+      if (lead.notified_at) { results.push({ lead_id: leadId, status: 'already_notified' }); continue; }
 
-    // Claim first, then send: a concurrent second call sees notified_at set.
-    const notifiedAt = new Date().toISOString();
-    await base44.asServiceRole.entities.Lead.update(leadId, { notified_at: notifiedAt });
+      // Claim first, then send: a concurrent second call sees notified_at set.
+      const notifiedAt = new Date().toISOString();
+      await base44.asServiceRole.entities.Lead.update(leadId, { notified_at: notifiedAt });
 
     const subject = `New Kenvio website lead — ${lead.company || lead.name || lead.email || leadId}`;
     const text = [
@@ -70,8 +85,10 @@ Deno.serve(async (req) => {
       `Record: https://app.base44.com/apps/${APP_ID}/data/Lead/${leadId}`,
     ].join('\n');
 
-    await base44.asServiceRole.integrations.Core.SendEmail({ to: RECIPIENT, subject, body: text });
-    return Response.json({ status: 'sent', lead_id: leadId, to: RECIPIENT, notified_at: notifiedAt });
+      await base44.asServiceRole.integrations.Core.SendEmail({ to: RECIPIENT, subject, body: text });
+      results.push({ lead_id: leadId, status: 'sent', notified_at: notifiedAt });
+    }
+    return Response.json({ status: 'ok', to: RECIPIENT, received_keys: Object.keys(body || {}), results });
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 });
   }
