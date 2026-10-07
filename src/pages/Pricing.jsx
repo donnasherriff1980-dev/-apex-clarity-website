@@ -63,7 +63,7 @@ export default function Pricing() {
             <SectionLabel>Software Subscription</SectionLabel>
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Priced by the size of your operation.</h2>
             <p className="text-lg text-white/50 max-w-2xl mx-auto">
-              Every tier is the same platform. What changes is the scale and complexity of the operation it is running.
+              Plans are sized to the team and the operation they are running.
               We will tell you which one fits before you commit to anything.
             </p>
           </div>
@@ -129,9 +129,9 @@ export default function Pricing() {
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>Included In Every Tier</SectionLabel>
-            <h2 className="text-4xl md:text-5xl font-black text-ink mb-4">The whole platform, on every plan.</h2>
+            <h2 className="text-4xl md:text-5xl font-black text-ink mb-4">What your subscription includes.</h2>
             <p className="text-lg text-ink-secondary max-w-2xl mx-auto">
-              We do not hold core capability back behind a higher tier. Everything below ships today.
+              The operational areas below are live on the platform today. We will recommend the right plan based on your team and operation.
             </p>
           </div>
 

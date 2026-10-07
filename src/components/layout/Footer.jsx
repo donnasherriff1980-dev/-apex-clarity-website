@@ -114,9 +114,8 @@ export default function Footer() {
               The operational control platform for UK contractors — projects, sites, jobs, actions, people, documents, approvals and permits in one system, with H&amp;S controls built in. Additional hands-on H&amp;S support is available separately where required.
             </p>
             <div className="space-y-3 text-sm">
-              {/* EMAIL — HOLD: old address kept until the Kenvio mailbox is confirmed active. */}
-              <a href="mailto:info@apexclarity.co.uk" className="flex items-center gap-2 text-ink-secondary hover:text-teal transition-colors">
-                <Mail className="w-4 h-4" /> info@apexclarity.co.uk
+              <a href="mailto:info@kenvio.co.uk" className="flex items-center gap-2 text-ink-secondary hover:text-teal transition-colors">
+                <Mail className="w-4 h-4" /> info@kenvio.co.uk
               </a>
               <div className="flex items-center gap-2 text-ink-secondary">
                 <MapPin className="w-4 h-4" /> United Kingdom

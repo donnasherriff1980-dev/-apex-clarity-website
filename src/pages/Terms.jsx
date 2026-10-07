@@ -15,15 +15,14 @@ export default function Terms() {
       <section className="py-20 bg-surface">
         <div className="max-w-4xl mx-auto px-6">
           <div className="bg-surface-raised rounded-3xl p-8 md:p-12 border border-hairline/10 shadow-sm space-y-10">
-            {/* EMAIL — HOLD: info@apexclarity.co.uk stays until the Kenvio mailbox is confirmed active.
-               LEGAL ENTITY — HOLD: clauses 3 and 4 still name "Apex Clarity Ltd" / "Apex Clarity"
+            {/* LEGAL ENTITY — HOLD: clauses 3 and 4 still name "Apex Clarity Ltd" / "Apex Clarity"
                as the contracting party until the registered company name and number are confirmed. */}
             {[
               { title: "1. Services", body: "Kenvio provides operational control and compliance software. Optional H&S support services are provided separately under their own written scope. Current software functionality includes risk assessments and COSHH, method statements and RAMS, permits and control of work, toolbox talks, workforce competence evidence, emergency arrangements, document control, and the approvals and governance views across them." },
               { title: "2. Use of Website", body: "By accessing this website, you agree to use it lawfully and in a manner consistent with these terms. You must not use the website for any unlawful purpose." },
               { title: "3. Intellectual Property", body: "All content on this website, including text, graphics, logos and software, is the property of Apex Clarity Ltd and protected by applicable intellectual property laws." },
               { title: "4. Limitation of Liability", body: "Apex Clarity shall not be liable for any indirect, incidental or consequential damages arising from the use of this website or our services, except where required by law." },
-              { title: "5. Contact", body: "For questions about these terms, contact us at info@apexclarity.co.uk." },
+              { title: "5. Contact", body: "For questions about these terms, contact us at info@kenvio.co.uk." },
             ].map(s => (
               <div key={s.title}>
                 <h2 className="text-xl font-bold text-ink mb-3">{s.title}</h2>

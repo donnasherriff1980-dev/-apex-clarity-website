@@ -252,8 +252,7 @@ export default function Contact() {
               <div className="bg-brand-dark rounded-3xl p-8 text-white">
                 <h3 className="text-xl font-bold mb-6">Contact Details</h3>
                 <div className="space-y-5">
-                  {/* EMAIL — HOLD: old address kept until the Kenvio mailbox is confirmed active. */}
-                  <a href="mailto:info@apexclarity.co.uk" className="flex items-center gap-3 text-white/50 hover:text-teal transition-colors text-sm"><Mail className="w-5 h-5 text-teal shrink-0" />info@apexclarity.co.uk</a>
+                  <a href="mailto:info@kenvio.co.uk" className="flex items-center gap-3 text-white/50 hover:text-teal transition-colors text-sm"><Mail className="w-5 h-5 text-teal shrink-0" />info@kenvio.co.uk</a>
                   <div className="flex items-center gap-3 text-white/50 text-sm"><MapPin className="w-5 h-5 text-teal shrink-0" />United Kingdom</div>
                 </div>
               </div>

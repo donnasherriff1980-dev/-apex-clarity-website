@@ -173,7 +173,7 @@ export default function Navbar() {
             <ThemeToggle inverse={!scrolled && surface === "dark"} />
             <Link to="/contact?type=demo">
               <Button className="bg-teal text-canvas hover:bg-teal/90 font-semibold text-sm h-9 px-5 rounded-xl focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-canvas">
-                Book a Demo
+                Book an operational review
               </Button>
             </Link>
           </div>
@@ -229,7 +229,7 @@ export default function Navbar() {
               </Link>
               <div className="pt-4">
                 <Link to="/contact?type=demo">
-                  <Button className="w-full bg-teal text-canvas hover:bg-teal/90 font-semibold">Book a Demo</Button>
+                  <Button className="w-full bg-teal text-canvas hover:bg-teal/90 font-semibold">Book an operational review</Button>
                 </Link>
               </div>
             </div>

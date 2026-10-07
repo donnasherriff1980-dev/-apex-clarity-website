@@ -3,28 +3,26 @@ import SEO from "@/components/common/SEO";
 import HeroSection from "../components/home/HeroSection";
 import ProblemSection from "../components/home/ProblemSection";
 import OperationalControlSection from "../components/home/OperationalControlSection";
-import MeetLucySection from "../components/home/MeetLucySection";
-import PlatformModules from "../components/home/PlatformModules";
-import ProductJourney from "../components/home/ProductJourney";
-import WhySection from "../components/home/WhySection";
-import IndustriesSection from "../components/home/IndustriesSection";
+import FounderSection from "../components/home/FounderSection";
+import LucyCompactSection from "../components/home/LucyCompactSection";
+import FaqSection from "../components/home/FaqSection";
 import CTASection from "../components/home/CTASection";
 
+// Seven blocks, hero to final CTA. The product journey, the industries grid
+// and the scripted Lucy conversation remain on their own pages.
 export default function Home() {
   return (
     <>
       <SEO
-        description="Kenvio is the operational control platform for UK contractors — projects, sites, jobs, actions, people, documents, approvals, permits and H&S controls in one connected system, with the evidence kept as the work is done."
+        description="Kenvio gives UK contractors one operational view of the work, the people, the approvals and the evidence: jobs, workforce, H&S controls, RAMS, permits, documents and the commercial record in one system, with founder-led onboarding."
         path="/"
       />
       <HeroSection />
       <ProblemSection />
       <OperationalControlSection />
-      <MeetLucySection />
-      <PlatformModules />
-      <ProductJourney />
-      <WhySection />
-      <IndustriesSection />
+      <FounderSection />
+      <LucyCompactSection />
+      <FaqSection />
       <CTASection />
     </>
   );

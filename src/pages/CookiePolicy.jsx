@@ -15,13 +15,12 @@ export default function CookiePolicy() {
       <section className="py-20 bg-surface">
         <div className="max-w-4xl mx-auto px-6">
           <div className="bg-surface-raised rounded-3xl p-8 md:p-12 border border-hairline/10 shadow-sm space-y-10">
-            {/* EMAIL — HOLD: info@apexclarity.co.uk stays until the Kenvio mailbox is confirmed active. */}
             {[
               { title: "1. What Are Cookies", body: "Cookies are small text files stored on your device when you visit a website. Similar technologies, such as your browser's local storage, work in the same way, and this policy covers both." },
               { title: "2. Essential Storage", body: "We store a small number of items the website needs to work: your cookie preference, your Day/Night display setting, and the settings the website uses to connect to the platform that hosts it. These do not track you and cannot be switched off." },
               { title: "3. Analytics and Advertising", body: "Kenvio does not currently use analytics tracking, and we do not set analytics or advertising cookies on this website. If that changes we will update this policy and ask for your consent through the cookie banner before any such cookie is set." },
               { title: "4. Managing Your Preference", body: "You can change your cookie preference at any time by clearing your browser's local storage for this site, which will show the cookie banner again on your next visit." },
-              { title: "5. Contact", body: "For questions about this policy, contact us at info@apexclarity.co.uk." },
+              { title: "5. Contact", body: "For questions about this policy, contact us at info@kenvio.co.uk." },
             ].map(s => (
               <div key={s.title}>
                 <h2 className="text-xl font-bold text-ink mb-3">{s.title}</h2>

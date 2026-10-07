@@ -1,61 +1,68 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { X } from "lucide-react";
+import { X, Check } from "lucide-react";
 
-// Sector-specific failure modes. Previously this was a generic list
-// ("Missed certificates", "Failed audits", "Paper systems") that could have
-// belonged to any compliance vendor. These are the things that actually go
-// wrong on a social-housing retrofit or M&E contract.
-const problems = [
-  "Job started, nobody sure who owns the outstanding actions",
-  "Site paperwork in three systems and a WhatsApp group",
-  "Operative on site, ticket expired last month",
-  "Approval given verbally, nothing recorded",
-  "Permit extended by phone, hand-back never logged",
-  "Client audit lands, fortnight of evidence-hunting begins",
+// Four recognisable failures, each answered by what Kenvio does today.
+// Every answer is a live capability on the platform; nothing here is roadmap.
+const PAIRS = [
+  {
+    problem: "RAMS, permits, evidence and approvals chased by email and WhatsApp.",
+    answer: "One governed record from job set-up to sign-off, with every approval and its reason recorded.",
+  },
+  {
+    problem: "Training and competence scattered across folders, expiring unnoticed.",
+    answer: "Competence by role, inductions by QR code, and expiry surfaced before the person is on site.",
+  },
+  {
+    problem: "Site issues, inspections and actions discovered too late.",
+    answer: "Inspections and incidents logged from the phone, actions with owners and due dates, and a notification when something is waiting on you.",
+  },
+  {
+    problem: "No single view of what the job is, who is on it, what is approved and what it is costing.",
+    answer: "Job, site, people, documents, controls and the commercial record on one screen.",
+  },
 ];
 
 export default function ProblemSection() {
   return (
     <section className="py-24 lg:py-32 bg-surface">
-      <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-        <span className="text-xs font-bold text-teal uppercase tracking-widest mb-4 block">The Reality</span>
-        <h2 className="text-3xl md:text-4xl font-black text-ink mb-4">
-          The work gets done. The evidence goes missing.
-        </h2>
-        <p className="text-ink-secondary max-w-2xl mx-auto mb-12">
-          Contractors rarely lose a contract because the work was bad. They lose it because nobody could show, on the day they were asked, what was done, who did it, what was approved and what evidence exists.
-        </p>
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-14">
+          <span className="text-xs font-bold text-teal uppercase tracking-widest mb-4 block">The Reality</span>
+          <h2 className="text-3xl md:text-4xl font-black text-ink mb-4">
+            Your operation shouldn&apos;t live across five systems and three spreadsheets.
+          </h2>
+          <p className="text-ink-secondary max-w-2xl mx-auto">
+            Contractors rarely lose work because the work was bad. They lose it because nobody could show, on the day
+            they were asked, what was done, who did it, what was approved and what it cost.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-14 max-w-2xl mx-auto">
-          {problems.map((p, i) => (
+        <div className="space-y-3">
+          {PAIRS.map((p, i) => (
             <motion.div
-              key={p}
+              key={p.problem}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              whileHover={{ y: -3 }}
-              className="flex items-start gap-2.5 bg-surface-raised rounded-xl px-4 py-3.5 border border-hairline/10 text-left transition-shadow duration-300 hover:shadow-lg"
+              transition={{ delay: i * 0.06 }}
+              className="grid md:grid-cols-2 gap-3"
             >
-              <div className="w-5 h-5 rounded-full bg-red-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                <X className="w-3 h-3 text-red-400" />
+              <div className="flex items-start gap-3 bg-surface-raised rounded-xl px-5 py-4 border border-hairline/10">
+                <div className="w-5 h-5 rounded-full bg-red-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <X className="w-3 h-3 text-red-400" />
+                </div>
+                <span className="text-ink-secondary text-sm font-medium leading-snug">{p.problem}</span>
               </div>
-              <span className="text-ink-secondary text-sm font-medium leading-snug">{p}</span>
+              <div className="flex items-start gap-3 bg-teal/5 rounded-xl px-5 py-4 border border-teal/20">
+                <div className="w-5 h-5 rounded-full bg-teal/15 flex items-center justify-center shrink-0 mt-0.5">
+                  <Check className="w-3 h-3 text-teal" />
+                </div>
+                <span className="text-ink text-sm font-medium leading-snug">{p.answer}</span>
+              </div>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <div className="w-px h-12 bg-gradient-to-b from-transparent via-teal/50 to-teal mx-auto mb-6" />
-          <p className="text-2xl md:text-3xl font-bold text-ink leading-snug">
-            Kenvio makes the evidence<br className="hidden md:block" /> a by-product of the work.
-          </p>
-        </motion.div>
       </div>
     </section>
   );

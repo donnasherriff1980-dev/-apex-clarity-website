@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const SITE_NAME = "Kenvio";
-const DEFAULT_TITLE = "Kenvio | The Operational Control Platform for UK Contractors";
+const DEFAULT_TITLE = "Kenvio | Run the work. Know where every job stands.";
 const DEFAULT_IMAGE = "https://kenvio.co.uk/brand/kenvio-share.png";
 const SITE_URL = "https://kenvio.co.uk";
 
