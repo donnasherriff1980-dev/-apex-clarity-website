@@ -1,0 +1,194 @@
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Send, Sparkles } from "lucide-react";
+import LucyOrb from "@/components/common/LucyOrb";
+
+// Lucy's shipped assistance is drafting help on risk assessments and method
+// statements, plus scope guidance on permit templates. These lines and the
+// scripted replies below stay inside that scope — the earlier version had
+// Lucy claiming continuous certificate monitoring and subcontractor
+// surveillance, which the platform does through its governance overview,
+// not through Lucy.
+const INTRO_LINES = [
+  "Good afternoon.",
+  "You're starting a method statement for the roof access works.",
+  "Want me to draft the first version from your hazard library?",
+];
+
+const SUGGESTED_QUESTIONS = [
+  "How do you help with RAMS?",
+  "What can't you do?",
+  "How does a permit get handed back?",
+  "How does the platform track what's overdue?",
+  "What about PAS 2035 retrofit evidence?",
+];
+
+const SCRIPTED_RESPONSES = [
+  {
+    match: ["rams", "risk assessment", "method statement", "draft"],
+    reply: "I help you get a first version down \u2014 pulling hazards from your library into a risk assessment or method statement, so you are editing rather than starting from a blank page. Your competent person reviews and approves it. I do not.",
+  },
+  {
+    match: ["can't", "cannot", "limitation", "not do", "won't"],
+    reply: "I do not approve, certify or sign anything off, and I do not decide whether someone is competent. Today I assist with drafting risk assessments and method statements, and with scope guidance on permit templates. Everything else on the platform is the system and your people, not me.",
+  },
+  {
+    match: ["permit", "hand back", "handback", "control of work"],
+    reply: "A permit is raised from a template, and its extensions, suspensions and cancellations each need a recorded reason. Hand-back captures the completion state of the work and anything still outstanding \u2014 so it closes with a record rather than a signature that goes missing.",
+  },
+  {
+    match: ["overdue", "track", "outstanding", "expire", "expiry", "audit"],
+    reply: "That is the governance overview rather than me. It lists drafts, items awaiting review, items approved but not yet issued, overdue reviews, expiring permits, permits awaiting hand-back, missing toolbox talk attendance and competence evidence gaps. It is an administrative view \u2014 not a compliance score.",
+  },
+  {
+    match: ["pas 2035", "retrofit", "social housing", "shdf", "eco4", "trustmark"],
+    reply: "Retrofit evidence sits against the site and the job \u2014 RAMS packs, toolbox talk attendance, competence evidence and permit hand-backs all attach to the work they were raised for, so it can be pulled together when a funder or registered provider asks for it.",
+  },
+];
+
+const FALLBACK_REPLY = "I would rather not guess at that one. Book a demo and we will show you exactly what the platform does and does not do.";
+
+function findResponse(text) {
+  const lower = text.toLowerCase();
+  const match = SCRIPTED_RESPONSES.find((r) => r.match.some((kw) => lower.includes(kw)));
+  return match ? match.reply : FALLBACK_REPLY;
+}
+
+export default function MeetLucySection() {
+  const [introIndex, setIntroIndex] = useState(0);
+  const [conversation, setConversation] = useState([]);
+  const [input, setInput] = useState("");
+  const [typing, setTyping] = useState(false);
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    if (introIndex >= INTRO_LINES.length) return;
+    const t = setTimeout(() => setIntroIndex((i) => i + 1), 900);
+    return () => clearTimeout(t);
+  }, [introIndex]);
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
+  }, [conversation, typing]);
+
+  const ask = (question) => {
+    if (!question.trim()) return;
+    setConversation((c) => [...c, { role: "user", text: question }]);
+    setInput("");
+    setTyping(true);
+    setTimeout(() => {
+      setTyping(false);
+      setConversation((c) => [...c, { role: "lucy", text: findResponse(question) }]);
+    }, 900 + Math.random() * 500);
+  };
+
+  const introDone = introIndex >= INTRO_LINES.length;
+
+  return (
+    <section className="py-24 lg:py-32 bg-brand-dark relative overflow-hidden">
+      <div className="absolute inset-0 lucy-water" />
+      <div className="absolute inset-0 lucy-overlay" />
+      <div className="absolute inset-0 grid-pattern opacity-40" />
+
+      <div className="relative max-w-5xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-14">
+          <span className="text-xs font-bold text-teal uppercase tracking-widest mb-4 block">The Face of Kenvio</span>
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Meet Lucy</h2>
+          <span className="inline-flex items-center gap-1.5 text-xs text-white/70 bg-white/8 border border-white/15 rounded-full px-3 py-1.5">
+            <Sparkles className="w-3 h-3 text-teal" /> Preview conversation — illustrative, not live AI
+          </span>
+        </div>
+
+        <div className="grid md:grid-cols-[220px_1fr] gap-10 items-start">
+          <div className="flex md:flex-col items-center justify-center gap-6">
+            <LucyOrb size={160} />
+          </div>
+
+          <div className="glass rounded-3xl p-6 md:p-8 border border-white/10">
+            <div ref={scrollRef} className="max-h-[360px] overflow-y-auto space-y-4 mb-6 pr-1">
+              {INTRO_LINES.slice(0, introIndex).map((line, i) => (
+                <motion.p
+                  key={i}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-white/80 text-base md:text-lg leading-relaxed"
+                >
+                  {line}
+                </motion.p>
+              ))}
+
+              {conversation.map((m, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
+                >
+                  <div
+                    className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                      m.role === "user"
+                        ? "bg-teal/15 text-white border border-teal/25"
+                        : "bg-white/6 text-white/85 border border-white/10"
+                    }`}
+                  >
+                    {m.text}
+                  </div>
+                </motion.div>
+              ))}
+
+              <AnimatePresence>
+                {typing && (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center gap-1.5 text-white/30 text-sm pl-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse [animation-delay:150ms]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse [animation-delay:300ms]" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {introDone && (
+              <>
+                {conversation.length === 0 && (
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {SUGGESTED_QUESTIONS.map((q) => (
+                      <button
+                        key={q}
+                        onClick={() => ask(q)}
+                        className="text-xs font-medium text-teal bg-teal/10 border border-teal/20 rounded-full px-3.5 py-2 hover:bg-teal/20 transition-colors"
+                      >
+                        {q}
+                      </button>
+                    ))}
+                  </div>
+                )}
+                <form
+                  onSubmit={(e) => { e.preventDefault(); ask(input); }}
+                  className="flex items-center gap-2 border-t border-white/8 pt-4"
+                >
+                  <input
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    placeholder="Ask Lucy a question..."
+                    className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-teal/40"
+                  />
+                  <button
+                    type="submit"
+                    className="w-10 h-10 rounded-xl bg-teal/15 border border-teal/25 flex items-center justify-center text-teal hover:bg-teal/25 transition-colors shrink-0"
+                    aria-label="Ask Lucy"
+                  >
+                    <Send className="w-4 h-4" />
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+
+        <p className="flex items-center justify-center gap-1.5 text-white/45 text-xs mt-6">
+          <Sparkles className="w-3 h-3" /> A preview conversation — illustrative, not live AI. Book a demo to talk to the real thing.
+        </p>
+      </div>
+    </section>
+  );
+}

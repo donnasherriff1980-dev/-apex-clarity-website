@@ -1,0 +1,434 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 215 28% 17%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 17%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 17%;
+    --primary: 215 28% 17%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 25% 27%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 38 89% 67%;
+    --accent-foreground: 215 28% 17%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 38 89% 67%;
+    --radius: 0.75rem;
+    --font-heading: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 215 28% 17%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 38 89% 67%;
+  }
+
+  /* ==========================================================
+     Apex semantic brand tokens — Batch 2 (token plumbing only)
+     Every value below reproduces the CURRENT rendered baseline
+     exactly — no new colours, no Day/Night palette, no toggle.
+     These are the token NAMES the approved Day/Night system will
+     assign new values to in a later, separately-approved batch.
+     Namespaced --apex- to avoid any collision with the shadcn
+     HSL-triplet tokens above (different colour space/consumers).
+     ========================================================== */
+  :root {
+    /* Surfaces (hex, for plain solid usage) */
+    --apex-surface-dark: #0F172A;      /* was: brand.dark / .bg-brand-dark */
+    --apex-surface-dark-mid: #1E293B;  /* was: brand.mid / .bg-brand-mid */
+    --apex-surface-light: #F8FAFC;     /* was: brand.light / .bg-brand-light */
+    /* Surfaces (space-separated RGB channels, for rgb(var(--x) / <alpha-value>) usage
+       — required so Tailwind opacity modifiers like bg-brand-dark/95 keep working) */
+    --apex-surface-dark-rgb: 15 23 42;
+    --apex-surface-dark-mid-rgb: 30 41 59;
+    --apex-surface-light-rgb: 248 250 252;
+
+    /* Text-on-light */
+    --apex-ink: #0F172A;      /* was: .text-brand-dark */
+    --apex-ink-mid: #1E293B;  /* was: .text-brand-mid */
+
+    /* Brand / accent — currently gold. NOT yet teal; recolouring is a
+       separately-approved future batch, not part of this one. */
+    --apex-brand-primary: #F4B860;          /* was: gold / .text-gold / .bg-gold / .border-gold */
+    --apex-brand-primary-rgb: 244 184 96;
+
+    /* Lucy — real, verified colours, unchanged. Same hex already in use
+       below; now named so the orb/water CSS shares one source of truth. */
+    --apex-lucy-glow: #00E5C7;
+    --apex-lucy-glow-rgb: 0 229 199;
+    --apex-lucy-warm: #F4DCB2;
+    --apex-lucy-warm-rgb: 244 220 178;
+    --apex-lucy-canvas: #060B0D;
+
+    /* Declared for the approved Day/Night architecture — not yet wired
+       anywhere. Values match the ad hoc Tailwind palette shades already
+       rendered today (emerald-400 / amber-400 / red-400), so declaring
+       them changes nothing until a future batch adopts them. */
+    --apex-success: #34D399;
+    --apex-warning: #FBBF24;
+    --apex-danger: #F87171;
+    --apex-focus-ring: var(--apex-brand-primary);
+  }
+
+  /* ==========================================================
+     Apex Lucy-led Day/Night tokens — Batch 3
+     Values are NOT invented for the website. They are taken
+     directly from the Apex Clarity PLATFORM's own tokens
+     (src/index.css --surface-canvas / --ink-primary / --ink-secondary /
+     --brand-primary / --lucy-gold, both themes), confirmed against the
+     Lucy Identity Gate evidence report. :root is Night (the platform's
+     own default); [data-theme="light"] overrides to Day — same
+     convention the platform itself uses. Only the surfaces/text/general
+     teal move between themes; Lucy's own Night values (#00E5C7 / #F4DCB2)
+     are the existing --apex-lucy-glow / --apex-lucy-warm tokens above and
+     are NOT redefined here — hard freeze, per governing instruction. */
+  :root {
+    --apex-canvas: #060B0D;             /* platform --surface-canvas (Night) */
+    --apex-canvas-rgb: 6 11 13;
+    --apex-surface: #101C1E;            /* platform --surface-raised (Night) */
+    --apex-surface-rgb: 16 28 30;
+    --apex-surface-subtle: #0A1416;     /* between canvas and surface, platform --surface-recessed range */
+
+    --apex-text-primary: #E9F4F1;       /* platform --ink-primary (Night), exact */
+    --apex-text-primary-rgb: 233 244 241;
+    --apex-text-secondary: #8CA6A2;     /* platform --ink-secondary (Night), exact */
+    --apex-text-secondary-rgb: 140 166 162;
+
+    --apex-border-rgb: 255 255 255;     /* hairline overlay base — marketing-appropriate adaptation, not a platform surface copy */
+
+    /* General interactive brand teal — Night. Same hex as the frozen
+       --apex-lucy-glow; now also the site's general brand-primary. */
+    --apex-teal: #00E5C7;
+    --apex-teal-rgb: 0 229 199;
+
+    --apex-surface-raised: #142224;     /* platform --surface-overlay (Night), exact — third dark tier so Night isn't one flat sheet */
+    --apex-surface-raised-rgb: 20 34 36;
+
+    --apex-focus-ring: var(--apex-teal);
+  }
+
+  /* Fixed, non-theme-reactive contrast pairs — for the Navbar's transparent
+     state, which sits on a surface context (dark/light) that is declared
+     explicitly by the page, independent of the resolved Day/Night theme.
+     These never flip with [data-theme]; they are "what reads correctly
+     against a known-dark / known-light background", full stop. */
+  :root {
+    --apex-ink-on-dark: #E9F4F1;   /* = platform's real Night ink-primary */
+    --apex-ink-on-light: #1A292E;  /* = platform's real Day ink-primary */
+  }
+
+  [data-theme="light"] {
+    --apex-canvas: #F4F1EB;             /* platform's own .lucy-water Day canvas, exact hex from platform code */
+    --apex-canvas-rgb: 244 241 235;
+    --apex-surface: #FDFDFC;            /* platform --surface-raised (Day) */
+    --apex-surface-rgb: 253 253 252;
+    --apex-surface-subtle: #F2EEE9;     /* platform --surface-recessed (Day) */
+
+    --apex-text-primary: #1A292E;       /* platform --ink-primary (Day) */
+    --apex-text-primary-rgb: 26 41 46;
+    --apex-text-secondary: #5E7378;     /* platform --ink-secondary (Day) */
+    --apex-text-secondary-rgb: 94 115 120;
+
+    --apex-border-rgb: 26 41 46;
+
+    /* General interactive brand teal — Day. Platform's own AA-deepened
+       value (--brand-primary, Day), not the Night hue lightened by guess. */
+    --apex-teal: #1A9E8E;
+    --apex-teal-rgb: 26 158 142;
+
+    --apex-surface-raised: #FFFFFF;     /* Day card tier — full white pop against the warm canvas/surface beneath it */
+    --apex-surface-raised-rgb: 255 255 255;
+
+    /* Lucy champagne — Day. Same hue family as Night's frozen #F4DCB2,
+       deepened for light-background legibility exactly as the platform's
+       own --lucy-gold does for its Day theme. Lucy-only — see index.css
+       usage sites below; never used as a general accent. */
+    --apex-lucy-warm: #9D6D25;
+    --apex-lucy-warm-rgb: 157 109 37;
+
+    --apex-focus-ring: var(--apex-teal);
+  }
+
+  .dark {
+    --background: 215 28% 7%;
+    --foreground: 0 0% 98%;
+    --card: 215 28% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 215 28% 12%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 215 28% 17%;
+    --secondary: 215 25% 20%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 215 25% 20%;
+    --muted-foreground: 215 16% 60%;
+    --accent: 38 89% 67%;
+    --accent-foreground: 215 28% 17%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 215 25% 22%;
+    --input: 215 25% 22%;
+    --ring: 38 89% 67%;
+    --sidebar-background: 215 28% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 38 89% 67%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 25% 16%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 215 25% 20%;
+    --sidebar-ring: 38 89% 67%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+/* Batch 3 — global Lucy-led canvas. Layered after the shadcn body rule
+   above so it wins on background-color specifically; every in-scope
+   surface (Navbar/Hero/Footer/etc.) now derives from the same --apex-canvas
+   token, so the whole page — not just individual sections — genuinely
+   changes between Day and Night. */
+html, body {
+  background-color: var(--apex-canvas);
+}
+
+/* Brand colours */
+.bg-brand-dark   { background-color: var(--apex-surface-dark); }
+.bg-brand-mid    { background-color: var(--apex-surface-dark-mid); }
+.bg-brand-light  { background-color: var(--apex-surface-light); }
+.text-brand-dark { color: var(--apex-ink); }
+.text-brand-mid  { color: var(--apex-ink-mid); }
+.text-gold       { color: var(--apex-brand-primary); }
+.bg-gold         { background-color: var(--apex-brand-primary); }
+.border-gold     { border-color: var(--apex-brand-primary); }
+
+html { scroll-behavior: smooth; }
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.glass-light {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.8);
+}
+
+/* Gradient text — Hero-only teal variant (Batch 3). The shared .gradient-text
+   below stays gold and untouched: About.jsx, HealthCheck.jsx, Vision.jsx and
+   PlatformTour.jsx still use it and are out of scope this batch. */
+.gradient-text-brand {
+  color: var(--apex-teal);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--apex-brand-primary) 0%, #f9d28c 50%, var(--apex-brand-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Grid pattern */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Dot pattern */
+.dot-pattern {
+  background-image: radial-gradient(circle, rgb(var(--apex-brand-primary-rgb) / 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Glow effects */
+.glow-gold {
+  box-shadow: 0 0 40px rgb(var(--apex-brand-primary-rgb) / 0.25), 0 0 80px rgb(var(--apex-brand-primary-rgb) / 0.1);
+}
+.glow-blue {
+  box-shadow: 0 0 40px rgba(15,23,42,0.4);
+}
+.glow-teal {
+  /* NOTE: this is Tailwind's teal-400 (45,212,191), not Lucy's verified brand
+     teal (--apex-lucy-glow = 0,229,199) — a different colour today. Left
+     untouched to stay pixel-identical; flagged as debt to reconcile once
+     Day/Night activates and a single teal is chosen sitewide. */
+  box-shadow: 0 0 40px rgba(45,212,191,0.25), 0 0 80px rgba(45,212,191,0.1);
+}
+
+/* Lucy gradient text */
+.gradient-text-teal {
+  background: linear-gradient(135deg, #5eead4 0%, #2dd4bf 50%, #99f6e4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Lucy orb — ported verbatim from the Apex Clarity application's src/index.css
+   (same asset, same classes, same timings — not a website reinterpretation). */
+@keyframes lucy-orb-alive {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
+}
+@keyframes lucy-orb-spin { to { transform: rotate(360deg); } }
+@keyframes lucy-glow-pulse {
+  0%, 100% { opacity: 0.65; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+@keyframes lucy-particles {
+  0% { transform: translateY(18px); opacity: 0; }
+  25% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { transform: translateY(-28px); opacity: 0; }
+}
+
+.lucy-orb-alive {
+  animation: lucy-orb-alive 6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.lucy-orb-glow {
+  position: absolute;
+  inset: -25%;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgb(var(--apex-lucy-glow-rgb) / 0.22) 0%, rgb(var(--apex-lucy-warm-rgb) / 0.10) 38%, transparent 70%);
+  filter: blur(18px);
+  pointer-events: none;
+  animation: lucy-glow-pulse 5s ease-in-out infinite;
+}
+
+.lucy-orb-rim {
+  position: absolute;
+  inset: -4%;
+  border-radius: 9999px;
+  padding: 2px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0.95) 0deg,
+    rgb(var(--apex-lucy-glow-rgb) / 0.85) 70deg,
+    rgb(var(--apex-lucy-warm-rgb) / 0.45) 130deg,
+    transparent 210deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: lucy-orb-spin 6s linear infinite;
+  pointer-events: none;
+}
+
+.lucy-orb-particles {
+  position: absolute;
+  inset: -8%;
+  border-radius: 9999px;
+  pointer-events: none;
+  overflow: hidden;
+}
+.lucy-orb-particles::before,
+.lucy-orb-particles::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: rgb(var(--apex-lucy-glow-rgb) / 0.85);
+  box-shadow:
+    20px 24px 0 -0.5px rgb(var(--apex-lucy-warm-rgb) / 0.7),
+    -24px 16px 0 -1px rgb(var(--apex-lucy-glow-rgb) / 0.5),
+    10px -20px 0 -0.5px rgba(255, 255, 255, 0.6);
+  animation: lucy-particles 9s ease-in-out infinite;
+}
+.lucy-orb-particles::after {
+  left: 45%;
+  animation-delay: -4.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lucy-orb-rim,
+  .lucy-orb-alive,
+  .lucy-orb-glow,
+  .lucy-orb-particles::before,
+  .lucy-orb-particles::after {
+    animation: none !important;
+  }
+}
+
+/* Lucy's world — ported verbatim from the application's src/index.css
+   (.lucy-water / .lucy-overlay). This is the app's actual Home-screen
+   background treatment (deep water canvas + darkening overlay), not a
+   website approximation. Used only behind the Hero and Meet Lucy sections. */
+.lucy-water {
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgb(var(--apex-lucy-glow-rgb) / 0.10) 0%, transparent 50%),
+    radial-gradient(90% 60% at 50% 110%, rgb(var(--apex-lucy-glow-rgb) / 0.05) 0%, transparent 55%),
+    var(--apex-lucy-canvas);
+}
+.lucy-overlay {
+  background: rgba(4, 9, 11, 0.55);
+  pointer-events: none;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--apex-surface-dark); }
+::-webkit-scrollbar-thumb { background: var(--apex-brand-primary); border-radius: 3px; }
+
+/* Pulse ring */
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgb(var(--apex-brand-primary-rgb) / 0.4); }
+  70% { transform: scale(1); box-shadow: 0 0 0 12px rgb(var(--apex-brand-primary-rgb) / 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgb(var(--apex-brand-primary-rgb) / 0); }
+}
+.pulse-ring { animation: pulse-ring 2.5s infinite; }
+
+/* Float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.float { animation: float 4s ease-in-out infinite; }
+
+/* Shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent 25%, rgb(var(--apex-brand-primary-rgb) / 0.1) 50%, transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}

@@ -1,0 +1,133 @@
+{
+  "description": "A public-website enquiry: a demo request, newsletter signup, or health-check report unlock.",
+  "name": "Lead",
+  "properties": {
+    "company": {
+      "description": "Company name",
+      "type": "string"
+    },
+    "current_hs_provision": {
+      "description": "Consultancy qualification: how H&S is currently resourced",
+      "enum": [
+        "No formal H&S resource",
+        "Handled by a manager alongside other duties",
+        "Part-time or shared H&S resource",
+        "Full-time internal H&S manager",
+        "External H&S consultant already appointed"
+      ],
+      "type": "string"
+    },
+    "email": {
+      "description": "Contact email address",
+      "type": "string"
+    },
+    "enquiry_type": {
+      "description": "For contact_form leads: what the visitor selected",
+      "enum": [
+        "Book a Demo",
+        "Business Health Check",
+        "General Enquiry",
+        "Partnership",
+        "H&S Consultancy",
+        "Managed Compliance"
+      ],
+      "type": "string"
+    },
+    "health_check_grade": {
+      "description": "Health check letter grade (A-D), if applicable",
+      "type": "string"
+    },
+    "health_check_score_pct": {
+      "description": "Health check percentage score, if this lead came from the health check",
+      "type": "number"
+    },
+    "industry": {
+      "description": "Industry selected on the contact form",
+      "type": "string"
+    },
+    "message": {
+      "description": "Free-text message from the enquirer",
+      "type": "string"
+    },
+    "name": {
+      "description": "Full name of the enquirer",
+      "type": "string"
+    },
+    "notified_at": {
+      "description": "Set by notify_new_lead when the founder notification email was sent (ISO 8601). Guards against duplicate emails.",
+      "type": "string"
+    },
+    "page_url": {
+      "description": "The page the enquiry was submitted from",
+      "type": "string"
+    },
+    "phone": {
+      "description": "Contact phone number",
+      "type": "string"
+    },
+    "service_interest": {
+      "description": "Solution/module the enquirer is interested in",
+      "type": "string"
+    },
+    "site_count_band": {
+      "description": "Consultancy qualification: number of active sites or projects",
+      "enum": [
+        "1",
+        "2-5",
+        "6-15",
+        "16-50",
+        "50+"
+      ],
+      "type": "string"
+    },
+    "source": {
+      "description": "Which form/flow generated this lead",
+      "enum": [
+        "contact_form",
+        "newsletter",
+        "health_check"
+      ],
+      "type": "string"
+    },
+    "staff_count_band": {
+      "description": "Consultancy qualification: approximate number of staff",
+      "enum": [
+        "1-10",
+        "11-25",
+        "26-50",
+        "51-100",
+        "101-250",
+        "250+"
+      ],
+      "type": "string"
+    },
+    "support_needed": {
+      "description": "Consultancy qualification: the support areas the enquirer selected",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "source"
+  ],
+  "rls": {
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  },
+  "type": "object"
+}

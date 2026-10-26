@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/brand/favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Batch 3 — resolve Day/Night before first paint (no FOUC), same
+      // approach as the Apex Clarity PLATFORM's own ThemeContext: read the
+      // stored preference, fall back to prefers-color-scheme, set data-theme
+      // on <html> synchronously. Own storage key — not shared with the
+      // platform's apex-theme key, and never tied to cookie consent.
+      (function () {
+        try {
+          var stored = localStorage.getItem('apex-website-theme');
+          var pref = stored === 'day' || stored === 'night' || stored === 'system' ? stored : 'system';
+          var resolved;
+          if (pref === 'day') resolved = 'light';
+          else if (pref === 'night') resolved = 'dark';
+          else resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', resolved);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+    <title>Kenvio | The Operational Control Platform for UK Contractors</title>
+    <meta name="description" content="Kenvio is the operational control platform for UK contractors — projects, sites, jobs, actions, people, documents, approvals, permits and H&S controls in one connected system, with the evidence kept as the work is done." />
+    <meta name="keywords" content="contractor compliance software, operational control platform, RAMS software, method statement software, permit to work system, toolbox talk records, competence management, COSHH assessment software, social housing retrofit compliance, M&amp;E contractor compliance, CDM 2015" />
+    <link rel="canonical" href="https://kenvio.co.uk/" />
+    <meta property="og:site_name" content="Kenvio" />
+    <meta property="og:title" content="Kenvio | The Operational Control Platform for UK Contractors" />
+    <meta property="og:description" content="Kenvio is the operational control platform for UK contractors — projects, sites, jobs, actions, people, documents, approvals, permits and H&S controls in one connected system, with the evidence kept as the work is done." />
+    <meta property="og:image" content="https://kenvio.co.uk/brand/kenvio-share.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kenvio.co.uk/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kenvio | The Operational Control Platform for UK Contractors" />
+    <meta name="twitter:description" content="Kenvio is the operational control platform for UK contractors — projects, sites, jobs, actions, people, documents, approvals, permits and H&S controls in one connected system, with the evidence kept as the work is done." />
+    <meta name="twitter:image" content="https://kenvio.co.uk/brand/kenvio-share.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Kenvio",
+        "url": "https://kenvio.co.uk/",
+        "logo": "https://kenvio.co.uk/brand/kenvio-icon.png",
+        "description": "Kenvio is the operational control platform for UK contractors — projects, sites, jobs, actions, people, documents, approvals, permits and H&S controls in one connected system, with the evidence kept as the work is done.",
+        "email": "info@kenvio.co.uk",
+        "areaServed": "GB",
+        "knowsAbout": ["Operational Control", "Project and Job Management", "Work and Action Tracking", "Workforce Competence", "Document Control", "Approvals and Governance", "Permit to Work", "Health and Safety Controls", "CDM 2015"]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

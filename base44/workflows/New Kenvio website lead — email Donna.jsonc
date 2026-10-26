@@ -1,0 +1,36 @@
+{
+  "name": "New Kenvio website lead \u2014 email Donna",
+  "description": "Emails Donna whenever a new Lead record is created by a website form, via the notify_new_lead backend function (one email per Lead).",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "Lead"
+    }
+  },
+  "definition": {
+    "do": [
+      {
+        "notify": {
+          "call": "invoke_backend_function",
+          "then": "end",
+          "with": {
+            "function_name": "notify_new_lead",
+            "payload": {
+              "lead_id": "${ .data.id }"
+            }
+          }
+        }
+      }
+    ],
+    "document": {
+      "dsl": "1.0.0",
+      "name": "new-lead-notification",
+      "namespace": "base44",
+      "version": "1.1.0"
+    }
+  }
+}
