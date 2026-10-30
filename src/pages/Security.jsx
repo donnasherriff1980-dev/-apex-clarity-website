@@ -80,7 +80,7 @@ const SECTIONS = [
     body: [
       "Lucy is Kenvio's governed AI assistant. She helps people find information in their own Kenvio records, and prepare first drafts such as a risk assessment or a method statement from the organisation's hazard library.",
       "Lucy does not approve, certify, sign off or issue anything. A competent person makes those decisions, and the record shows who made them.",
-      "Lucy receives the question a user asks, together with the records that user is allowed to see. Kenvio gathers those records on the server, using the user's own permissions.",
+      "Lucy has no tools and no direct access to Kenvio records. The information she uses to answer a question is retrieved by Kenvio's server, for the signed-in user only, through Kenvio's existing record functions.",
       "Which AI model provider processes these requests, where it processes them, and how long conversation content is kept are being confirmed with our infrastructure provider. We will update this page when they are confirmed.",
     ],
   },

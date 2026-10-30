@@ -15,7 +15,7 @@ const SECTIONS = [
     body: [
       `This website is operated by ${OPERATOR}. Kenvio is a sole trader business and is not a limited company.`,
       `${OPERATOR} is the controller of the personal data described in this policy. You can contact us about it at ${PRIVACY_EMAIL}.`,
-      "This policy covers personal data you give us through this website: enquiries, demo requests, update sign-ups and basic technical data. Kenvio software holds personal data for customers. In that case the customer is normally the controller, and Kenvio acts as processor under a written agreement. See our Security & Data Protection page.",
+      "This policy covers personal data you give us through this website: enquiries, demo requests and basic technical data. Kenvio software holds personal data for customers. In that case the customer is normally the controller, and Kenvio acts as processor under a written agreement. See our Security & Data Protection page.",
     ],
   },
   {
@@ -23,7 +23,6 @@ const SECTIONS = [
     body: [
       "Enquiries and demo requests: your name, company, work email, phone number (optional), role, contractor type, number of live projects, the challenge you describe, your preferred demo day and time, and any message you send.",
       "H&S support enquiries: in addition, the approximate size of your organisation, the number of active sites or projects, how H&S is currently handled, and the support you need.",
-      "Update sign-ups: your email address and your consent. We do not currently send marketing or update emails from this website. If we do, each email will explain how to unsubscribe.",
       "For every form: the page you submitted it from, whether you consented, and when.",
       "Technical data: when you visit this website, our hosting provider (Base44) and our font provider (Google Fonts) receive standard technical information, such as your IP address and browser type, to deliver the website and keep it running.",
       "Your preferences: your cookie choice and your Day/Night display setting, stored in your browser.",
@@ -34,7 +33,6 @@ const SECTIONS = [
     body: [
       "To respond to your enquiry, arrange and run a demo, and discuss which plan or scope of support suits you: because you asked us to take these steps before entering into a contract, and because of our legitimate interest in responding to business enquiries.",
       "To follow up on an enquiry you have started: our legitimate interest in following up a business enquiry you made.",
-      "To send product updates if you sign up for them: your consent, which you can withdraw at any time by contacting us.",
       "To keep this website secure and working: our legitimate interest in running a secure website.",
       "We do not sell personal data. We do not make decisions about you based solely on automated processing.",
     ],
@@ -61,7 +59,6 @@ const SECTIONS = [
     title: "6. How long we keep it",
     body: [
       "Enquiry and demo request records: we keep them only for as long as we need them to respond to you and follow up on your enquiry. We review these records regularly and delete those we no longer need.",
-      "Newsletter sign-up records: until you ask us to stop, or withdraw your consent.",
       "Customer contract and invoice records: for the length of the relationship, and for the periods that tax and accounting law requires.",
     ],
   },

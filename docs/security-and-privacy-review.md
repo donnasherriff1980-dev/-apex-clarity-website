@@ -35,7 +35,7 @@ This branch is a mirror of proposed changes. Base44 is the canonical website sou
 - **Enquiries and demo requests:** the Privacy Policy uses non-numeric wording ("only as long as we need them") until a deletion check is running. The proposed rule is: keep enquiry records for 12 months from last contact, then delete them.
 - **Proposed manual procedure (monthly, Donna):** in the Base44 Lead table, filter records created more than 12 months ago with no follow-up recorded, delete them, and note the count and date. Once this has run once, the Privacy Policy can state "12 months".
 - **Automation (explained, not built):** a scheduled backend function that deletes Lead records older than 12 months with no follow-up, logging each deletion. It would run with the service role. It needs your approval before it is built.
-- **Newsletter sign-ups:** stored as Lead records with source `newsletter`. No function sends them. The footer copy and consent now describe this accurately. **Decision for you:** keep collecting sign-ups, or pause the footer form until a sending process with unsubscribe exists. I recommend pausing it.
+- **Newsletter sign-ups: removed from the website on this branch.** The footer sign-up form, its consent wording and the newsletter wording in the Privacy Policy are gone. Kenvio does not run a newsletter and collects no update sign-ups at launch. **Still open in Base44:** existing Lead records with source `newsletter` (if any), and the `newsletter` value in the Lead schema (`base44/entities/Lead.jsonc`). Neither is changed on this branch. Decide whether to delete the existing records and remove the enum value there.
 - The site has no unsubscribe link, and no page claims one.
 
 ## 6. Subprocessors
@@ -60,7 +60,7 @@ Base44's terms, per search results, give 7 days' notice of new subprocessors. Th
 | Records separated by organisation | `tenant_id` checks in platform functions | Verified in code, application-level only |
 | HTTPS | Verified custom domain on the website app; https links | Verified for the website domain |
 | Audit history of key changes | `writePlatformBusinessAudit`, `record_history` references | Partially verified. Confirm per record type |
-| Lucy receives only records the user may see | `get_lucy_*_context` functions | **Not verified.** The functions were not read in full. Check before relying on it |
+| Lucy has no tools and no direct access to records. Information she uses is retrieved for the signed-in user through existing record functions | `base44/agents/lucy.jsonc` (`tool_configs: []`); `get_lucy_operational_context` (gate: `resolveLucyCaller`; retrieval runs under the caller's own token) | **Verified in code** for the agent configuration, the gate and the retrieval path. Not verified: the per-function permission rule of each list/get function that Lucy's retrieval calls. The Security page wording is limited to what was read |
 | No analytics or advertising cookies | `base44Client.js` (analytics off), `vite.config.js` (tracker off) | Verified in source. Base44 still logs crawler requests (`__ai_traffic__`) with no user identifiers in what was reviewed |
 
 ## 8. Deliberately omitted until verified
@@ -88,7 +88,7 @@ Base44's terms, per search results, give 7 days' notice of new subprocessors. Th
    - the AI model provider behind Lucy, and its retention and training position;
    - backup arrangements;
    - the Trust Center: SOC 2 report under NDA, and the ISO certificate scope.
-5. Decide whether to pause the footer newsletter sign-up.
+5. Decide what to do with any existing `newsletter` Lead records, and whether to remove the `newsletter` value from the Base44 Lead schema.
 6. Confirm governing law (England and Wales) against your residence.
 7. Approve the iframe change for the website app, after testing.
 8. Start the monthly enquiry check before the 12-month wording is published.
@@ -96,6 +96,8 @@ Base44's terms, per search results, give 7 days' notice of new subprocessors. Th
 10. Run the Base44 security scan only after the approved changes are applied.
 
 ## 10. Checks run on this branch
+
+Re-run after the newsletter removal and the Lucy wording change (30 October 2026):
 
 - `vite build` passed in an isolated copy with the repository's dependencies installed. Warnings concern only the missing Base44 environment variables, which the isolated copy does not have.
 - ESLint on the changed files: no errors.
