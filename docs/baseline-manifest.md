@@ -10,7 +10,7 @@
 
 ## Governance files (added after the baseline)
 
-`CLAUDE.md`, `docs/source-of-truth.md`, `docs/baseline-manifest.md`, `scripts/brand-guard.sh`, `scripts/brand-guard.baseline`, `.github/workflows/brand-guard.yml`. These are repository-only. They are not part of the Base44 app, and the mirror check ignores them.
+`CLAUDE.md`, `docs/source-of-truth.md`, `docs/baseline-manifest.md`, `scripts/brand-guard.sh`, `scripts/brand-guard.baseline`, `.github/workflows/brand-guard.yml`. `docs/security-and-privacy-review.md` (30 October 2026). These are repository-only. They are not part of the Base44 app, and the mirror check ignores them.
 
 ## Old branches, preserved and not modified
 

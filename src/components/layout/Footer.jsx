@@ -18,6 +18,7 @@ const company = [
   { label: "H&S Support (optional)", path: "/hs-support" },
   { label: "How It Works", path: "/case-studies" },
   { label: "Contact", path: "/contact" },
+  { label: "Security & Data Protection", path: "/security" },
   { label: "Privacy Policy", path: "/privacy" },
   { label: "Cookie Policy", path: "/cookie-policy" },
   { label: "Terms of Service", path: "/terms" },
@@ -91,7 +92,7 @@ export default function Footer() {
                 {!subscribed && (
                   <label className="flex items-start gap-2 text-ink-secondary text-xs max-w-sm cursor-pointer">
                     <Checkbox checked={consent} onCheckedChange={(v) => setConsent(!!v)} className="mt-0.5 border-hairline/30" />
-                    I agree to receive emails and to the <Link to="/privacy" className="text-teal hover:underline">Privacy Policy</Link>. Unsubscribe anytime.
+                    I agree to Kenvio keeping my email address to send product updates, and to the <Link to="/privacy" className="text-teal hover:underline">Privacy Policy</Link>. You can ask us to stop at any time.
                   </label>
                 )}
               </form>
@@ -166,9 +167,7 @@ export default function Footer() {
       <div className="border-t border-hairline/8">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left">
-            {/* LEGAL ENTITY — HOLD: "Apex Clarity Ltd" stays until the registered
-                company name and number are confirmed. Do not substitute a guess. */}
-            <p className="text-sm text-ink-secondary/70">© 2026 Apex Clarity Ltd. All rights reserved.</p>
+            <p className="text-sm text-ink-secondary/70">© 2026 Donna Sherriff trading as Kenvio. All rights reserved.</p>
           </div>
           <p className="text-sm text-ink-secondary/70">Control the work. Keep the evidence.</p>
         </div>
