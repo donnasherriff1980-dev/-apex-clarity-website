@@ -114,17 +114,13 @@ export default function Contact() {
 
   return (
     <>
-      <SEO
-        title="Book a Demo"
-        description="Book a demo of the Kenvio platform, or ask about optional hands-on H&S support."
-        path="/contact"
-      />
+      <SEO title="Book a 20-Minute Demo" description="Book a 20-minute Kenvio demonstration on a realistic contractor job, or ask about optional H&S support." path="/contact" />
       <section className="pt-32 pb-16 bg-brand-dark relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl">
             <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Book a Demo</span>
-            <h1 className="text-5xl font-black text-white mb-6">Let&apos;s Talk</h1>
+            <h1 className="text-5xl font-black text-white mb-6">Book a 20-minute demonstration</h1>
             <p className="text-white/50 text-lg">Whether you want to see the platform, work out which tier fits, or ask about optional H&amp;S support alongside it, tell us what you are dealing with and we will come back with an honest answer.</p>
           </motion.div>
         </div>

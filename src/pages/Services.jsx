@@ -21,17 +21,13 @@ export default function Solutions() {
   useDeclareHeaderSurface("dark");
   return (
     <>
-      <SEO
-        title="Solutions"
-        description="Every Kenvio capability, grouped by what it does: running the work, keeping the evidence, governing approvals and permits, and the health and safety controls built into the platform."
-        path="/solutions"
-      />
+      <SEO title="Contractor Operations and Compliance Software" description="The Kenvio modules for contractor operations and compliance: projects, actions, competence, documents, permits, approvals and H&S controls." path="/solutions" />
       <section className="pt-32 pb-24 bg-brand-dark relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
             <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Solutions</span>
-            <h1 className="text-5xl md:text-6xl font-black text-white mb-6">Everything Kenvio does, by area</h1>
+            <h1 className="text-5xl md:text-6xl font-black text-white mb-6">Software for contractor operations and compliance</h1>
             <p className="text-xl text-white/50 leading-relaxed">
               Kenvio runs the work and keeps the evidence. Every capability below is live today and shares one controlled lifecycle. Health and safety is one group of it, not the whole of it.
             </p>

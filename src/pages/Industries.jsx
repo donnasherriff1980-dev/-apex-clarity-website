@@ -11,17 +11,13 @@ export default function Industries() {
   useDeclareHeaderSurface("dark");
   return (
     <>
-      <SEO
-        title="Industries We Serve"
-        description="How UK contractors run and evidence their work in Kenvio — social-housing retrofit, M&E, principal contractors, facilities management, renewables and specialist subcontractors."
-        path="/industries"
-      />
+      <SEO title="Industries for Contractor-Led Businesses" description="How principal contractors, M&E and electrical firms, facilities and maintenance providers, and specialist subcontractors use Kenvio." path="/industries" />
       <section className="pt-32 pb-24 bg-brand-dark relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
             <span className="text-xs font-bold text-teal uppercase tracking-widest mb-6 block">Industries</span>
-            <h1 className="text-5xl md:text-6xl font-black text-white leading-tight mb-6">Built For Your Sector</h1>
+            <h1 className="text-5xl md:text-6xl font-black text-white leading-tight mb-6">Built for contractor-led businesses</h1>
             <p className="text-xl text-white/50 leading-relaxed">
               Every sector below runs projects, sites, jobs and people the same way — what changes is what has to be proved, and to whom. Kenvio connects the work and holds the evidence; it does not certify compliance on your behalf.
             </p>

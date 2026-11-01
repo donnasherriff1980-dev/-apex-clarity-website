@@ -42,11 +42,7 @@ export default function CaseStudies() {
   useDeclareHeaderSurface("dark");
   return (
     <>
-      <SEO
-        title="How Implementation Works"
-        description="What implementing Kenvio involves for a UK contractor — mapping how you run and evidence work today, configuring your libraries and templates, and running one live job end to end."
-        path="/case-studies"
-      />
+      <SEO title="How Kenvio Implementation Works" description="What setting up Kenvio involves: mapping how you evidence work today, configuring libraries and templates, and running one live job end to end." path="/case-studies" />
       <section className="pt-32 pb-24 bg-brand-dark relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">

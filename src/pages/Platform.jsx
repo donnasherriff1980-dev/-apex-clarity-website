@@ -163,11 +163,7 @@ export default function Platform() {
 
   return (
     <>
-      <SEO
-        title="The Platform"
-        description="Kenvio connects projects, sites, jobs, people, documents and governed controls in one operational system for UK contractors — so teams know what needs doing, what is approved and what evidence exists."
-        path="/platform"
-      />
+      <SEO title="Contractor Operational Control Platform" description="How Kenvio connects projects, sites, people, documents, approvals and H&S controls, so teams see what needs doing and what is approved." path="/platform" />
 
       {/* 1. Hero */}
       <section className="pt-32 pb-20 bg-brand-dark relative overflow-hidden">
@@ -176,8 +172,7 @@ export default function Platform() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
             <SectionLabel>The Platform</SectionLabel>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-6">
-              Control the work.{" "}
-              <span className="gradient-text-brand">Keep the evidence.</span>
+              One operational system for projects, people and evidence
             </h1>
             <p className="text-lg md:text-xl text-white/55 leading-relaxed mb-10 max-w-2xl">
               Kenvio connects projects, sites, jobs, people, documents and governed controls in one operational

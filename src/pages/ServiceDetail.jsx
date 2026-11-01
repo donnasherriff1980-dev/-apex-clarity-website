@@ -29,7 +29,7 @@ export default function ServiceDetail() {
 
   return (
     <>
-      <SEO title={sol.title} description={sol.summary} path={`/solutions/${slug}`} />
+      <SEO title={sol.seoTitle} description={sol.seoDescription} path={`/solutions/${slug}`} />
       <section className="pt-32 pb-20 bg-brand-dark relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
@@ -38,7 +38,7 @@ export default function ServiceDetail() {
             <div className={`w-14 h-14 rounded-2xl ${sol.bg} flex items-center justify-center mb-6`}>
               <sol.icon className={`w-7 h-7 ${sol.color}`} />
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-white mb-4">{sol.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-black text-white mb-4">{sol.h1}</h1>
             <p className="text-xl text-white/50">{sol.summary}</p>
             {sol.lucy && (
               <span className="inline-flex items-center gap-1.5 text-xs text-teal bg-teal/10 border border-teal/20 rounded-full px-3 py-1.5 mt-6">

@@ -13,10 +13,7 @@ import CTASection from "../components/home/CTASection";
 export default function Home() {
   return (
     <>
-      <SEO
-        description="Kenvio is the operational control platform for UK contractors — projects, sites, jobs, actions, people, documents, approvals, permits and H&S controls in one connected system, with the evidence kept as the work is done."
-        path="/"
-      />
+      <SEO description="Kenvio is an operational control and compliance platform for contractor-led businesses: projects, people, approvals, permits and H&S controls in one system." path="/" />
       <HeroSection />
       <ProblemSection />
       <OperationalControlSection />

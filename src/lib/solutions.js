@@ -19,6 +19,9 @@ import {
 export const SOLUTIONS = [
   {
     slug: "health-safety",
+    seoTitle: "Health and Safety Controls for Contractors",
+    seoDescription: "Risk assessments, COSHH, method statements, toolbox talks and emergency arrangements on one governed lifecycle, with review dates tracked.",
+    h1: "Health and safety controls on one governed lifecycle",
     title: "Health & Safety Governance",
     navDesc: "The H&S control centre and its governance overview",
     icon: ShieldCheck,
@@ -44,6 +47,9 @@ export const SOLUTIONS = [
   },
   {
     slug: "risk-assessments",
+    seoTitle: "Risk Assessments and COSHH Software",
+    seoDescription: "General and COSHH risk assessments built from a reusable hazard library and moved through draft, review, approval and issue.",
+    h1: "Risk assessments and COSHH on one controlled lifecycle",
     title: "Risk Assessments & COSHH",
     navDesc: "General and COSHH assessments, plus the hazard library",
     icon: ClipboardCheck,
@@ -70,6 +76,9 @@ export const SOLUTIONS = [
   },
   {
     slug: "rams",
+    seoTitle: "RAMS Management Software for Contractors",
+    seoDescription: "Draft, review, approve and supersede RAMS and method statements, with warnings when linked records change. Lucy drafts; people approve.",
+    h1: "RAMS management software with controlled revisions",
     title: "Method Statements & RAMS",
     navDesc: "Method statements and combined RAMS packs",
     icon: ClipboardList,
@@ -96,6 +105,9 @@ export const SOLUTIONS = [
   },
   {
     slug: "permits",
+    seoTitle: "Permit to Work Software for Contractors",
+    seoDescription: "Issue, extend, suspend, cancel and hand back permits, with a recorded reason at each step and the completion state captured at hand-back.",
+    h1: "Permit to work software that records extension, suspension and hand-back",
     title: "Permits & Control of Work",
     navDesc: "Issued permits, templates, and hand-back",
     icon: FileCheck2,
@@ -121,6 +133,9 @@ export const SOLUTIONS = [
   },
   {
     slug: "toolbox-talks",
+    seoTitle: "Toolbox Talk Records and Attendance",
+    seoDescription: "Reusable talk content, scheduled sessions and attendance recorded per session, with corrections kept on the record.",
+    h1: "Toolbox talks with attendance recorded per session",
     title: "Toolbox Talks & Briefings",
     navDesc: "Talk content, sessions and attendance",
     icon: Megaphone,
@@ -146,6 +161,9 @@ export const SOLUTIONS = [
   },
   {
     slug: "competence",
+    seoTitle: "Competence Management Software for Contractors",
+    seoDescription: "Expected evidence per role, qualifications and licences with expiry dates, and gaps surfaced for a competent person to review.",
+    h1: "Competence management software: expiry and gaps in one list",
     title: "Workforce Competence",
     navDesc: "Expected evidence, qualifications and licences by role",
     icon: GraduationCap,
@@ -171,6 +189,9 @@ export const SOLUTIONS = [
   },
   {
     slug: "emergency-arrangements",
+    seoTitle: "Emergency Arrangements Software",
+    seoDescription: "Muster points, first aid, fire and rescue arrangements, with review and test dates tracked against each one.",
+    h1: "Emergency arrangements with review and test dates tracked",
     title: "Emergency Arrangements",
     navDesc: "Muster points, first aid, fire and rescue",
     icon: Siren,
@@ -196,6 +217,9 @@ export const SOLUTIONS = [
   },
   {
     slug: "documents",
+    seoTitle: "Compliance Document Control and Evidence",
+    seoDescription: "Controlled documents held against the organisation, site or job they belong to, with expiry dates and bulk import for existing records.",
+    h1: "Compliance document control with expiry dates",
     title: "Document Control & Evidence",
     navDesc: "Controlled documents and bulk import",
     icon: FolderOpen,
@@ -221,6 +245,9 @@ export const SOLUTIONS = [
   },
   {
     slug: "projects",
+    seoTitle: "Projects, Sites and Jobs for Contractors",
+    seoDescription: "Organisations, sites, projects, jobs and actions in one structure, so every RAMS, permit and toolbox talk attaches to the work it was raised for.",
+    h1: "Projects, sites and jobs in one structure",
     title: "Projects, Jobs & Sites",
     navDesc: "Organisations, sites, jobs and actions",
     icon: Building2,
@@ -246,6 +273,9 @@ export const SOLUTIONS = [
   },
   {
     slug: "audits",
+    seoTitle: "Audit Readiness and Approvals for Contractors",
+    seoDescription: "One approvals queue with recorded decision reasons, and a governance overview of everything outstanding. It is not a compliance score.",
+    h1: "Approvals and governance in one place",
     title: "Audit Readiness & Approvals",
     navDesc: "Approvals, issue, supersession and audit evidence",
     icon: LayoutDashboard,

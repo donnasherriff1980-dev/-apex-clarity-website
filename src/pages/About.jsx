@@ -18,11 +18,7 @@ export default function About() {
   useDeclareHeaderSurface("dark");
   return (
     <>
-      <SEO
-        title="Our Story"
-        description="Why Kenvio exists — built from years working in construction, renewable energy and retrofit, not from a boardroom."
-        path="/about"
-      />
+      <SEO title="Who Runs Kenvio and Why" description="Why Kenvio exists, who runs it, and the contractor site problems it is built around: evidence, expiry, approvals and visibility." path="/about" />
 
       {/* Hero */}
       <section className="pt-32 pb-24 bg-brand-dark relative overflow-hidden">

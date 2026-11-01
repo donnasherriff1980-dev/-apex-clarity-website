@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const SITE_NAME = "Kenvio";
-const DEFAULT_TITLE = "Kenvio | The Operational Control Platform for UK Contractors";
+const DEFAULT_TITLE = "Kenvio | Operational Control and Compliance for Contractors";
 const DEFAULT_IMAGE = "https://kenvio.co.uk/brand/kenvio-share.png";
 const SITE_URL = "https://kenvio.co.uk";
 
@@ -44,7 +44,13 @@ export default function SEO({ title, description, path = "", image = DEFAULT_IMA
     setMeta("name", "twitter:description", description);
     setMeta("name", "twitter:image", image);
 
-    setCanonical(`${SITE_URL}${path}`);
+    // Noindex pages carry no canonical, and any canonical left by the previous page is removed.
+    if (noIndex) {
+      const stale = document.head.querySelector('link[rel="canonical"]');
+      if (stale) stale.remove();
+    } else {
+      setCanonical(`${SITE_URL}${path}`);
+    }
 
     // Parked pages (currently /resources) must not be indexed while they
     // have no published content. The tag is removed again on unmount so it
