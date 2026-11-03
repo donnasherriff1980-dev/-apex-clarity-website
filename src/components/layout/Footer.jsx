@@ -1,10 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Mail, MapPin, ArrowRight, Loader2 } from "lucide-react";
-import { Checkbox } from "@/components/ui/checkbox";
-import { submitLead } from "@/lib/leads";
+import { Mail, MapPin } from "lucide-react";
 import { useTheme } from "@/lib/ThemeContext";
 import { PLATFORM_AREAS } from "@/lib/platformAreas";
 
@@ -18,6 +14,7 @@ const company = [
   { label: "H&S Support (optional)", path: "/hs-support" },
   { label: "How It Works", path: "/case-studies" },
   { label: "Contact", path: "/contact" },
+  { label: "Security & Data Protection", path: "/security" },
   { label: "Privacy Policy", path: "/privacy" },
   { label: "Cookie Policy", path: "/cookie-policy" },
   { label: "Terms of Service", path: "/terms" },
@@ -35,72 +32,11 @@ const industries = [
 ];
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [consent, setConsent] = useState(false);
   const { resolved } = useTheme();
   const wordmark = resolved === "dark" ? "/brand/kenvio-wordmark-dark-alpha.png" : "/brand/kenvio-wordmark-light-alpha.png";
 
-  const handleSubscribe = async (e) => {
-    e.preventDefault();
-    if (!email || !consent) return;
-    setLoading(true);
-    setError(false);
-    try {
-      await submitLead({ source: "newsletter", email, gdpr_consent: consent });
-      setSubscribed(true);
-      setEmail("");
-    } catch (err) {
-      console.error("Failed to subscribe:", err);
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <footer className="bg-canvas text-ink">
-      {/* Newsletter */}
-      <div className="border-b border-hairline/8">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="max-w-md">
-              <h3 className="text-2xl font-bold mb-2">Kenvio Updates</h3>
-              <p className="text-ink-secondary text-sm">Occasional product updates from Kenvio.</p>
-            </div>
-            <div className="w-full md:w-auto">
-              <form onSubmit={handleSubscribe} className="flex flex-col gap-2 w-full md:w-auto">
-                <div className="flex flex-col sm:flex-row gap-3 w-full">
-                {subscribed ? (
-                  <p className="text-teal font-semibold">You&apos;re subscribed. Thank you!</p>
-                ) : (
-                  <>
-                    <Input
-                      type="email" placeholder="Enter your email" value={email}
-                      onChange={(e) => setEmail(e.target.value)} required
-                      className="bg-hairline/8 border-hairline/15 text-ink placeholder:text-ink-secondary w-full sm:w-72 h-11"
-                    />
-                    <Button type="submit" disabled={loading || !consent} className="bg-teal text-canvas hover:bg-teal/90 font-semibold h-11 px-6 w-full sm:w-auto shrink-0">
-                      {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <>Subscribe <ArrowRight className="w-4 h-4 ml-1" /></>}
-                    </Button>
-                  </>
-                )}
-                </div>
-                {!subscribed && (
-                  <label className="flex items-start gap-2 text-ink-secondary text-xs max-w-sm cursor-pointer">
-                    <Checkbox checked={consent} onCheckedChange={(v) => setConsent(!!v)} className="mt-0.5 border-hairline/30" />
-                    I agree to receive emails and to the <Link to="/privacy" className="text-teal hover:underline">Privacy Policy</Link>. Unsubscribe anytime.
-                  </label>
-                )}
-              </form>
-              {error && <p className="text-red-400 text-xs mt-2">Something went wrong. Please try again.</p>}
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -166,9 +102,7 @@ export default function Footer() {
       <div className="border-t border-hairline/8">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left">
-            {/* LEGAL ENTITY — HOLD: "Apex Clarity Ltd" stays until the registered
-                company name and number are confirmed. Do not substitute a guess. */}
-            <p className="text-sm text-ink-secondary/70">© 2026 Apex Clarity Ltd. All rights reserved.</p>
+            <p className="text-sm text-ink-secondary/70">© 2026 Donna Sherriff trading as Kenvio. All rights reserved.</p>
           </div>
           <p className="text-sm text-ink-secondary/70">Control the work. Keep the evidence.</p>
         </div>

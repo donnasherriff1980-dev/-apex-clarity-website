@@ -1,7 +1,7 @@
 import { base44 } from "@/api/base44Client";
 
 /**
- * Single write path for every public-site lead form (contact, newsletter, health check).
+ * Single write path for every public-site lead form (contact, demo request, health check).
  * Throws on failure so callers can show a real error state instead of a fake success.
  */
 export async function submitLead(payload) {

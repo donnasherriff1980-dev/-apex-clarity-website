@@ -9,7 +9,7 @@ export default function CookiePolicy() {
       <section className="pt-32 pb-16 bg-brand-dark">
         <div className="max-w-4xl mx-auto px-6"><motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
           <h1 className="text-4xl font-black text-white mb-4">Cookie Policy</h1>
-          <p className="text-white/40">Last updated: September 2026</p>
+          <p className="text-white/40">Last updated: 30 October 2026</p>
         </motion.div></div>
       </section>
       <section className="py-20 bg-surface">

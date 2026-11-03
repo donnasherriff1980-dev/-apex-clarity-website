@@ -25,6 +25,7 @@ import Resources from '@/pages/Resources';
 import Contact from '@/pages/Contact';
 import Privacy from '@/pages/Privacy';
 import Terms from '@/pages/Terms';
+import Security from '@/pages/Security';
 import CaseStudies from '@/pages/CaseStudies';
 import Platform from '@/pages/Platform';
 import Services from '@/pages/Services';
@@ -77,6 +78,7 @@ const AuthenticatedApp = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/security" element={<Security />} />
         {/* Legacy URLs — redirect to the canonical paths */}
         <Route path="/consultancy" element={<Navigate to="/hs-support" replace />} />
         <Route path="/services" element={<Navigate to="/solutions" replace />} />
