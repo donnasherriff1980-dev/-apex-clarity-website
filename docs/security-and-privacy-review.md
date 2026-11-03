@@ -38,6 +38,8 @@ This branch is a mirror of proposed changes. Base44 is the canonical website sou
 - **Newsletter sign-ups: removed from the website on this branch.** The footer sign-up form, its consent wording and the newsletter wording in the Privacy Policy are gone. Kenvio does not run a newsletter and collects no update sign-ups at launch. **Still open in Base44:** existing Lead records with source `newsletter` (if any), and the `newsletter` value in the Lead schema (`base44/entities/Lead.jsonc`). Neither is changed on this branch. Decide whether to delete the existing records and remove the enum value there.
 - The site has no unsubscribe link, and no page claims one.
 
+- **Prospect outreach (3 November 2026):** the Privacy Policy now has section 2a, "Business contacts we approach": what is held, public sources only, legitimate interests, objection by reply or email, 24-month retention (the platform's prospect retention default), held on Base44. The outreach email footer links to the policy. PECR consent rules do not apply to corporate subscribers; reg 23 identification and opt-out are met. Open: the business address for service (same blocker as section 1).
+
 ## 6. Subprocessors
 
 | Provider | Role | Location |

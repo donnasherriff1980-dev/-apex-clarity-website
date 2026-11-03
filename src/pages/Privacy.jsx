@@ -15,7 +15,7 @@ const SECTIONS = [
     body: [
       `This website is operated by ${OPERATOR}. Kenvio is a sole trader business and is not a limited company.`,
       `${OPERATOR} is the controller of the personal data described in this policy. You can contact us about it at ${PRIVACY_EMAIL}.`,
-      "This policy covers personal data you give us through this website: enquiries, demo requests and basic technical data. Kenvio software holds personal data for customers. In that case the customer is normally the controller, and Kenvio acts as processor under a written agreement. See our Security & Data Protection page.",
+      "This policy covers personal data you give us through this website (enquiries, demo requests and basic technical data) and the business contact details of people at companies we approach about Kenvio. Kenvio software holds personal data for customers. In that case the customer is normally the controller, and Kenvio acts as processor under a written agreement. See our Security & Data Protection page.",
     ],
   },
   {
@@ -26,6 +26,17 @@ const SECTIONS = [
       "For every form: the page you submitted it from, whether you consented, and when.",
       "Technical data: when you visit this website, our hosting provider (Base44) and our font provider (Google Fonts) receive standard technical information, such as your IP address and browser type, to deliver the website and keep it running.",
       "Your preferences: your cookie choice and your Day/Night display setting, stored in your browser.",
+    ],
+  },
+  {
+    title: "2a. Business contacts we approach",
+    body: [
+      "Kenvio is sold to UK contractors. To introduce it, we research companies and the people who run them, and we may write to those people at work. For each person we may hold: name, job title, work email address, work phone number, the company, and notes about our contact with them.",
+      "Where it comes from: the company's own website, Companies House, and any public business profile. We do not buy contact lists. We record where each detail came from.",
+      "Why we may contact you, and our lawful basis: our legitimate interest in telling businesses that may benefit from Kenvio about it. We contact companies and the people who act for them, not consumers. We keep each introduction personal and limited, and we do not send repeated unsolicited messages.",
+      "Your choice: you can object at any time. Reply to any email with \"no thanks\", or contact " + PRIVACY_EMAIL + ", and we will stop and keep your address only to make sure we do not contact you again.",
+      "How long we keep it: for 24 months from our last contact with you, then we review and delete the record unless you have become a customer or asked us to keep in touch.",
+      "Where it is held: in Kenvio's own administration records on the Base44 platform, which processes it on our behalf. See section 4 and section 5.",
     ],
   },
   {
@@ -59,6 +70,7 @@ const SECTIONS = [
     title: "6. How long we keep it",
     body: [
       "Enquiry and demo request records: we keep them only for as long as we need them to respond to you and follow up on your enquiry. We review these records regularly and delete those we no longer need.",
+      "Business contacts we approach: 24 months from our last contact, then reviewed and deleted unless the company has become a customer or asked us to keep in touch. An objection is kept only as a do-not-contact record.",
       "Customer contract and invoice records: for the length of the relationship, and for the periods that tax and accounting law requires.",
     ],
   },
